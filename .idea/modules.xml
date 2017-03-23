@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Angus.iml" filepath="$PROJECT_DIR$/Angus.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Tcc.iml" filepath="$PROJECT_DIR$/Tcc.iml" />
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

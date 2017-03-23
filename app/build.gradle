@@ -4,8 +4,13 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
+<<<<<<< HEAD
         applicationId "com.example.thiagohenry.angus"
         minSdkVersion 23
+=======
+        applicationId "com.example.thiagohenry.tcc"
+        minSdkVersion 15
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -25,7 +30,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
+<<<<<<< HEAD
     compile 'com.android.support:support-v4:25.1.0'
+=======
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
     compile 'com.android.support:design:25.1.0'
     testCompile 'junit:junit:4.12'
 }
