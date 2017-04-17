@@ -1,8 +1,7 @@
 package com.example.thiagohenry.tcc;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,17 +20,65 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
+        // Call Views
+        ImageButton cliente     = (ImageButton) findViewById(R.id.Cliente);
+        ImageButton venda       = (ImageButton) findViewById(R.id.Venda);
+        ImageButton sync        = (ImageButton) findViewById(R.id.Sincronizacao);
+        ImageButton pagamento   = (ImageButton) findViewById(R.id.Pagamento);
+        ImageButton produto     = (ImageButton) findViewById(R.id.Produto);
+        ImageButton opcao       = (ImageButton) findViewById(R.id.Opcao);
+
+        cliente.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent form_cliente = new Intent (MainActivity.this, ListaClienteActivity.class);
+                startActivity(form_cliente);
+            }
+        });
+
+        venda.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent form_venda = new Intent (MainActivity.this, VendaActivity.class);
+                startActivity(form_venda);
+            }
+        });
+
+//        sync.setOnClickListener(new View.OnClickListener(){
 //            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+//            public void onClick(View v) {
+//                Intent form_sync = new Intent (ContentActivity.this, CLASS HERE);
+//                startActivity(form_sync);
 //            }
 //        });
+//
+//        pagamento.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent form_pagamento = new Intent (ContentActivity.this, CLASS HERE);
+//                startActivity(form_pagamento);
+//            }
+//        });
+//
+//        produto.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent form_produto = new Intent (ContentActivity.this, CLASS HERE);
+//                startActivity(form_produto);
+//            }
+//        });
+//
+//        opcao.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent form_opcao = new Intent (ContentActivity.this, CLASS HERE);
+//                startActivity(form_opcao);
+//            }
+//        });
+
+        Toolbar toolbar     = (Toolbar)     findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,17 +128,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.Cliente) {
+            Intent form_cliente = new Intent (MainActivity.this, ListaClienteActivity.class);
+            startActivity(form_cliente);
+        } else if (id == R.id.Venda) {
+            Intent form_venda = new Intent (MainActivity.this, VendaActivity.class);
+            startActivity(form_venda);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 

@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/group_carrin"
+        android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:icon="@drawable/sidebar_icon_vendas"
+            android:actionLayout="@layout/nav_header_main"
+            android:title="Vendas"
+            />
+    </group>
+    <group
+        android:id="@+id/group_pagamento"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:icon="@drawable/sidebar_icon_pagamentos"
+            android:actionLayout="@layout/nav_header_main"
+            android:title="Pagamentos" />
+    </group>
+    <group
+        android:id="@+id/group_cliente"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:icon="@drawable/sidebar_icon_cliente"
+            android:title="Cliente" />
+    </group>
+    <group
+        android:id="@+id/group_produtos"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:icon="@drawable/sidebar_icon_produtos"
+            android:title="Produtos" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+    <group
+        android:id="@+id/group_opcoes"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_opcoes"
+            android:icon="@drawable/sidebar_icon_opcoes"
+            android:title="Opções"
+            />
+    </group>
+    <group
+        android:id="@+id/group_sync"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sinc"
+            android:icon="@drawable/sidebar_icon_sincronizacao"
+            android:title="Sincronizar"
+            />
+    </group>
 
 </menu>

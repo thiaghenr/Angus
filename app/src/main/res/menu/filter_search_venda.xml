@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/search_bar"
+        android:title="Filtrar Vendas por: "
+        android:icon="@android:drawable/ic_menu_search"
+        />
+
+    <item
+        android:id="@+id/switchId"
+        android:title="@string/Codigo"
+        android:gravity ="left"
+        android:layout_gravity="left"
+        app:actionLayout="@layout/venda_toogle_button_filter_codigo"
+        />
+</menu>
