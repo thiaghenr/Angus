@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.thiagohenry.tcc.ProdutoListaActivity">
 
-    <include layout="@layout/cliente_lista" />
+
+    <include layout="@layout/produto_lista" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/condicao_pagamento"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/cond_pag"
+
+            android:title="Condição"
+            />
+    </group>
+    <group
+        android:id="@+id/faturar_em"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/fat_em"
+
+            android:title="Faturar em" />
+    </group>
+</menu>

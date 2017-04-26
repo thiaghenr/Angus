@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="condicao_array">
+        <item>30 dias</item>
+        <item>60 dias</item>
+        <item>90 dias</item>
+        <item>À vista</item>
+        <item>À vista, 30 e 60 dias</item>
+        <item>30, 60 e 90 dias</item>
+        <item>45 dias</item>
+        <item>45 e 90 dias</item>
+        <item>À vista, 45 e 90 dias</item>
+    </string-array>
+</resources>

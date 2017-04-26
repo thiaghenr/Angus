@@ -19,20 +19,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Venda-->
+        <activity android:name=".VendaCreateActivity"
+            android:label="Novo Pedido">
 
-        <activity android:name=".VendaActivity"
-            android:label="Vendas">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/search_venda">
-            </meta-data>
         </activity>
 
-        <activity android:name=".VendaCreateActivity"
-            android:label="Nova Venda">
+        <activity android:name=".VendaListaActivity"
+            android:label="Vendas">
+
+        </activity>
+        <!--Produtos-->
+        <activity android:name=".ProdutoCreateActivity"
+            android:label="Novo Produto">
+
+        </activity>
+
+        <activity android:name=".ProdutoListaActivity"
+            android:label="Produtos">
+
+        </activity>
+        <!--Clientes-->
+        <activity android:name=".ClienteCreateActivity"
+            android:label="Novo Cliente">
+
+        </activity>
+
+        <activity android:name=".ClienteListaActivity"
+            android:label="Clientes">
 
         </activity>
     </application>

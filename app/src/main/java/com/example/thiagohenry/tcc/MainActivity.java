@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_cliente = new Intent (MainActivity.this, ListaClienteActivity.class);
+                Intent form_cliente = new Intent (MainActivity.this, ClienteListaActivity.class);
                 startActivity(form_cliente);
             }
         });
@@ -40,8 +40,16 @@ public class MainActivity extends AppCompatActivity
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (MainActivity.this, VendaActivity.class);
+                Intent form_venda = new Intent (MainActivity.this, VendaListaActivity.class);
                 startActivity(form_venda);
+            }
+        });
+
+        produto.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent form_produto = new Intent (MainActivity.this, ProdutoListaActivity.class);
+                startActivity(form_produto);
             }
         });
 
@@ -129,10 +137,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Cliente) {
-            Intent form_cliente = new Intent (MainActivity.this, ListaClienteActivity.class);
+            Intent form_cliente = new Intent (MainActivity.this, ClienteListaActivity.class);
             startActivity(form_cliente);
         } else if (id == R.id.Venda) {
-            Intent form_venda = new Intent (MainActivity.this, VendaActivity.class);
+            Intent form_venda = new Intent (MainActivity.this, VendaListaActivity.class);
             startActivity(form_venda);
         } else if (id == R.id.nav_slideshow) {
 

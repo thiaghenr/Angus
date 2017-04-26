@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.thiagohenry.tcc.ClienteListaActivity"
+    tools:showIn="@layout/activity_cliente">
+
+    <EditText
+        android:id="@+id/inputSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:hint="Pesquisa Cliente"
+        />
+
+    <ListView
+        android:id="@+id/list_clientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@id/inputSearch"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:divider="#ECECEC"
+        android:dividerHeight="3sp"></ListView>
+
+    <Button
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:elevation="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:stateListAnimator="@null"
+        android:background="@drawable/button_mais_venda"
+        android:id="@+id/new_cliente"/>
+
+</RelativeLayout>

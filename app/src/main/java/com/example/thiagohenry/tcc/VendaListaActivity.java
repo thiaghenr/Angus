@@ -1,21 +1,20 @@
 package com.example.thiagohenry.tcc;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 
 /**
- * Created by thiagohenry on 13/04/17.
+ * Created by thiagohenry on 20/04/17.
  */
 
-public class VendaActivity extends AppCompatActivity {
-   //Switch switchAB;
+public class VendaListaActivity extends AppCompatActivity{
+    //Switch switchAB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +30,18 @@ public class VendaActivity extends AppCompatActivity {
 
         itemSwitch.setActionView(R.layout.venda_toogle_button_filter_codigo);
 
-        final Switch sw = (Switch) menu.findItem(R.id.switchId).getActionView().findViewById(R.id.switchAB);
+        //final Switch sw = (Switch) menu.findItem(R.id.switchId).getActionView().findViewById(R.id.switchAB);
 
+        //String[] venda  =   {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
+        //ListView listaVendas = (ListView) findViewById(R.id.lista_vendas);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(){this}
 
         Button new_venda = (Button) findViewById(R.id.new_venda);
+        System.out.println(new_venda);
         new_venda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_to_form = new Intent(VendaActivity.this, VendaCreateActivity.class);
+                Intent go_to_form = new Intent(VendaListaActivity.this, VendaCreateActivity.class);
                 startActivity(go_to_form);
             }
         });
@@ -70,5 +73,3 @@ public class VendaActivity extends AppCompatActivity {
 //        return true;
 //    }
 }
-
-

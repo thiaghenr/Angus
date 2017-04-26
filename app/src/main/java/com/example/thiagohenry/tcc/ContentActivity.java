@@ -27,7 +27,7 @@ public class ContentActivity extends AppCompatActivity{
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_cliente = new Intent (ContentActivity.this, ListaClienteActivity.class);
+                Intent form_cliente = new Intent (ContentActivity.this, ClienteListaActivity.class);
                 startActivity(form_cliente);
             }
         });
@@ -35,7 +35,7 @@ public class ContentActivity extends AppCompatActivity{
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (ContentActivity.this, VendaActivity.class);
+                Intent form_venda = new Intent (ContentActivity.this, VendaListaActivity.class);
                 startActivity(form_venda);
             }
         });
@@ -78,7 +78,7 @@ public class ContentActivity extends AppCompatActivity{
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (ContentActivity.this, VendaActivity.class);
+                Intent form_venda = new Intent (ContentActivity.this, VendaListaActivity.class);
                 startActivity(form_venda);
             }
         });

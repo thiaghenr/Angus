@@ -18,7 +18,7 @@ public class VendaCreateTabEntrega extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.venda_create_tab_pagamento, container, false);
+        View view = inflater.inflate(R.layout.venda_create_tab_entrega, container, false);
         return view;
     }
 }
