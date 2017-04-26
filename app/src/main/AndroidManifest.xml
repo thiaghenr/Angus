@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    package="com.example.thiagohenry.angus">
+=======
     package="com.example.thiagohenry.tcc">
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,11 @@
 
         <activity
             android:name=".MainActivity"
+<<<<<<< HEAD
+            android:label="@string/app_name"
+=======
             android:label="Angus"
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
@@ -11,6 +15,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+<<<<<<< HEAD
+    tools:context="com.example.thiagohenry.angus.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+</RelativeLayout>
+=======
     tools:context="com.example.thiagohenry.tcc.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:useDefaultMargins="true"
@@ -85,3 +99,4 @@
 
 
 </GridLayout>
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77

@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+<<<<<<< HEAD
+    tools:context="com.example.thiagohenry.angus.MainActivity">
+=======
     tools:context="com.example.thiagohenry.tcc.MainActivity">
+>>>>>>> 4ec55fbb130d87e74de0c014b2538c981a57da77
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
