@@ -17,17 +17,17 @@ public class ContentActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        ImageButton cliente     = (ImageButton) findViewById(R.id.Cliente);
-        ImageButton venda       = (ImageButton) findViewById(R.id.Venda);
-        ImageButton sync        = (ImageButton) findViewById(R.id.Sincronizacao);
-        ImageButton pagamento   = (ImageButton) findViewById(R.id.Pagamento);
-        ImageButton produto     = (ImageButton) findViewById(R.id.Produto);
-        ImageButton opcao       = (ImageButton) findViewById(R.id.Opcao);
+        ImageButton cliente     = (ImageButton) findViewById(R.id.Customer);
+        ImageButton venda       = (ImageButton) findViewById(R.id.Request);
+        ImageButton sync        = (ImageButton) findViewById(R.id.Sync);
+        ImageButton pagamento   = (ImageButton) findViewById(R.id.Payment);
+        ImageButton produto     = (ImageButton) findViewById(R.id.Product);
+        ImageButton opcao       = (ImageButton) findViewById(R.id.Options);
 
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_cliente = new Intent (ContentActivity.this, ClienteListaActivity.class);
+                Intent form_cliente = new Intent (ContentActivity.this, CustomerActivityList.class);
                 startActivity(form_cliente);
             }
         });
@@ -35,7 +35,7 @@ public class ContentActivity extends AppCompatActivity{
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (ContentActivity.this, VendaListaActivity.class);
+                Intent form_venda = new Intent (ContentActivity.this, RequestActivityList.class);
                 startActivity(form_venda);
             }
         });
@@ -74,11 +74,11 @@ public class ContentActivity extends AppCompatActivity{
     }
 
     public void CallVenda(){
-        ImageButton venda       = (ImageButton) findViewById(R.id.Venda);
+        ImageButton venda       = (ImageButton) findViewById(R.id.Request);
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (ContentActivity.this, VendaListaActivity.class);
+                Intent form_venda = new Intent (ContentActivity.this, RequestActivityList.class);
                 startActivity(form_venda);
             }
         });

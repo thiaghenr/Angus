@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thiagohenry.tcc">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".DAO.ConfigRealm"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:label="Angus"
@@ -19,36 +21,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Venda-->
-        <activity android:name=".VendaCreateActivity"
-            android:label="Novo Pedido">
-
-        </activity>
-
-        <activity android:name=".VendaListaActivity"
-            android:label="Vendas">
-
-        </activity>
-        <!--Produtos-->
-        <activity android:name=".ProdutoCreateActivity"
-            android:label="Novo Produto">
-
-        </activity>
-
-        <activity android:name=".ProdutoListaActivity"
-            android:label="Produtos">
-
-        </activity>
-        <!--Clientes-->
-        <activity android:name=".ClienteCreateActivity"
-            android:label="Novo Cliente">
-
-        </activity>
-
-        <activity android:name=".ClienteListaActivity"
-            android:label="Clientes">
-
-        </activity>
+        <!-- Venda -->
+        <activity
+            android:name=".RequestCreateActivity"
+            android:label="Nueva Ordem"></activity>
+        <activity
+            android:name=".RequestActivityList"
+            android:label="Venta"></activity>
+        <!-- Produtos -->
+        <activity
+            android:name=".ProductCreateActivity"
+            android:label="Nuevo Producto"></activity>
+        <activity
+            android:name=".ProductActivityList"
+            android:label="Productos"></activity>
+        <!-- Clientes -->
+        <activity
+            android:name=".CustomerCreateActivity"
+            android:label="Nuevo Cliente"></activity>
+        <activity
+            android:name=".CustomerActivityList"
+            android:label="Clientes"></activity>
+        <activity
+            android:name=".CustomerEditActivity"
+            android:label="@string/title_activity_customer_edit"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

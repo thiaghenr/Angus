@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.example.thiagohenry.tcc.Model.Request;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,17 +24,17 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Call Views
-        ImageButton cliente     = (ImageButton) findViewById(R.id.Cliente);
-        ImageButton venda       = (ImageButton) findViewById(R.id.Venda);
-        ImageButton sync        = (ImageButton) findViewById(R.id.Sincronizacao);
-        ImageButton pagamento   = (ImageButton) findViewById(R.id.Pagamento);
-        ImageButton produto     = (ImageButton) findViewById(R.id.Produto);
-        ImageButton opcao       = (ImageButton) findViewById(R.id.Opcao);
+        ImageButton cliente     = (ImageButton) findViewById(R.id.Customer);
+        ImageButton venda       = (ImageButton) findViewById(R.id.Request);
+        ImageButton sync        = (ImageButton) findViewById(R.id.Sync);
+        ImageButton pagamento   = (ImageButton) findViewById(R.id.Payment);
+        ImageButton produto     = (ImageButton) findViewById(R.id.Product);
+        ImageButton opcao       = (ImageButton) findViewById(R.id.Options);
 
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_cliente = new Intent (MainActivity.this, ClienteListaActivity.class);
+                Intent form_cliente = new Intent (MainActivity.this, CustomerActivityList.class);
                 startActivity(form_cliente);
             }
         });
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (MainActivity.this, VendaListaActivity.class);
+                Intent form_venda = new Intent (MainActivity.this, RequestActivityList.class);
                 startActivity(form_venda);
             }
         });
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         produto.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_produto = new Intent (MainActivity.this, ProdutoListaActivity.class);
+                Intent form_produto = new Intent (MainActivity.this, ProductActivityList.class);
                 startActivity(form_produto);
             }
         });
@@ -115,32 +117,17 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.Cliente) {
-            Intent form_cliente = new Intent (MainActivity.this, ClienteListaActivity.class);
+        if (id == R.id.Customer) {
+            Intent form_cliente = new Intent (MainActivity.this, CustomerActivityList.class);
             startActivity(form_cliente);
-        } else if (id == R.id.Venda) {
-            Intent form_venda = new Intent (MainActivity.this, VendaListaActivity.class);
+        } else if (id == R.id.Request) {
+            Intent form_venda = new Intent (MainActivity.this, RequestActivityList.class);
             startActivity(form_venda);
         } else if (id == R.id.nav_slideshow) {
 

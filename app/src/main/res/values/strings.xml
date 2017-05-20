@@ -8,4 +8,6 @@
     <string name="search">search_venda</string>
     <string name="checkable">c</string>
     <string name="Codigo">Codigo</string>
+    <string name="title_activity_customer_edit">CustomerEditActivity</string>
+    <string name="search_hint">buscar</string>
 </resources>

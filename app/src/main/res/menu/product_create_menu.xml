@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.thiagohenry.tcc.ProductCreateActivity">
 
-    <item android:id="@+id/add_cliente"
+    <item android:id="@+id/add_product"
         android:title="OK"
         android:icon="@android:drawable/ic_input_add"
         app:showAsAction="always"/>

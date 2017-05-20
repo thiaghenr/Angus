@@ -18,7 +18,7 @@
 
     <!--Pai do icone Cliente-->
     <ImageButton
-        android:id="@+id/Venda"
+        android:id="@+id/Request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_vendas"
@@ -31,7 +31,7 @@
 
 
     <ImageButton
-        android:id="@+id/Cliente"
+        android:id="@+id/Customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_clientes"
@@ -42,7 +42,7 @@
 
     <!--Pai do Icone Pessoa -->
     <ImageButton
-        android:id="@+id/Pagamento"
+        android:id="@+id/Payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_pagamentos"
@@ -53,7 +53,7 @@
         />
 
     <ImageButton
-        android:id="@+id/Sincronizacao"
+        android:id="@+id/Sync"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_sincronizacao"
@@ -64,7 +64,7 @@
 
 
     <ImageButton
-        android:id="@+id/Produto"
+        android:id="@+id/Product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_produtos"
@@ -74,7 +74,7 @@
         />
 
     <ImageButton
-        android:id="@+id/Opcao"
+        android:id="@+id/Options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_opcoes"
