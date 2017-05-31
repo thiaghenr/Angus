@@ -1,6 +1,9 @@
 package com.example.thiagohenry.tcc.Model;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -10,17 +13,20 @@ import io.realm.annotations.PrimaryKey;
 public class Product extends RealmObject{
     @PrimaryKey
     private Long id;
-
+    @Index
     private String name;
+    @Index
     private String description;
+    @Index
     private String category;
     private String unity;
     private String pac;
     private String fee;
-    private String last_update;
+    private Date last_update;
     private String mark;
     private String cod_erp;
     private String app_id;
+    private String price;
 
     public void setId(Long id) {
         this.id = id;
@@ -74,11 +80,11 @@ public class Product extends RealmObject{
         this.fee = fee;
     }
 
-    public String getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(String last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 
@@ -106,4 +112,15 @@ public class Product extends RealmObject{
         this.cod_erp = cod_erp;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 }

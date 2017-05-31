@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Product;
+import com.example.thiagohenry.tcc.Model.ProductPrice;
 
 import java.util.List;
 
@@ -43,7 +44,8 @@ public class ProductAdapter extends BaseAdapter{
 
         View view = act.getLayoutInflater().inflate(R.layout.product_list_custom_by_line, parent, false);
 
-        Product products = productss.get(position);
+        Product products            = productss.get(position);
+        //ProductPrice productPrice   = productss.get(position);
 
         TextView name           = (TextView) view.findViewById(R.id.name);
         name.setText(products.getName());
@@ -54,8 +56,16 @@ public class ProductAdapter extends BaseAdapter{
         TextView category       = (TextView) view.findViewById(R.id.category);
         category.setText(products.getCategory());
 
-        TextView pac            = (TextView) view.findViewById(R.id.pac);
-        pac.setText(products.getPac());
+        TextView unity       = (TextView) view.findViewById(R.id.unity);
+        unity.setText(products.getUnity());
+
+        TextView packag       = (TextView) view.findViewById(R.id.packag);
+        packag.setText(products.getPac());
+
+        TextView mark            = (TextView) view.findViewById(R.id.mark);
+        mark.setText(products.getMark());
+
+
         //TextView qtd            = (TextView)  view.findViewById(R.id.qtd);
         //TextView price          = (TextView)  view.findViewById(R.id.price);
         return view;

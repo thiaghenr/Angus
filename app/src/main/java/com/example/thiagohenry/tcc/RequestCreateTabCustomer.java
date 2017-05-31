@@ -1,19 +1,31 @@
 package com.example.thiagohenry.tcc;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 //import com.example.thiagohenry.tcc.DAO.CustomerDao;
 import com.example.thiagohenry.tcc.Model.Customer;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by thiagohenry on 16/04/17.
@@ -25,110 +37,140 @@ public class RequestCreateTabCustomer extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        System.out.println(inflater + " inflateeeeer");
         final View view = inflater.inflate(R.layout.request_create_tab_customer, container, false);
+        carregaListaCustomers(view);
+        return view;
+    }
 
-//        final EditText  name            =   (EditText) view.findViewById(R.id.name_edit);
-//        final EditText  fantasy_name    =   (EditText) view.findViewById(R.id.fantasy_name_edit);
-//        final EditText  phone           =   (EditText) view.findViewById(R.id.phone_edit);
+    public void carregaListaCustomers(final View view) {
 
-        if (getArguments() != null){
-            String strtext = getArguments().getString("id");
-            System.out.println(strtext + "olaaaaajsiasuinaisniansinansianiudbubfubusbchkbdshjkbsd");
-        }
+        final TextView search           = (EditText)    view.findViewById(R.id.inputSearch);
+        final Switch filter_by_code     = (Switch)      view.findViewById(R.id.filter_by_code);
+        final Switch filter_by_name     = (Switch)      view.findViewById(R.id.filter_by_name);
+        final Switch filter_by_phone    = (Switch)      view.findViewById(R.id.filter_by_phone);
 
-        final ImageButton tab_customer = (ImageButton) view.findViewById(R.id.tab_customer);
-        //tab_customer.setVisibility(view.VISIBLE);
-
-        tab_customer.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent list_customer = new Intent (getActivity().getApplication(), CustomerActivityList.class);
-                //startActivity(list_customer);
-                tab_customer.setVisibility(view.INVISIBLE);
-                startActivityForResult(list_customer, 1);
+        filter_by_code.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    filter_by_name.setChecked(false);
+                    filter_by_phone.setChecked(false);
+                }
             }
         });
 
-        return view;
-    }
-//
-//    public void carregaListaCustomers(View view) {
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.beginTransaction();
-//
-//        List<Customer> customers = realm.where(Customer.class).findAll();
-//        ListView ListaCustomers = (ListView) view.findViewById(R.id.customer_list);
-//        CustomerAdapter adapter = new CustomerAdapter(customers, this.getActivity());
-//        ListaCustomers.setAdapter(adapter);
-//
-//        realm.commitTransaction();
-//    }
-//
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        System.out.println(getArguments() + " arguments");
-//        if (getArguments() != null){
-//            String strtext = getArguments().getString("id");
-//            System.out.println(strtext + "olaaaaajsiasuinaiiansinansianiudbubfubusbchkbdshjkbsd");
-//        }
-//    }
+        filter_by_name.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if (isChecked == true){
+                    filter_by_code.setChecked(false);
+                    filter_by_phone.setChecked(false);
+                }
+            }
+        });
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-////        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//////        System.out.println("aa");
-//////        LayoutInflater inflater = LayoutInflater.from(getContext());
-//        ViewGroup container = null;
-////        final View view = inflater.inflate(R.layout.request_create_tab_customer_list, container, false);
-//////        //view.bringToFront();
-//////        //view.forceLayout();
-////          view.setVisibility(View.VISIBLE);
-////        System.out.println(view + " view  ");
-//        //final RelativeLayout list = (RelativeLayout) view.findViewById(R.id.new_request_tab_customer);
-//        //tab_customer.setVisibility(view.VISIBLE);
-//        //list.setVisibility(view.VISIBLE);
-////        System.out.println(view + " view");
-////        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-////        LinearLayout myRoot = new LinearLayout(getContext());
-////        View itemView = inflater.inflate(R.layout.request_create_tab_customer_list, myRoot);
-//
-////        View v;
-////        View a = getView()findViewById();
-////
-////        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        //LinearLayout myRoot = new LinearLayout(getContext());
-//        final View itemView = getActivity().getLayoutInflater().inflate(R.layout.request_create_tab_customer_list, container);
-//
-//        final Realm realm = Realm.getDefaultInstance();
-//
-//        final long id           = resultCode;
-//
-//        System.out.println(id + " id......");
-//        final Customer customer = realm.where(Customer.class).equalTo("id", id).findFirst();
-//        System.out.println(customer.getId() + " customer.getId");
-//        final EditText  name            =   (EditText) itemView.findViewById(R.id.name_edit);
-//        final EditText  fantasy_name    =   (EditText) itemView.findViewById(R.id.fantasy_name_edit);
-//        final EditText  phone           =   (EditText) itemView.findViewById(R.id.phone_edit);
-//        System.out.println(name);
-//        System.out.println(customer.getName());
-//        name.setText(           customer.getName());
-//        fantasy_name.setText(   customer.getFantasy_name());
-//        phone.setText(          customer.getPhone_1());
-//
-//        itemView.setVisibility(View.VISIBLE);
-//        System.out.println(name);
-//        System.out.println(fantasy_name);
-//        System.out.println(phone);
-//
-//    }
-////
-////    public View listCustomer(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-////        final View view_list = inflater.inflate(R.layout.request_create_tab_customer_list, container, false);
-////        return view_list;
-////    }
+        filter_by_phone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if (isChecked == true){
+                    filter_by_code.setChecked(false);
+                    filter_by_name.setChecked(false);
+                }
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (filter_by_code.isChecked() == true){
+                    Realm realm                 = Realm.getDefaultInstance();
+                    RealmQuery<Customer> query  = realm.where(Customer.class);
+
+                    query.contains("code", String.valueOf(search.getText()));
+                    final RealmResults<Customer> result1 = query.findAll();
+                    final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
+
+                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    ListCustomers.setAdapter(adapter);
+
+                    ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("id", result1.get(position).getId());
+                            bundle.putString("fragment", "customer");
+                            System.out.println("sssssss");
+                            act_cust.putExtras(bundle);
+                            startActivity(act_cust);
+                        }
+                    });
+                }
+                else if (filter_by_name.isChecked() == true){
+                    Realm realm                 = Realm.getDefaultInstance();
+                    RealmQuery<Customer> query  = realm.where(Customer.class);
+
+                    query.contains("name", String.valueOf(search.getText()));
+                    final RealmResults<Customer> result1 = query.findAll();
+                    final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
+
+                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    ListCustomers.setAdapter(adapter);
+
+                    ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("id", result1.get(position).getId());
+                            bundle.putString("fragment", "customer");
+                            act_cust.putExtras(bundle);
+                            startActivity(act_cust);
+                        }
+                    });
+                }
+                else if (filter_by_phone.isChecked() == true){
+                    Realm realm                 = Realm.getDefaultInstance();
+                    RealmQuery<Customer> query  = realm.where(Customer.class);
+
+                    query.contains("phone_1", String.valueOf(search.getText()));
+                    final RealmResults<Customer> result1 = query.findAll();
+                    final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
+
+                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    ListCustomers.setAdapter(adapter);
+
+                    ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putLong("id", result1.get(position).getId());
+                            bundle.putString("fragment", "customer");
+                            act_cust.putExtras(bundle);
+                            startActivity(act_cust);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+                //Toast.makeText(act, "beforechanged", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //Toast.makeText(act, "afterchanged", Toast.LENGTH_SHORT).show();
+                //search.setError(null);
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        carregaListaCustomers(getView());
+    }
 }
 
 

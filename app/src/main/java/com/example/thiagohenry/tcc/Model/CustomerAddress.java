@@ -1,6 +1,7 @@
 package com.example.thiagohenry.tcc.Model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -10,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
 public class CustomerAddress extends RealmObject{
     @PrimaryKey
     private Long       id;
-    private Customer    Customer_id;
+    private Customer   Customer_id;
     private String     address;
     private String     street;
     private String     block;

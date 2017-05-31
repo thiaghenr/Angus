@@ -15,13 +15,16 @@ import io.realm.annotations.PrimaryKey;
 public class Customer extends RealmObject{
     @PrimaryKey
     private Long                id;
-    private Long                price_id;
+    @Index
+    private String              code;
+    private Price               price_id;
     @Index
     private String              name;
     private String              fantasy_name;
     private String              ruc;
     private String              currency;
     private String              contact;
+    @Index
     private String              phone_1;
     private String              phone_2;
     private Integer             seller_id;
@@ -35,6 +38,14 @@ public class Customer extends RealmObject{
         this.id = id;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getApp_id() {
         return app_id;
     }
@@ -43,11 +54,11 @@ public class Customer extends RealmObject{
         this.app_id = app_id;
     }
 
-    public Long getPrice_id() {
+    public Price getPrice_id() {
         return price_id;
     }
 
-    public void setPrice_id(Long price_id) {
+    public void setPrice_id(Price price_id) {
         this.price_id = price_id;
     }
 

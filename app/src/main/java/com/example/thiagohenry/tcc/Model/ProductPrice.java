@@ -3,6 +3,7 @@ package com.example.thiagohenry.tcc.Model;
 import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -12,7 +13,7 @@ import io.realm.annotations.PrimaryKey;
 public class ProductPrice extends RealmObject {
     @PrimaryKey
     private Long                id;
-    private Product             pruduct_id;
+    private Product             product_id;
     private Price               price_id;
     private String              currency;
     private float               value;
@@ -26,12 +27,12 @@ public class ProductPrice extends RealmObject {
         this.id = id;
     }
 
-    public Product getPruduct_id() {
-        return pruduct_id;
+    public Product getProduct_id() {
+        return product_id;
     }
 
-    public void setPruduct_id(Product pruduct_id) {
-        this.pruduct_id = pruduct_id;
+    public void setProduct_id(Product product_id) {
+        this.product_id = product_id;
     }
 
     public Price getPrice_id() {

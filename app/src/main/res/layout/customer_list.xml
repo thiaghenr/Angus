@@ -33,37 +33,7 @@
     android:background="@drawable/button_mais_venda"
     android:id="@+id/new_customer"/>
 
-    <TableRow
-        android:id="@+id/row_filters"
-        android:layout_width = "match_parent"
-        android:layout_height = "65dp"
-        android:orientation = "horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/inputSearch">
 
-        <TextView
-            android:id="@+id/filters"
-            android:layout_height="50dp"
-            android:layout_width="230dp"
-            android:text="Condição"
-            android:textSize="25dp"
-            android:layout_gravity=""
-            android:textColor="@android:color/black"
-            android:height="@dimen/activity_vertical_margin"
-            android:elegantTextHeight="true"
-            android:textStyle="bold"
-            android:scrollHorizontally="true"/>
-
-        <Spinner
-            android:id="@+id/spinner_"
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:layout_alignBaseline="@id/filters"
-            android:gravity="right"
-            android:drawSelectorOnTop="true" />
-
-    </TableRow>
 
     <ListView
     android:id="@+id/customer_list"
@@ -72,7 +42,7 @@
     android:dividerHeight="3sp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/row_filters"
+        android:layout_below="@+id/inputSearch"
         android:layout_alignParentBottom="true"
         android:layout_height="match_parent"></ListView>
 

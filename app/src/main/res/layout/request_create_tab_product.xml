@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.thiagohenry.tcc.ProductActivityList">
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.thiagohenry.tcc.ProductActivityList"
+    >
 
-    <include layout="@layout/product_list" />
+    <EditText
+        android:id="@+id/inputSearch_product"
+        android:layout_width="match_parent"
+        android:ems="15"
+        android:inputType="textPersonName"
+        android:textSize="30dp"
+        android:hint="Pesquisa Producto"
+        android:layout_height="65dp" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <TableRow
+        android:id="@+id/row_filters"
+        android:layout_width = "match_parent"
+        android:layout_height = "65dp"
+        android:orientation = "horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/inputSearch_product">
+
+        <Switch
+            android:layout_width="105dp"
+            android:text="Codigo"
+            android:thumbTextPadding="4dp"
+            android:layout_gravity="left"
+            android:checked="true"
+            android:id="@+id/filter_by_name_product"
+            />
+        <Switch
+            android:layout_width="120dp"
+            android:text="nome"
+            android:minWidth="15dp"
+            android:maxWidth="25dp"
+            android:checked="false"
+            android:id="@+id/filter_by_description_product"
+            />
+        <Switch
+            android:layout_width="120dp"
+            android:text="fone"
+            android:minWidth="15dp"
+            android:maxWidth="25dp"
+            android:checked="false"
+            android:id="@+id/filter_by_category"
+            />
+
+    </TableRow>
+
+    <ListView
+        android:id="@+id/products_list"
+        android:layout_width="wrap_content"
+        android:divider="#ECECEC"
+        android:dividerHeight="3sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/row_filters"
+        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"></ListView>
+
+    <!--<TableRow-->
+        <!--android:id="@+id/row_filters"-->
+        <!--android:layout_width = "match_parent"-->
+        <!--android:layout_height = "65dp"-->
+        <!--android:orientation = "horizontal"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/inputSearch_product">-->
+
+        <!--<Switch-->
+            <!--android:layout_width="105dp"-->
+            <!--android:text="Codigo"-->
+            <!--android:thumbTextPadding="4dp"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:checked="true"-->
+            <!--android:id="@+id/filter_by_name_product"-->
+            <!--/>-->
+        <!--<Switch-->
+            <!--android:layout_width="120dp"-->
+            <!--android:text="nome"-->
+            <!--android:minWidth="15dp"-->
+            <!--android:maxWidth="25dp"-->
+            <!--android:checked="false"-->
+            <!--android:id="@+id/filter_by_description_product"-->
+            <!--/>-->
+        <!--<Switch-->
+            <!--android:layout_width="120dp"-->
+            <!--android:text="fone"-->
+            <!--android:minWidth="15dp"-->
+            <!--android:maxWidth="25dp"-->
+            <!--android:checked="false"-->
+            <!--android:id="@+id/filter_by_category"-->
+            <!--/>-->
+
+    <!--</TableRow>-->
+
+
+</RelativeLayout>

@@ -1,8 +1,6 @@
 package com.example.thiagohenry.tcc;
 
 import android.app.Activity;
-import android.content.Context;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,14 +9,12 @@ import android.widget.TextView;
 import com.example.thiagohenry.tcc.Model.Customer;
 
 import java.util.List;
-import io.realm.Realm;
-import io.realm.RealmResults;
 
 /**
  * Created by thiagohenry on 26/04/17.
  */
 
-public class CustomerAdapter extends BaseAdapter {
+public class ProductPriceAdapter extends BaseAdapter {
 
     private List<Customer> customers;
     private Activity act;
@@ -26,12 +22,12 @@ public class CustomerAdapter extends BaseAdapter {
     private RequestCreateTabCustomerSelected textWatcher;
     //private RealmResults<Customer> result1;
 
-    public CustomerAdapter(List<Customer> customers, Activity act) {
+    public ProductPriceAdapter(List<Customer> customers, Activity act) {
         this.customers = customers;
         this.act = act;
     }
 
-    public CustomerAdapter(List<Customer> customers, RequestCreateTabCustomerSelected textWatcher) {
+    public ProductPriceAdapter(List<Customer> customers, RequestCreateTabCustomerSelected textWatcher) {
         this.customers = customers;
         this.textWatcher = textWatcher;
     }
@@ -50,7 +46,7 @@ public class CustomerAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = act.getLayoutInflater().inflate(R.layout.customer_list_custom_by_line, parent, false);
+        View view = act.getLayoutInflater().inflate(R.layout.price_list_custom_by_line, parent, false);
 
         Customer customer = customers.get(position);
 

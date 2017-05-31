@@ -1,30 +1,50 @@
 package com.example.thiagohenry.tcc.Model;
 
+import io.realm.annotations.Index;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+
 /**
  * Created by thiagohenry on 23/04/17.
  */
 
 public class RequestItem {
-    private Integer id;
+    @PrimaryKey
+    private Long id;
+    @Index
+    @Required
     private Price   price_id;
+    @Index
+    @Required
     private Request request_id;
+    @Index
+    @Required
     private Product product_id;
+    @Required
     private Long quantity;
+    @Index
+    @Required
     private Long invoiced_amount;
     private Long discount;
+    @Index
     private Long value_table;
+    @Index
     private Long value_unit;
+    @Index
     private Long value_unit_invoiced;
+    @Index
     private Long value_total;
+    @Index
     private Long value_total_invoiced;
+    @Index
     private Long value_difference;
     private String observation;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

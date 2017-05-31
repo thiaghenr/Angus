@@ -13,18 +13,21 @@ import io.realm.Realm;
 
 public class CustomerActivityHelper {
 
+    private final TextView campoCode;
     private final TextView campoName;
     private final TextView campoFantasyName;
     private final TextView campoPhone1;
 
 
     public CustomerActivityHelper(CustomerCreateActivity customerCreateActivity) {
+        campoCode           = (TextView) customerCreateActivity.findViewById(R.id.code);
         campoName           = (TextView) customerCreateActivity.findViewById(R.id.name);
         campoFantasyName    = (TextView) customerCreateActivity.findViewById(R.id.fantasy_name);
         campoPhone1         = (TextView) customerCreateActivity.findViewById(R.id.phone);
     }
 
     public CustomerActivityHelper(CustomerActivityList customerActivityList) {
+        campoCode           = (TextView) customerActivityList.findViewById(R.id.code);
         campoName           = (TextView) customerActivityList.findViewById(R.id.name);
         campoFantasyName    = (TextView) customerActivityList.findViewById(R.id.fantasy_name);
         campoPhone1         = (TextView) customerActivityList.findViewById(R.id.phone);
@@ -36,6 +39,7 @@ public class CustomerActivityHelper {
         Customer customer = new Customer();
 
         customer.setId           ((long) getNextKey(customer));
+        customer.setCode         (campoCode.getText().toString());
         customer.setName         (campoName.getText().toString());
         customer.setFantasy_name (campoFantasyName.getText().toString());
         customer.setPhone_1      (campoPhone1.getText().toString());

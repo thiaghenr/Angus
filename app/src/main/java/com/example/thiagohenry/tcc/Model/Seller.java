@@ -1,14 +1,19 @@
 package com.example.thiagohenry.tcc.Model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by thiagohenry on 13/05/17.
  */
 
 public class Seller extends RealmObject {
+    @PrimaryKey
     private Long        id;
+    @Index
     private String      seller;
+    @Index
     private String      name;
 
     public Long getId() {
