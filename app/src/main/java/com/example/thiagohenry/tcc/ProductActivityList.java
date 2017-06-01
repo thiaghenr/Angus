@@ -31,7 +31,7 @@ public class ProductActivityList extends AppCompatActivity{
         realm.beginTransaction();
 
         List<Product> products = realm.where(Product.class).findAll();
-        ListView ProductsList = (ListView) findViewById(R.id.products_list);
+        ListView ProductsList = (ListView) findViewById(R.id.list_produtos);
         ProductAdapter adapter = new ProductAdapter(products, this);
 
         ProductsList.setAdapter(adapter);
@@ -42,14 +42,14 @@ public class ProductActivityList extends AppCompatActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        Button new_product = (Button) findViewById(R.id.new_product);
-        new_product.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go_to_form = new Intent(ProductActivityList.this, ProductCreateActivity.class);
-                startActivity(go_to_form);
-            }
-        });
+//        Button new_product = (Button) findViewById(R.id.new_product);
+//        new_product.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent go_to_form = new Intent(ProductActivityList.this, ProductCreateActivity.class);
+//                startActivity(go_to_form);
+//            }
+//        });
 
         return super.onCreateOptionsMenu(menu);
     }

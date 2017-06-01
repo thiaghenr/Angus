@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context="com.example.thiagohenry.tcc.ProductDetail">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        android:background="#dfffff"
+        tools:layout_editor_absoluteX="8dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp">
+
+
+
+            <TextView
+                android:id="@+id/detalheCodigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="?android:attr/statusBarColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="codigoProduto" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/detailDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:id="@+id/detailMark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marca"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textStyle="italic" />
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:id="@+id/detailTotalStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total en Stock:"
+                android:textColor="?android:attr/statusBarColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Total en Stock:" />
+
+        </TableRow>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            android:background="#dfffff"
+            tools:layout_editor_absoluteX="8dp"
+            android:weightSum="1">
+
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical"
+                android:baselineAligned="false"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_blue_light"
+                    android:text="Deposito"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:layoutDirection="rtl"
+                    android:text="Cantidad"
+                    android:textAlignment="textEnd"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            android:background="#dfffff"
+            tools:layout_editor_absoluteX="8dp"
+            android:weightSum="1">
+
+
+
+            <ListView
+                android:id="@+id/list_stock"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="false"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:divider="#ECECEC"
+                android:dividerHeight="3sp"></ListView>
+
+
+
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:visibility="visible"
+                android:layout_weight="6.40" />
+
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            android:background="#dfffff"
+            tools:layout_editor_absoluteX="8dp"
+            android:weightSum="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical"
+                android:baselineAligned="false"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:id="@+id/textViewLista"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lista"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Precio"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            android:background="#dfffff"
+            tools:layout_editor_absoluteX="8dp">
+
+
+
+            <ListView
+                android:id="@+id/list_price"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="false"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:divider="#ECECEC"
+                android:dividerHeight="3sp"></ListView>
+
+
+        </TableLayout>
+    </TableLayout>
+
+
+
+</RelativeLayout>
