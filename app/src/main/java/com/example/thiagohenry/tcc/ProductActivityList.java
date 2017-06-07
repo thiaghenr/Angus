@@ -32,7 +32,7 @@ public class ProductActivityList extends AppCompatActivity{
 
         List<Product> products = realm.where(Product.class).findAll();
         ListView ProductsList = (ListView) findViewById(R.id.products_list);
-        ProductAdapter adapter = new ProductAdapter(products, this);
+        ProductAdapter adapter = new ProductAdapter(getBaseContext(), products, this);
 
         ProductsList.setAdapter(adapter);
 

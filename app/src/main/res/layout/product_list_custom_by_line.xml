@@ -64,4 +64,23 @@
         android:textSize="20dp"
         android:textStyle="italic" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_alignEnd="@+id/mark"
+        android:layout_alignRight="@+id/mark"
+        android:id="@+id/add_product_in_list" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:layout_alignBottom="@+id/add_product_in_list"
+        android:layout_alignRight="@+id/description"
+        android:layout_alignEnd="@+id/description"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/product_detail" />
+
 </RelativeLayout>

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:dividerHeight="40.0sp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/customer_list_custom_by_line">
 
 
     <!-- <ImageView

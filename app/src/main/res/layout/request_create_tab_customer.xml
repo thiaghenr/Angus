@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.thiagohenry.tcc.CustomerActivityList"
+    android:id="@+id/request_create_tab_customer"
     >
-
     <EditText
         android:id="@+id/inputSearch"
         android:layout_width="match_parent"
@@ -17,22 +14,6 @@
         android:textSize="30dp"
         android:hint="Pesquisa Cliente"
         android:layout_height="65dp" />
-
-
-    <Button
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp"
-        android:elevation="6dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:stateListAnimator="@null"
-        android:background="@drawable/button_mais_venda"
-        android:id="@+id/new_customer"/>
 
     <TableRow
         android:id="@+id/row_filters"
@@ -75,10 +56,46 @@
         android:layout_width="wrap_content"
         android:divider="#ECECEC"
         android:dividerHeight="3sp"
+        android:layout_height="180dp"
+        android:layout_below="@+id/row_filters"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
+
+
+    <TableRow
+        android:id="@+id/customer_selected"
+        android:layout_width = "300dp"
+        android:layout_height = "180dp"
+        android:orientation = "vertical"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/row_filters"
-        android:layout_alignParentBottom="true"
-        android:layout_height="match_parent"></ListView>
+        android:layout_below="@+id/customer_list">
+
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:maxLines="1"
+            android:layout_marginTop="110dp"
+            android:inputType="textShortMessage|textMultiLine"
+            android:id="@+id/name_edit"/>
+
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="130dp"
+            android:inputType="textShortMessage|textMultiLine"
+            android:layout_below="@+id/name_edit"
+            android:id="@+id/fantasy_name_edit"/>
+
+        <EditText
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/fantasy_name_edit"
+            android:hint="phone"
+            android:id="@+id/phone_edit"
+            android:layout_marginTop="130dp"
+            android:layout_height="60dp"
+            android:layout_width="60dp" />
+
+    </TableRow>
 
 </RelativeLayout>

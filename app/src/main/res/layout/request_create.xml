@@ -28,5 +28,6 @@
             />
     </android.support.design.widget.AppBarLayout>
 
+    <!--<include layout="@layout/request_create_tab_customer_root" />-->
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,5 @@
 package com.example.thiagohenry.tcc;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,10 +17,7 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.Product;
-
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -47,6 +43,8 @@ public class RequestCreateTabProduct extends Fragment{
         final Switch filter_by_name_product             = (Switch)      view.findViewById(R.id.filter_by_name_product);
         final Switch filter_by_description_product      = (Switch)      view.findViewById(R.id.filter_by_description_product);
         final Switch filter_by_category                 = (Switch)      view.findViewById(R.id.filter_by_category);
+        final Button add_product                        = (Button)      view.findViewById(R.id.add_product_in_list);
+        final Button product_detail                     = (Button)      view.findViewById(R.id.product_detail);
 
         filter_by_name_product.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -88,20 +86,8 @@ public class RequestCreateTabProduct extends Fragment{
                     final RealmResults<Product> result1 = query.findAll();
                     final ListView ListProducts = (ListView) view.findViewById(R.id.products_list);
 
-                    ProductAdapter adapter = new ProductAdapter(result1, getActivity());
+                    ProductAdapter adapter = new ProductAdapter(getContext(), result1, getActivity());
                     ListProducts.setAdapter(adapter);
-
-                    ListProducts.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putLong("id", result1.get(position).getId());
-                            bundle.putString("fragment", "product");
-                            act_cust.putExtras(bundle);
-                            startActivity(act_cust);
-                        }
-                    });
                 }
                 else if (filter_by_description_product.isChecked() == true){
                     Realm realm                 = Realm.getDefaultInstance();
@@ -111,7 +97,7 @@ public class RequestCreateTabProduct extends Fragment{
                     final RealmResults<Product> result1 = query.findAll();
                     final ListView ListProducts = (ListView) view.findViewById(R.id.products_list);
 
-                    ProductAdapter adapter = new ProductAdapter(result1, getActivity());
+                    ProductAdapter adapter = new ProductAdapter(getContext(), result1, getActivity());
                     ListProducts.setAdapter(adapter);
 
                     ListProducts.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -134,7 +120,7 @@ public class RequestCreateTabProduct extends Fragment{
                     final RealmResults<Product> result1 = query.findAll();
                     final ListView ListProducts = (ListView) view.findViewById(R.id.products_list);
 
-                    ProductAdapter adapter = new ProductAdapter(result1, getActivity());
+                    ProductAdapter adapter = new ProductAdapter(getContext(), result1, getActivity());
                     ListProducts.setAdapter(adapter);
 
                     ListProducts.setOnItemClickListener(new AdapterView.OnItemClickListener(){

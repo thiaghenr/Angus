@@ -1,10 +1,12 @@
 package com.example.thiagohenry.tcc;
 
 import android.app.Dialog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -22,24 +24,35 @@ import android.widget.TextView;
 
 //import com.example.thiagohenry.tcc.DAO.CustomerDao;
 import com.example.thiagohenry.tcc.Model.Customer;
+import com.example.thiagohenry.tcc.Model.Request;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import io.realm.Sort;
+import io.realm.internal.Util;
+
+import static io.realm.Sort.DESCENDING;
 
 /**
  * Created by thiagohenry on 16/04/17.
  */
 
-public class RequestCreateTabCustomer extends Fragment{
+public class RequestCreateTabCustomerListFragment extends Fragment {
+    private RequestSectionsPageAdapter mRequestSectionsPageAdapter;
+    private RequestActivityHelper helper;
+    private static View request_create_tab_customer_view;
     private static final String TAG = "RequestCreateTabCustomer";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.request_create_tab_customer, container, false);
-        carregaListaCustomers(view);
-        return view;
+        final View view1 = inflater.inflate(R.layout.request_create_tab_customer, container, false);
+        request_create_tab_customer_view = view1;
+        carregaListaCustomers(view1);
+        view1.setVisibility(View.INVISIBLE);
+        return view1;
     }
 
     public void carregaListaCustomers(final View view) {
@@ -92,18 +105,33 @@ public class RequestCreateTabCustomer extends Fragment{
 
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                         @Override
-                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putLong("id", result1.get(position).getId());
-                            bundle.putString("fragment", "customer");
-                            System.out.println("sssssss");
-                            act_cust.putExtras(bundle);
-                            startActivity(act_cust);
+                        public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                        Realm realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+
+                        Request r = realm.where(Request.class).findAll().last();
+
+                        Customer customer   = realm.where(Customer.class).equalTo("id", result1.get(position).getId()).findFirst();
+
+                        r.setCustomer_id          (customer);
+
+                        final EditText  name            =   (EditText) view.findViewById(R.id.name_edit);
+                        final EditText  fantasy_name    =   (EditText) view.findViewById(R.id.fantasy_name_edit);
+                        final EditText  phone           =   (EditText) view.findViewById(R.id.phone_edit);
+
+                        name.setText(           customer.getName());
+                        fantasy_name.setText(   customer.getFantasy_name());
+                        phone.setText(          customer.getPhone_1());
+
+                        realm.insertOrUpdate(r);
+
+                        realm.commitTransaction();
+                        realm.close();
                         }
                     });
                 }
                 else if (filter_by_name.isChecked() == true){
+
                     Realm realm                 = Realm.getDefaultInstance();
                     RealmQuery<Customer> query  = realm.where(Customer.class);
 

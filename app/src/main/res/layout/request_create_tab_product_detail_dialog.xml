@@ -11,7 +11,7 @@
         android:id="@+id/product_selected"
         />
 
-    <EditText
+    <TextView
         android:id="@+id/quantity_product"
         android:layout_width="match_parent"
         android:ems="15"
@@ -21,7 +21,7 @@
         android:hint="quantity"
         android:layout_height="65dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/price_product"
         android:layout_width="match_parent"
         android:ems="15"
@@ -37,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/price_product"
+        android:id="@+id/add_product_dialog"
         android:text="Add Product"/>
 
 

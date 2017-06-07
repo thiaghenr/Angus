@@ -23,7 +23,7 @@ public class RequestCreateTabProductSelected extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.request_create_tab_product_selected, container, false);
+        final View view = inflater.inflate(R.layout.request_create_tab_product_detail_dialog, container, false);
 
         final Realm realm = Realm.getDefaultInstance();
         final long id                   =   getActivity().getIntent().getExtras().getLong("id");

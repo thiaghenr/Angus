@@ -23,7 +23,7 @@ public class CustomerAdapter extends BaseAdapter {
     private List<Customer> customers;
     private Activity act;
     //private TextWatcher textWatcher;
-    private RequestCreateTabCustomerSelected textWatcher;
+    //private RequestCreateTabCustomerSelectedFragment textWatcher;
     //private RealmResults<Customer> result1;
 
     public CustomerAdapter(List<Customer> customers, Activity act) {
@@ -31,9 +31,9 @@ public class CustomerAdapter extends BaseAdapter {
         this.act = act;
     }
 
-    public CustomerAdapter(List<Customer> customers, RequestCreateTabCustomerSelected textWatcher) {
+    public CustomerAdapter(List<Customer> customers /*RequestCreateTabCustomerSelectedFragment textWatcher*/) {
         this.customers = customers;
-        this.textWatcher = textWatcher;
+        //this.textWatcher = textWatcher;
     }
 
     public int getCount() {

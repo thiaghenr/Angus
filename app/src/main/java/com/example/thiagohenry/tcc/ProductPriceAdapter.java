@@ -19,7 +19,7 @@ public class ProductPriceAdapter extends BaseAdapter {
     private List<Customer> customers;
     private Activity act;
     //private TextWatcher textWatcher;
-    private RequestCreateTabCustomerSelected textWatcher;
+    //private RequestCreateTabCustomerSelectedFragment textWatcher;
     //private RealmResults<Customer> result1;
 
     public ProductPriceAdapter(List<Customer> customers, Activity act) {
@@ -27,9 +27,9 @@ public class ProductPriceAdapter extends BaseAdapter {
         this.act = act;
     }
 
-    public ProductPriceAdapter(List<Customer> customers, RequestCreateTabCustomerSelected textWatcher) {
+    public ProductPriceAdapter(List<Customer> customers/*, RequestCreateTabCustomerSelectedFragment textWatcher*/) {
         this.customers = customers;
-        this.textWatcher = textWatcher;
+        //this.textWatcher = textWatcher;
     }
 
     public int getCount() {
