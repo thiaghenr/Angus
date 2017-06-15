@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -86,6 +87,14 @@ public class RequestCreateTabProduct extends Fragment{
                 filter_by_name_product.setChecked(false);
                 filter_by_brand.setChecked(false);
             }
+            }
+        });
+
+        search.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                        mView.getWindowToken(), 0);
             }
         });
 
@@ -213,6 +222,8 @@ public class RequestCreateTabProduct extends Fragment{
         //adapter = new ArrayAdapter<>(context, R.layout.request_create_tab_product_added, listProducts);
         RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listProducts, act);
         ListProductsSelected.setAdapter(adapterLocal);
+
+        onFocusChange(mView, false);
     }
 
     public static int getNextKeyRequestItem(RequestItem requestItem) {
@@ -221,6 +232,14 @@ public class RequestCreateTabProduct extends Fragment{
             return 1;
         } else {
             return realm.where(requestItem.getClass()).max("id").intValue() + 1;
+        }
+    }
+
+    public static void onFocusChange(View v, boolean hasFocus)
+    {
+        if (false == hasFocus) {
+            ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                    mView.getWindowToken(), 0);
         }
     }
 }

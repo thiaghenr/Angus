@@ -1,6 +1,7 @@
 package com.example.thiagohenry.tcc;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
@@ -12,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -45,9 +47,9 @@ import static io.realm.Sort.DESCENDING;
 
 public class RequestCreateTabCustomer extends Fragment {
     private RequestSectionsPageAdapter mRequestSectionsPageAdapter;
-    private RequestActivityHelper helper;
     private static View request_create_tab_customer_view;
     private static final String TAG = "RequestCreateTabCustomer";
+    private TextView search;
 
     @Nullable
     @Override
@@ -78,8 +80,7 @@ public class RequestCreateTabCustomer extends Fragment {
     }
 
     public void carregaListaCustomers(final View view) {
-
-        final TextView search           = (EditText)    view.findViewById(R.id.inputSearch);
+        search    = (EditText)    view.findViewById(R.id.inputSearch);
         final Switch filter_by_code     = (Switch)      view.findViewById(R.id.filter_by_code);
         final Switch filter_by_name     = (Switch)      view.findViewById(R.id.filter_by_name);
         final Switch filter_by_phone    = (Switch)      view.findViewById(R.id.filter_by_phone);
@@ -143,19 +144,12 @@ public class RequestCreateTabCustomer extends Fragment {
                         RequestCreateTabCustomerSelected customerAdapterSelected = new RequestCreateTabCustomerSelected(customers, getActivity());
                         listCusomersSelected.setAdapter(customerAdapterSelected);
 
-
-//                        final TextView  name            =   (TextView) view.findViewById(R.id.name_edit);
-//                        final TextView  fantasy_name    =   (TextView) view.findViewById(R.id.fantasy_name_edit);
-//                        final TextView  phone           =   (TextView) view.findViewById(R.id.phone_edit);
-//
-//                        name.setText(           customer.getName());
-//                        fantasy_name.setText(   customer.getFantasy_name());
-//                        phone.setText(          customer.getPhone_1());
-
                         realm.insertOrUpdate(r);
 
                         realm.commitTransaction();
                         realm.close();
+
+                        onFocusChange(view, false);
                         }
                     });
                 }
@@ -227,6 +221,14 @@ public class RequestCreateTabCustomer extends Fragment {
     public void onResume() {
         super.onResume();
         carregaListaCustomers(getView());
+    }
+
+    public void onFocusChange(View v, boolean hasFocus)
+    {
+        if (false == hasFocus) {
+            ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                    search.getWindowToken(), 0);
+        }
     }
 }
 

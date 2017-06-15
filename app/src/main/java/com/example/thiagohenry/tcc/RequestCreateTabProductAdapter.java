@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
     final Context context;
     private final List<Product> productss;
     private final Activity act;
+    private Button add_prod;
 
     public RequestCreateTabProductAdapter(Context context, List<Product> productss, Activity act) {
         this.context = context;
@@ -70,11 +72,13 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
         TextView mark                   = (TextView) view.findViewById(R.id.mark);
         mark.setText(products.getMark());
 
-        final Button add_prod                 = (Button) view.findViewById(R.id.add_product_in_list);
+        add_prod                 = (Button) view.findViewById(R.id.add_product_in_list);
 
         add_prod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            onFocusChange(view, false);
+
             // custom dialog
             final Dialog dialog = new Dialog(context);
             dialog.setContentView(R.layout.request_create_tab_product_adding_dialog);
@@ -142,6 +146,14 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
             return 1;
         } else {
             return realm.where(requestItem.getClass()).max("id").intValue() + 1;
+        }
+    }
+
+    public void onFocusChange(View v, boolean hasFocus)
+    {
+        if (false == hasFocus) {
+            ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                    add_prod.getWindowToken(), 0);
         }
     }
 }

@@ -32,6 +32,7 @@ import static com.example.thiagohenry.tcc.R.id.container;
  */
 
 public class RequestCreateActivity extends AppCompatActivity {
+    private AppCompatActivity activit;
     private static final String TAG = "RequestCreateActivity";
     private RequestSectionsPageAdapter vRequestSectionsPageAdapter;
     private ViewPager requestViewPager;
@@ -44,10 +45,7 @@ public class RequestCreateActivity extends AppCompatActivity {
         setContentView(R.layout.request_create);
 
         vRequestSectionsPageAdapter = new RequestSectionsPageAdapter(getSupportFragmentManager());
-//        if (this.id == null){
-//            this.id = (long) 0;
-//        }
-        // Set up the ViewPager with the sections adapter.
+
         requestViewPager = (ViewPager) findViewById(container);
         setupViewPager(requestViewPager);
 
@@ -120,15 +118,16 @@ public class RequestCreateActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        //Delete Request when the user back to main menu
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
-        Request r = realm.where(Request.class).findAll().last();
+        Request request = realm.where(Request.class).findAll().last();
 
-        realm.delete(r.getClass());
+        request.deleteFromRealm();
         realm.commitTransaction();
         realm.close();
-        onDestroy();
+        //onDestroy();
         finish();
     }
 }

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         venda.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent form_venda = new Intent (MainActivity.this, RequestActivityList.class);
+                Intent form_venda = new Intent (MainActivity.this, RequestCreateActivity.class);
                 startActivity(form_venda);
             }
         });
@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 //
-//        pagamento.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent form_pagamento = new Intent (ContentActivity.this, CLASS HERE);
-//                startActivity(form_pagamento);
-//            }
-//        });
+        pagamento.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent form_pagamento = new Intent (MainActivity.this, RequestActivityList.class);
+                startActivity(form_pagamento);
+            }
+        });
 //
 //        produto.setOnClickListener(new View.OnClickListener(){
 //            @Override
