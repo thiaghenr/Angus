@@ -14,6 +14,7 @@ public class Payment extends RealmObject {
     @PrimaryKey
     private Long                id;
     private Customer            customer_id;
+    private Request             request;
     private int                 type;
     private int                 parcel;
     private Date                release_date;
@@ -39,6 +40,14 @@ public class Payment extends RealmObject {
 
     public void setCustomer_id(Customer customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     public int getType() {

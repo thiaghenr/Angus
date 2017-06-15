@@ -3,4 +3,34 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/product_selectec_added"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/unity"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:id="@+id/product_selected_added_final_price"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/packag"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove"
+        android:layout_alignEnd="@+id/mark"
+        android:layout_alignRight="@+id/mark"
+        android:id="@+id/remove_selected_product" />
 </LinearLayout>

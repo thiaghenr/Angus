@@ -14,16 +14,11 @@ import io.realm.annotations.Required;
 
 public class RequestItem extends RealmObject{
     @PrimaryKey
-    private Long id;
-    private Price   price_id;
-    private Request request_id;
-    private RealmList<Product> product_id;
-    private Long quantity;
-    private Long invoiced_amount;
-    private Long discount;
-    private Long value_unit;
-    private Long value_total;
-    private String observation;
+    private Long        id;
+    private Request     request_id;
+    private Product     product_id;
+    private Long        quantity;
+    private Long        value_total;
 
     public Long getId() {
         return id;
@@ -31,14 +26,6 @@ public class RequestItem extends RealmObject{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Price getPrice_id() {
-        return price_id;
-    }
-
-    public void setPrice_id(Price price_id) {
-        this.price_id = price_id;
     }
 
     public Request getRequest_id() {
@@ -49,11 +36,11 @@ public class RequestItem extends RealmObject{
         this.request_id = request_id;
     }
 
-    public RealmList<Product> getProduct_id() {
+    public Product getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(RealmList<Product> product_id) {
+    public void setProduct_id(Product product_id) {
         this.product_id = product_id;
     }
 
@@ -65,44 +52,11 @@ public class RequestItem extends RealmObject{
         this.quantity = quantity;
     }
 
-    public Long getInvoiced_amount() {
-        return invoiced_amount;
-    }
-
-    public void setInvoiced_amount(Long invoiced_amount) {
-        this.invoiced_amount = invoiced_amount;
-    }
-
-    public Long getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Long discount) {
-        this.discount = discount;
-    }
-
-    public Long getValue_unit() {
-        return value_unit;
-    }
-
-    public void setValue_unit(Long value_unit) {
-        this.value_unit = value_unit;
-    }
-
-
     public Long getValue_total() {
         return value_total;
     }
 
     public void setValue_total(Long value_total) {
         this.value_total = value_total;
-    }
-
-    public String getObservation() {
-        return observation;
-    }
-
-    public void setObservation(String observation) {
-        this.observation = observation;
     }
 }

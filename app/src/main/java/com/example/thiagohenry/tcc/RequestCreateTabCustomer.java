@@ -24,7 +24,11 @@ import android.widget.TextView;
 
 //import com.example.thiagohenry.tcc.DAO.CustomerDao;
 import com.example.thiagohenry.tcc.Model.Customer;
+import com.example.thiagohenry.tcc.Model.Product;
 import com.example.thiagohenry.tcc.Model.Request;
+import com.example.thiagohenry.tcc.Model.Status;
+
+import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -39,7 +43,7 @@ import static io.realm.Sort.DESCENDING;
  * Created by thiagohenry on 16/04/17.
  */
 
-public class RequestCreateTabCustomerListFragment extends Fragment {
+public class RequestCreateTabCustomer extends Fragment {
     private RequestSectionsPageAdapter mRequestSectionsPageAdapter;
     private RequestActivityHelper helper;
     private static View request_create_tab_customer_view;
@@ -52,6 +56,24 @@ public class RequestCreateTabCustomerListFragment extends Fragment {
         request_create_tab_customer_view = view1;
         carregaListaCustomers(view1);
         view1.setVisibility(View.INVISIBLE);
+//
+//        Realm realm = Realm.getDefaultInstance();
+//        realm.beginTransaction();
+//
+//        Request r = realm.where(Request.class).findAll().last();
+//
+//        RealmQuery<Status> query_status = realm.where(Status.class).contains("description", "Aberto");
+//        RealmResults<Status> result_status = query_status.findAll();
+//
+//
+//        Status status   = realm.where(Status.class).equalTo("id", result_status.get(0).getId()).findFirst();
+//
+//        r.setStatus_id          (status);
+//
+//        realm.insertOrUpdate(r);
+//        realm.commitTransaction();
+//        realm.close();
+
         return view1;
     }
 
@@ -100,12 +122,13 @@ public class RequestCreateTabCustomerListFragment extends Fragment {
                     final RealmResults<Customer> result1 = query.findAll();
                     final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
 
-                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    RequestCreateTabCustomerAdapter adapter = new RequestCreateTabCustomerAdapter(result1, getActivity());
                     ListCustomers.setAdapter(adapter);
 
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                         @Override
                         public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+
                         Realm realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
 
@@ -114,14 +137,20 @@ public class RequestCreateTabCustomerListFragment extends Fragment {
                         Customer customer   = realm.where(Customer.class).equalTo("id", result1.get(position).getId()).findFirst();
 
                         r.setCustomer_id          (customer);
+                        ArrayList<Customer> customers    = new ArrayList<>();
+                        customers.add(customer);
+                        ListView listCusomersSelected = (ListView) view.findViewById(R.id.customer_selected_listed);
+                        RequestCreateTabCustomerSelected customerAdapterSelected = new RequestCreateTabCustomerSelected(customers, getActivity());
+                        listCusomersSelected.setAdapter(customerAdapterSelected);
 
-                        final EditText  name            =   (EditText) view.findViewById(R.id.name_edit);
-                        final EditText  fantasy_name    =   (EditText) view.findViewById(R.id.fantasy_name_edit);
-                        final EditText  phone           =   (EditText) view.findViewById(R.id.phone_edit);
 
-                        name.setText(           customer.getName());
-                        fantasy_name.setText(   customer.getFantasy_name());
-                        phone.setText(          customer.getPhone_1());
+//                        final TextView  name            =   (TextView) view.findViewById(R.id.name_edit);
+//                        final TextView  fantasy_name    =   (TextView) view.findViewById(R.id.fantasy_name_edit);
+//                        final TextView  phone           =   (TextView) view.findViewById(R.id.phone_edit);
+//
+//                        name.setText(           customer.getName());
+//                        fantasy_name.setText(   customer.getFantasy_name());
+//                        phone.setText(          customer.getPhone_1());
 
                         realm.insertOrUpdate(r);
 
@@ -139,7 +168,7 @@ public class RequestCreateTabCustomerListFragment extends Fragment {
                     final RealmResults<Customer> result1 = query.findAll();
                     final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
 
-                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    RequestCreateTabCustomerAdapter adapter = new RequestCreateTabCustomerAdapter(result1, getActivity());
                     ListCustomers.setAdapter(adapter);
 
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -162,7 +191,7 @@ public class RequestCreateTabCustomerListFragment extends Fragment {
                     final RealmResults<Customer> result1 = query.findAll();
                     final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
 
-                    CustomerAdapter adapter = new CustomerAdapter(result1, getActivity());
+                    RequestCreateTabCustomerAdapter adapter = new RequestCreateTabCustomerAdapter(result1, getActivity());
                     ListCustomers.setAdapter(adapter);
 
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){

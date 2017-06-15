@@ -18,13 +18,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/name"
+        android:textColor="@android:color/black"
         android:layout_toEndOf="@+id/name" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -33,7 +34,7 @@
         android:layout_width="259dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
-        android:textColor="?attr/colorPrimary"
+        android:textColor="@android:color/black"
         android:textSize="20dp"
         android:textStyle="italic" />
 
@@ -42,18 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phone1"
-        android:textColor="?attr/colorPrimary"
+        android:textColor="@android:color/black"
         android:textSize="20dp"
         android:textStyle="bold|italic" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove"
-        android:layout_alignEnd="@+id/mark"
-        android:layout_alignRight="@+id/mark"
-        android:id="@+id/customer_detail" />
-
-
-
 </RelativeLayout>

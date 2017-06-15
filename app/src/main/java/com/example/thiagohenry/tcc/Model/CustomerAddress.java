@@ -11,16 +11,16 @@ import io.realm.annotations.PrimaryKey;
 public class CustomerAddress extends RealmObject{
     @PrimaryKey
     private Long       id;
-    private Customer   Customer_id;
-    private String     address;
+    private Customer   customer_id;
     private String     street;
+    private Integer    number;
     private String     block;
     private String     city;
     private String     state;
     private String     country;
     private String     type;
     //private Date     last_update;
-    private String       app_id;
+    private String     app_id;
 
 //    public Long getApp_id() {
 //        return app_id;
@@ -31,19 +31,19 @@ public class CustomerAddress extends RealmObject{
     }
 
     public Customer getCustomer_id() {
-        return Customer_id;
+        return customer_id;
     }
 
     public void setCustomer_id(Customer Customer_id) {
-        this.Customer_id = Customer_id;
+        this.customer_id = Customer_id;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public String getStreet() {

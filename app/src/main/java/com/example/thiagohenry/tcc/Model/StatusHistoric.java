@@ -9,12 +9,12 @@ import io.realm.RealmObject;
  */
 
 public class StatusHistoric extends RealmObject {
-    private Long id;
-    private Status Status;
-    private Request Request;
-    private Date date_event;
-    private String Source_event;
-    private String description;
+    private Long        id;
+    private Status      Status;
+    private Request     Request;
+    private Date        date_event;
+    private String      Source_event;
+    private String      description;
 
     public Long getId() {
         return id;

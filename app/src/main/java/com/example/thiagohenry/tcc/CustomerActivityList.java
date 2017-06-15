@@ -38,7 +38,6 @@ import retrofit2.Response;
  */
 
 public class CustomerActivityList extends AppCompatActivity {
-    private CustomerActivityHelper helper;
     private AppCompatActivity act;
     //private TextView search = (EditText) findViewById(R.id.inputSearch);
 
@@ -46,18 +45,7 @@ public class CustomerActivityList extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
-        helper = new CustomerActivityHelper(this);
         act = this;
-
-
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.beginTransaction();
-//
-//        Customer  customer_address = helper.pegaCustomer();
-//        realm.copyToRealm(customer_address);
-//
-//        realm.commitTransaction();
-//        realm.close();
 
         carregaListaCustomers();
     }
@@ -116,47 +104,6 @@ public class CustomerActivityList extends AppCompatActivity {
             }
         });
 
-//
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.beginTransaction();
-//        //Para Trazer um customer apenas
-//        //Customer customer = realm.where(Customer.class).findFirst();
-//
-//        final List<Customer> customers = realm.where(Customer.class).findAll();
-//        final ListView ListCustomers = (ListView) findViewById(R.id.customer_list);
-//
-//        CustomerAdapter adapter = new CustomerAdapter(customers, this);
-//
-//        ListCustomers.setAdapter(adapter);
-//
-//        ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent edit_customer = new Intent(CustomerActivityList.this, CustomerEditActivity.class);
-//                edit_customer.putExtra("id", customers.get(position).getId());
-//
-//                System.out.println(customers.get(position).getId());
-//                startActivity(edit_customer);
-//            }
-//        });
-//
-//        realm.commitTransaction();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        Button new_customer = (Button) findViewById(R.id.new_customer);
-
-        new_customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go_to_form = new Intent(CustomerActivityList.this, CustomerCreateActivity.class);
-                startActivity(go_to_form);
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

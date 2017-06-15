@@ -21,12 +21,12 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
-public class RequestCreateTabProductSelected extends BaseAdapter {
+public class ProductListSelectedAdapter extends BaseAdapter {
     final Context context;
     private ArrayList<Product> product = new ArrayList<>();
     private final Activity act;
 
-    public RequestCreateTabProductSelected(Context context, ArrayList<Product> products, Activity act) {
+    public ProductListSelectedAdapter(Context context, ArrayList<Product> products, Activity act) {
         this.context = context;
         this.product = products;
         this.act = act;

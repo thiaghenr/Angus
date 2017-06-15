@@ -57,6 +57,7 @@
         android:scrollHorizontally="true" />
 
     <Button
+        android:id="@+id/finish_sale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Finalizar"/>

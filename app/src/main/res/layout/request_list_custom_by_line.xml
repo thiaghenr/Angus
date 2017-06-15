@@ -14,45 +14,46 @@
 
     <TextView
         android:layout_marginRight="10dp"
-        android:id="@+id/code"
+        android:id="@+id/customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/name"
-        android:layout_toEndOf="@+id/name" />
+        />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
+        android:layout_below="@id/customer"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/phone1"
+        android:id="@+id/currency"
         android:layout_width="259dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/status"
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:textStyle="italic" />
 
     <TextView
-        android:id="@+id/fantasy_name"
+        android:id="@+id/due_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phone1"
+        android:layout_below="@+id/currency"
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:textStyle="bold|italic" />
 
-    <Button
+    <TextView
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove"
-        android:layout_alignEnd="@+id/mark"
-        android:layout_alignRight="@+id/mark"
-        android:id="@+id/customer_detail" />
+        android:layout_below="@+id/due_date"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="bold|italic" />
 
 
 

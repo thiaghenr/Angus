@@ -30,15 +30,9 @@
             android:label="Venta"></activity>
         <!-- Produtos -->
         <activity
-            android:name=".ProductCreateActivity"
-            android:label="Nuevo Producto"></activity>
-        <activity
             android:name=".ProductActivityList"
             android:label="Productos"></activity>
         <!-- Clientes -->
-        <activity
-            android:name=".CustomerCreateActivity"
-            android:label="Nuevo Cliente"></activity>
         <activity
             android:name=".CustomerActivityList"
             android:label="Clientes"></activity>

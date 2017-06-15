@@ -40,21 +40,6 @@ public class ProductActivityList extends AppCompatActivity{
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        Button new_product = (Button) findViewById(R.id.new_product);
-        new_product.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent go_to_form = new Intent(ProductActivityList.this, ProductCreateActivity.class);
-                startActivity(go_to_form);
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         carregaListaProdutos();

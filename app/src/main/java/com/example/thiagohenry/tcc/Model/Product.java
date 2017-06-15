@@ -12,21 +12,14 @@ import io.realm.annotations.PrimaryKey;
 
 public class Product extends RealmObject{
     @PrimaryKey
-    private Long id;
-    @Index
-    private String name;
-    @Index
-    private String description;
-    @Index
-    private String category;
-    private String unity;
-    private String pac;
-    private String fee;
-    private Date last_update;
-    private String mark;
-    private String cod_erp;
-    private String app_id;
-    private String price;
+    private Long        id;
+    private String      name;
+    private String      description;
+    private String      category;
+    private String      unity;
+    private Date        last_update;
+    private String      mark;
+    private String      app_id;
 
     public void setId(Long id) {
         this.id = id;
@@ -72,14 +65,6 @@ public class Product extends RealmObject{
         this.unity = unity;
     }
 
-    public String getFee() {
-        return fee;
-    }
-
-    public void setFee(String fee) {
-        this.fee = fee;
-    }
-
     public Date getLast_update() {
         return last_update;
     }
@@ -96,31 +81,8 @@ public class Product extends RealmObject{
         this.mark = mark;
     }
 
-    public String getPac() {
-        return pac;
-    }
-
-    public void setPac(String pac) {
-        this.pac = pac;
-    }
-
-    public String getCod_erp() {
-        return cod_erp;
-    }
-
-    public void setCod_erp(String cod_erp) {
-        this.cod_erp = cod_erp;
-    }
-
     public Long getId() {
         return id;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

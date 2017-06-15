@@ -8,10 +8,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.Request;
+import com.example.thiagohenry.tcc.Model.Status;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 import static android.R.attr.contentAgeHint;
 import static android.R.attr.id;
@@ -46,63 +54,50 @@ public class RequestCreateActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(requestViewPager);
 
+        // Create request
         Realm realm     = Realm.getDefaultInstance();
         realm.beginTransaction();
+
+        Date now = new Date();
         Request request = new Request();
 
         request.setId((long) getNextKey(request));
+        request.setLast_update(now);
 
         realm.copyToRealm(request);
         realm.commitTransaction();
+        realm.close();
+
+        // Update Request created above and set status "Open"
+        realm.beginTransaction();
+
+        Request r = realm.where(Request.class).findAll().last();
+
+        RealmQuery<Status> query_status = realm.where(Status.class).contains("description", "Aberto");
+        RealmResults<Status> result_status = query_status.findAll();
+
+        System.out.println(result_status);
+
+        Status status   = realm.where(Status.class).equalTo("id", result_status.get(0).getId()).findFirst();
+        Date today = new Date();
+
+        r.setStatus_id          (status);
+        r.setCurrency("U$");
+        r.setDue_date(today);
+
+        realm.insertOrUpdate(r);
+        realm.commitTransaction();
+        realm.close();
     }
 
     private void setupViewPager(ViewPager viewPager){
         RequestSectionsPageAdapter adapter  = new RequestSectionsPageAdapter(getSupportFragmentManager());
-//        final Realm realm                   = Realm.getDefaultInstance();
-//        Bundle extras                       = getIntent().getExtras();
-//
-//        if (extras != null){
-//            this.id         = extras.getLong("id", 0);
-//            this.act        = extras.getString("fragment");
-//        }
-//
-//        if(this.act != null && this.act.equals("customer")){
-//            Bundle bundle                       = new Bundle();
-//            bundle.putLong("id", id);
-//            RequestCreateTabCustomer fragobj    = new RequestCreateTabCustomer();
-//            fragobj.setArguments(bundle);
-//            // AQUI DEVO FAZER UM IF PARA VERIFICAR SE JA EXISTE UM PRODUTO
-//            adapter.addFragment(new RequestCreateTabCustomerSelected(),     "Cliente");
-//            adapter.addFragment(new RequestCreateTabProduct(), "Producto");
-//            adapter.addFragment(new RequestCreateTabPayment(), "Pago");
-//            adapter.addFragment(new RequestCreateTabDelivery(), "Entrega");
-//
-//            viewPager.setAdapter(adapter);
-//            viewPager.setCurrentItem(0);
-//        }
-//
-//        if(this.act != null && this.act.equals("product")){
-//            Bundle bundle                   = new Bundle();
-//            bundle.putLong("id", id);
-//            RequestCreateTabProduct fragobj = new RequestCreateTabProduct();
-//            fragobj.setArguments(bundle);
-//            // AQUI DEVO FAZER UM IF PARA VERIFICAR SE JA EXISTE UM CLIENTE
-//            adapter.addFragment(new RequestCreateTabCustomerSelected(), "Cliente");
-//            adapter.addFragment(new RequestCreateTabProductSelected(),  "Producto");
-//            adapter.addFragment(new RequestCreateTabPayment(),          "Pago");
-//            adapter.addFragment(new RequestCreateTabDelivery(),         "Entrega");
-//
-//            viewPager.setAdapter(adapter);
-//            viewPager.setCurrentItem(1);
-//        }
-//
-//        if (extras == null) {
-            adapter.addFragment(new RequestCreateTabCustomerListFragment(), "Cliente");
+        
+            adapter.addFragment(new RequestCreateTabCustomer(), "Cliente");
             adapter.addFragment(new RequestCreateTabProduct(),  "Producto");
             adapter.addFragment(new RequestCreateTabPayment(),  "Pago");
             adapter.addFragment(new RequestCreateTabDelivery(), "Entrega");
             viewPager.setAdapter(adapter);
-        //}
     }
 
     @Override
@@ -120,5 +115,20 @@ public class RequestCreateActivity extends AppCompatActivity {
         } else {
             return realm.where(request.getClass()).max("id").intValue() + 1;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        Request r = realm.where(Request.class).findAll().last();
+
+        realm.delete(r.getClass());
+        realm.commitTransaction();
+        realm.close();
+        onDestroy();
+        finish();
     }
 }

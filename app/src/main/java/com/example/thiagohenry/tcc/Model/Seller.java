@@ -11,9 +11,7 @@ import io.realm.annotations.PrimaryKey;
 public class Seller extends RealmObject {
     @PrimaryKey
     private Long        id;
-    @Index
     private String      seller;
-    @Index
     private String      name;
 
     public Long getId() {

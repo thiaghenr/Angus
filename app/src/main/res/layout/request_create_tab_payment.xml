@@ -29,7 +29,7 @@
         android:id="@+id/pag_condi"
         android:layout_height="50dp"
         android:layout_width="230dp"
-        android:text="Condição"
+        android:text="Vencimiento"
         android:textSize="25dp"
         android:layout_gravity=""
         android:textColor="@android:color/black"
@@ -58,7 +58,7 @@
             android:id="@+id/pag_fatura"
             android:layout_height="50dp"
             android:layout_width="230dp"
-            android:text="Condição"
+            android:text="Facturar en"
             android:textSize="25dp"
             android:layout_gravity=""
             android:textColor="@android:color/black"
@@ -80,40 +80,12 @@
     <TextView
         android:layout_height="50dp"
         android:layout_width="wrap_content"
-        android:text="Previsão"
+        android:text="Previsión"
         android:textSize="25dp"
         android:textColor="@android:color/black"
         android:height="@dimen/activity_vertical_margin"
         android:elegantTextHeight="true"
         android:textStyle="bold"
         android:scrollHorizontally="true" />
-
-    <!--<TextView-->
-        <!--android:id="@+id/tvText"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:text="lala"-->
-        <!--android:textColor="#FFFFFF"/>-->
-
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_toLeftOf="@id/tvText"-->
-        <!--android:background="#FF0000"-->
-        <!--/>-->
-
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_marginRight="16dp"-->
-        <!--android:layout_toRightOf="@id/tvText"-->
-        <!--android:background="#FF0000"-->
-        <!--/>-->
 
 </LinearLayout>
