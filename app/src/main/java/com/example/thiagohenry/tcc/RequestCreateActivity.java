@@ -98,14 +98,6 @@ public class RequestCreateActivity extends AppCompatActivity {
             viewPager.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.request_create_action_button, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
     private int getNextKey(Request request) {
         Realm realm = Realm.getDefaultInstance();
         if(realm.where(Request.class).max("id") == null){

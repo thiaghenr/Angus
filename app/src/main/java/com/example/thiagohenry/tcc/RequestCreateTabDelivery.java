@@ -39,23 +39,21 @@ public class RequestCreateTabDelivery extends Fragment{
         finish_sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProgressDialog dialog = new ProgressDialog(getActivity());
-                dialog.setMessage("Carregando...");
-                dialog.setCancelable(false);
-                dialog.show();
-                Realm realm = Realm.getDefaultInstance();
-                realm.beginTransaction();
-                Request request = realm.where(Request.class).findAll().last();
+            ProgressDialog dialog = new ProgressDialog(getActivity());
+            dialog.setMessage("Carregando...");
+            dialog.setCancelable(false);
+            dialog.show();
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            Request request = realm.where(Request.class).findAll().last();
 
-                realm.insertOrUpdate(request);
-                realm.commitTransaction();
-                realm.close();
+            realm.insertOrUpdate(request);
+            realm.commitTransaction();
+            realm.close();
 
-                onDestroyView();
+            onDestroyView();
 
-                timerDelayRemoveDialog(1500, dialog);
-
-                //dialog.dismiss();
+            timerDelayRemoveDialog(1000, dialog);
             }
         });
     }
@@ -64,11 +62,11 @@ public class RequestCreateTabDelivery extends Fragment{
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                d.dismiss();
-                Toast.makeText(getContext(), "Venda Efetuada com Sucesso", Toast.LENGTH_LONG).show();
-                Intent act_main = new Intent(getActivity(), MainActivity.class);
-                startActivity(act_main);
-                getActivity().finish();
+            d.dismiss();
+            Toast.makeText(getContext(), "Venda Efetuada com Sucesso", Toast.LENGTH_LONG).show();
+            Intent act_main = new Intent(getActivity(), DashboardActivity.class);
+            startActivity(act_main);
+            getActivity().finish();
             }
         }, time);
     }

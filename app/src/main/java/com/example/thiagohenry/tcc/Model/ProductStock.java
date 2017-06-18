@@ -15,7 +15,7 @@ public class ProductStock extends RealmObject {
     private Long                id;
     private Product             product_id;
     private String              branch;
-    private float               quantity;
+    private Integer               quantity;
     private Date                last_update;
 
     public Long getId() {
@@ -42,11 +42,11 @@ public class ProductStock extends RealmObject {
         this.branch = branch;
     }
 
-    public float getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(float quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

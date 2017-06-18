@@ -16,7 +16,7 @@ public class ProductPrice extends RealmObject {
     private Product             product_id;
     private Price               price_id;
     private String              currency;
-    private float               value;
+    private Double              value;
     private Date                last_update;
 
     public Long getId() {
@@ -51,11 +51,11 @@ public class ProductPrice extends RealmObject {
         this.currency = currency;
     }
 
-    public float getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

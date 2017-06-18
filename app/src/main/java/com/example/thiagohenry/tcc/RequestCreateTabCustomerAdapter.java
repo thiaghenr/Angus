@@ -18,21 +18,11 @@ public class RequestCreateTabCustomerAdapter extends BaseAdapter {
 
     private List<Customer> customers;
     private Activity act;
-    //private TextWatcher textWatcher;
-    //private RequestCreateTabCustomerSelectedFragment textWatcher;
-    //private RealmResults<Customer> result1;
 
     public RequestCreateTabCustomerAdapter(List<Customer> customers, Activity act) {
         this.customers = customers;
         this.act = act;
     }
-
-    public RequestCreateTabCustomerAdapter(List<Customer> customers /*RequestCreateTabCustomerSelectedFragment textWatcher*/) {
-        this.customers = customers;
-        //this.textWatcher = textWatcher;
-    }
-
-
 
     public int getCount() {
         return customers.size();
@@ -47,7 +37,7 @@ public class RequestCreateTabCustomerAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-
+        // In this function we build the line with the details of the customer
         View view = act.getLayoutInflater().inflate(R.layout.request_create_tab_customer_by_line, parent, false);
 
         Customer customer = customers.get(position);

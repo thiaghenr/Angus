@@ -25,6 +25,7 @@ import com.example.thiagohenry.tcc.Model.Product;
 import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 
 import io.realm.Realm;
@@ -40,7 +41,7 @@ public class RequestCreateTabProduct extends Fragment{
     private static       View                             mView;
     private static       Context                          context;
     private static       Activity                         act;
-    private static ArrayList<Product>    listProducts    = new ArrayList<>();
+    private static ArrayList<RequestItem>    listItems    = new ArrayList<>();
     private static ArrayAdapter<Product>                   adapter;
 
     @Nullable
@@ -183,7 +184,7 @@ public class RequestCreateTabProduct extends Fragment{
         carregaListaProducts(getView());
     }
 
-    public static void newRequestItem(Product product){
+    public static void newRequestItem(Product product, String qty, Double total){
         Realm realm     = Realm.getDefaultInstance();
         //Create new Item to requestItem
         realm.beginTransaction();
@@ -201,7 +202,6 @@ public class RequestCreateTabProduct extends Fragment{
 
         final RealmResults<Product> p_id = query.findAll().sort("id");
 
-        System.out.println(p_id.get(0).getId());
 
         RequestItem requestItem = realm.where(RequestItem.class).findAll().last();
         Request     request     = realm.where(Request.class).findAll().last();
@@ -210,6 +210,8 @@ public class RequestCreateTabProduct extends Fragment{
 
         requestItem.setProduct_id(requestProduct);
         requestItem.setRequest_id(request);
+        requestItem.setQuantity(Double.parseDouble(qty));
+        requestItem.setValue_total(total);
 
         realm.insertOrUpdate(requestItem);
 
@@ -218,12 +220,47 @@ public class RequestCreateTabProduct extends Fragment{
 
         final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
 
-        listProducts.add(product);
-        //adapter = new ArrayAdapter<>(context, R.layout.request_create_tab_product_added, listProducts);
-        RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listProducts, act);
+        listItems.add(requestItem);
+
+        calcRequestTotalValue();
+
+        RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listItems, act);
         ListProductsSelected.setAdapter(adapterLocal);
 
         onFocusChange(mView, false);
+    }
+
+    public static void removeRequestItem(RequestItem requestItem){
+        Realm realm     = Realm.getDefaultInstance();
+        //Remove Item to from Request
+        realm.beginTransaction();
+
+        reCalcRequestTotalValue(requestItem);
+
+        RequestItem requestItemRemoved = realm.where(RequestItem.class).equalTo("id", requestItem.getId()).findFirst();
+
+        requestItemRemoved.deleteFromRealm();
+
+        realm.commitTransaction();
+        realm.close();
+
+
+        final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
+
+        listItems.remove(requestItem);
+
+        RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listItems, act);
+        ListProductsSelected.setAdapter(adapterLocal);
+
+        onFocusChange(mView, false);
+    }
+
+    public static void onFocusChange(View v, boolean hasFocus)
+    {
+        if (false == hasFocus) {
+            ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                    mView.getWindowToken(), 0);
+        }
     }
 
     public static int getNextKeyRequestItem(RequestItem requestItem) {
@@ -235,11 +272,35 @@ public class RequestCreateTabProduct extends Fragment{
         }
     }
 
-    public static void onFocusChange(View v, boolean hasFocus)
-    {
-        if (false == hasFocus) {
-            ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
-                    mView.getWindowToken(), 0);
+    public static void calcRequestTotalValue(){
+        // in this function we made the calc of the value total of the request when the user add an item on the shopping cart
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        Request request = realm.where(Request.class).findAll().last();
+        RequestItem requestItem = realm.where(RequestItem.class).findAll().last();
+        Double total = request.getValue_total();
+        if (total == null){
+            total = 0.0;
         }
+        total += requestItem.getValue_total();
+        request.setValue_total(total);
+
+        realm.insertOrUpdate(request);
+        realm.commitTransaction();
+        realm.close();
+    }
+
+    public static void reCalcRequestTotalValue(RequestItem requestItem){
+        // in this function we made the calc of the value total of the request when the user remove an item on the shopping cart
+        Realm realm = Realm.getDefaultInstance();
+        // Here we don't begin a new transaction because apparently the function pull the transaction where the function is called
+        Request request = realm.where(Request.class).findAll().last();
+        Double total    = request.getValue_total();
+        total           = total - requestItem.getValue_total();
+        request.setValue_total(total);
+
+        realm.insertOrUpdate(request);
+
     }
 }

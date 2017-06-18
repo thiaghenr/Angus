@@ -58,23 +58,6 @@ public class RequestCreateTabCustomer extends Fragment {
         request_create_tab_customer_view = view1;
         carregaListaCustomers(view1);
         view1.setVisibility(View.INVISIBLE);
-//
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.beginTransaction();
-//
-//        Request r = realm.where(Request.class).findAll().last();
-//
-//        RealmQuery<Status> query_status = realm.where(Status.class).contains("description", "Aberto");
-//        RealmResults<Status> result_status = query_status.findAll();
-//
-//
-//        Status status   = realm.where(Status.class).equalTo("id", result_status.get(0).getId()).findFirst();
-//
-//        r.setStatus_id          (status);
-//
-//        realm.insertOrUpdate(r);
-//        realm.commitTransaction();
-//        realm.close();
 
         return view1;
     }
@@ -165,15 +148,19 @@ public class RequestCreateTabCustomer extends Fragment {
                     RequestCreateTabCustomerAdapter adapter = new RequestCreateTabCustomerAdapter(result1, getActivity());
                     ListCustomers.setAdapter(adapter);
 
+                    // Here's when the the user click on customer of the list and then add to list of
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putLong("id", result1.get(position).getId());
-                            bundle.putString("fragment", "customer");
-                            act_cust.putExtras(bundle);
-                            startActivity(act_cust);
+
+                        Intent act_cust     = new Intent(getActivity(), RequestCreateActivity.class);
+                        Bundle bundle       = new Bundle();
+                        // Set parameters to fill the list of the selected customer
+                        bundle.putLong      ("id", result1.get(position).getId());
+                        bundle.putString    ("fragment", "customer");
+
+                        act_cust.putExtras  (bundle);
+                        startActivity       (act_cust);
                         }
                     });
                 }

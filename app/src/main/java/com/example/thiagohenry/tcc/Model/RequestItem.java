@@ -17,8 +17,8 @@ public class RequestItem extends RealmObject{
     private Long        id;
     private Request     request_id;
     private Product     product_id;
-    private Long        quantity;
-    private Long        value_total;
+    private Double      quantity;
+    private Double      value_total;
 
     public Long getId() {
         return id;
@@ -44,19 +44,19 @@ public class RequestItem extends RealmObject{
         this.product_id = product_id;
     }
 
-    public Long getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
-    public Long getValue_total() {
+    public Double getValue_total() {
         return value_total;
     }
 
-    public void setValue_total(Long value_total) {
+    public void setValue_total(Double value_total) {
         this.value_total = value_total;
     }
 }

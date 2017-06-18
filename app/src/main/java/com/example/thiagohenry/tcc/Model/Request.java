@@ -22,7 +22,7 @@ public class Request extends RealmObject{
     private String              currency;
     private Date                due_date;
     private String              observation;
-    private Long                value_total;
+    private Double              value_total;
     private Date                last_update;
     //private Integer user_id;
     private String              app_id;
@@ -75,11 +75,11 @@ public class Request extends RealmObject{
         this.observation = observation;
     }
 
-    public Long getValue_total() {
+    public Double getValue_total() {
         return value_total;
     }
 
-    public void setValue_total(Long value_total) {
+    public void setValue_total(Double value_total) {
         this.value_total = value_total;
     }
 

@@ -3,6 +3,7 @@ package com.example.thiagohenry.tcc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -12,11 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Product;
+import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by thiagohenry on 25/04/17.
@@ -51,26 +55,23 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
-
+        // In this function we build the line with the details of the product
         final View view = act.getLayoutInflater().inflate(R.layout.request_create_tab_product_by_line, parent, false);
 
         final Product products            = productss.get(position);
         //ProductPrice productPrice   = productss.get(position);
 
         final TextView name             = (TextView) view.findViewById(R.id.name);
-        name.setText(products.getName());
-
         TextView description            = (TextView) view.findViewById(R.id.description);
-        description.setText(products.getDescription());
-
         TextView category               = (TextView) view.findViewById(R.id.category);
-        category.setText(products.getCategory());
-
         TextView unity                  = (TextView) view.findViewById(R.id.unity);
-        unity.setText(products.getUnity());
-
         TextView mark                   = (TextView) view.findViewById(R.id.mark);
-        mark.setText(products.getMark());
+
+        name.       setText(products.getName());
+        description.setText(products.getDescription());
+        category.   setText(products.getCategory());
+        unity.      setText(products.getUnity());
+        mark.       setText(products.getMark());
 
         add_prod                 = (Button) view.findViewById(R.id.add_product_in_list);
 
@@ -78,24 +79,25 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
             onFocusChange(view, false);
-
-            // custom dialog
+            // building the dialog to user set the quantity and the price of the selected product
             final Dialog dialog = new Dialog(context);
-            dialog.setContentView(R.layout.request_create_tab_product_adding_dialog);
-            dialog.setTitle("Escolha o preço e o valor...");
 
-            // set the custom dialog components - text, image and button
-            EditText    qty    = (EditText)     dialog.findViewById(R.id.quantity_product_selected);
-            EditText    price  = (EditText)     dialog.findViewById(R.id.price_product_selected);
+            dialog.setContentView(R.layout.request_create_tab_product_adding_dialog);
+            dialog.setTitle("Elija el precio y el valor ...");
+
+            final EditText    qty    = (EditText)     dialog.findViewById(R.id.quantity_product_selected);
+            final EditText    price  = (EditText)     dialog.findViewById(R.id.price_product_selected);
 
             Button add_product_dialog = (Button) dialog.findViewById(R.id.add_product_dialog);
             // if button is clicked, close the custom dialog
             add_product_dialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RequestCreateTabProduct.newRequestItem(products);
-                    //f.newRequestItem(products);
-                    dialog.dismiss();
+                // Here we made calc of the total value of the selected item
+                Double total = Double.parseDouble(qty.getText().toString()) * Double.parseDouble(price.getText().toString());
+
+                RequestCreateTabProduct.newRequestItem(products, qty.getText().toString(), total);
+                dialog.dismiss();
                 }
             });
 
@@ -107,7 +109,6 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
         prod_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("clicaaaaaaaaaaaadoooooo");
                 // custom dialog
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.request_create_tab_product_detail_dialog);
@@ -117,7 +118,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
                 TextView qty = (TextView) dialog.findViewById(R.id.quantity_product);
                 final TextView price = (TextView) dialog.findViewById(R.id.price_product);
 
-                qty.setText("Android custom dialog example!");
+                qty.setText(qty.getText());
                 price.setText("222222");
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.add_product_dialog);
@@ -135,19 +136,9 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
                 dialog.show();
             }
         });
-        //TextView qtd            = (TextView)  view.findViewById(R.id.qtd);
-        //TextView price          = (TextView)  view.findViewById(R.id.price);
         return view;
     }
 
-    public static int getNextKey(RequestItem requestItem) {
-        Realm realm = Realm.getDefaultInstance();
-        if(realm.where(RequestItem.class).max("id") == null){
-            return 1;
-        } else {
-            return realm.where(requestItem.getClass()).max("id").intValue() + 1;
-        }
-    }
 
     public void onFocusChange(View v, boolean hasFocus)
     {

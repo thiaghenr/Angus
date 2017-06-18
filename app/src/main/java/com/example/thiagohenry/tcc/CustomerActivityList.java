@@ -71,12 +71,6 @@ public class CustomerActivityList extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-//                        Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
-//                        pickContactIntent.setType(Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
-//                        startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
-
-
                     Intent list_customer_in_request = new Intent(CustomerActivityList.this, RequestCreateActivity.class);
                     System.out.println(result1.get(position).getId() + "resssssuult");
                     list_customer_in_request.putExtra("id", result1.get(position).getId());

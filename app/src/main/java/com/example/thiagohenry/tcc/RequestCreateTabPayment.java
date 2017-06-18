@@ -8,6 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.example.thiagohenry.tcc.Model.Product;
+import com.example.thiagohenry.tcc.Model.Request;
+import com.example.thiagohenry.tcc.Model.RequestItem;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
+
+import static com.example.thiagohenry.tcc.RequestCreateTabProduct.calcRequestTotalValue;
+import static com.example.thiagohenry.tcc.RequestCreateTabProduct.getNextKeyRequestItem;
+import static com.example.thiagohenry.tcc.RequestCreateTabProduct.removeRequestItem;
 
 /**
  * Created by thiagohenry on 16/04/17.
@@ -15,12 +28,16 @@ import android.widget.Spinner;
 
 public class RequestCreateTabPayment extends Fragment{
     private static final String TAG = "RequestCreateTabPaymento";
+    private static View request_create_tab_payment_view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_create_tab_payment, container, false);
+        request_create_tab_payment_view = view;
         populateSpinnerCondicao(view);
         populateSpinnerFatura(view);
+        calcRequestTotalValue(view);
         return view;
     }
 
@@ -43,6 +60,22 @@ public class RequestCreateTabPayment extends Fragment{
 
     }
 
+    public static void calcRequestTotalValue(View view){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        Request request_recalc = realm.where(Request.class).findAll().last();
+
+        Double total = request_recalc.getValue_total();
+
+        final TextView total_value = (TextView) view.findViewById(R.id.request_total_value);
+
+        total_value.setText(String.valueOf(total));
+        
+        realm.commitTransaction();
+        realm.close();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -50,4 +83,3 @@ public class RequestCreateTabPayment extends Fragment{
         populateSpinnerFatura(getView());
     }
 }
-
