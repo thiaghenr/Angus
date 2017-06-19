@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,7 +57,7 @@ public class RequestCreateTabProductSelected extends BaseAdapter {
 
         final TextView product_selected     = (TextView) view.findViewById(R.id.product_selectec_added);
         final TextView product_final_price  = (TextView) view.findViewById(R.id.product_selected_added_final_price);
-        final Button   remove_item          = (Button)   view.findViewById(R.id.remove_selected_product);
+        final ImageButton remove_item       = (ImageButton)   view.findViewById(R.id.remove_selected_product);
 
         product_selected.       setText(request_item.getProduct_id().getName());
         product_final_price.    setText(String.valueOf(request_item.getValue_total()));
