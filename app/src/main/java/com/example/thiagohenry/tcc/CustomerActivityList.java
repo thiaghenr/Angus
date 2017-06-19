@@ -70,16 +70,12 @@ public class CustomerActivityList extends AppCompatActivity {
                 ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                     Intent list_customer_in_request = new Intent(CustomerActivityList.this, RequestCreateActivity.class);
-                    System.out.println(result1.get(position).getId() + "resssssuult");
                     list_customer_in_request.putExtra("id", result1.get(position).getId());
                     Long a = result1.get(position).getId();
-                    //startActivityForResult(list_customer_in_request, 1);
                     int b = a.intValue();
                     setResult(b);
                     finish();
-                    //startActivity(list_customer_in_request);
                     }
                 });
             }

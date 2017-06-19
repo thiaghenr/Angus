@@ -80,7 +80,6 @@ public class ProductAdapter extends BaseAdapter{
         prod_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("clicaaaaaaaaaaaadoooooo");
                 // custom dialog
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.request_create_tab_product_detail_dialog);

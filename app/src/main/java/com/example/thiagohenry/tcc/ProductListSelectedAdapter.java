@@ -62,7 +62,6 @@ public class ProductListSelectedAdapter extends BaseAdapter {
     }
 
     public void addProduct(Product productSelected){
-        System.out.println("addProduct");
         product.add(productSelected);
         notifyDataSetChanged();
     }

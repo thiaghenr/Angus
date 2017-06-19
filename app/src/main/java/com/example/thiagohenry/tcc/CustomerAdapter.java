@@ -74,7 +74,7 @@ public class CustomerAdapter extends BaseAdapter {
         detail_customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("olamundo");
+
             }
         });
 

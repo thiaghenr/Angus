@@ -35,7 +35,7 @@ import io.realm.RealmResults;
 
 public class RequestActivityList extends AppCompatActivity{
     private AppCompatActivity act;
-    //Switch switchAB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,26 +101,25 @@ public class RequestActivityList extends AppCompatActivity{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (filter_by_status.isChecked() == true){
                     Realm realm                         = Realm.getDefaultInstance();
-                    RealmQuery<Request> request_query   = realm.where(Request.class);
-                    request_query.contains("status_id.description", String.valueOf(search.getText()));
+                    RealmQuery<Request> requestRealmQuery   = realm.where(Request.class);
+                    requestRealmQuery.contains("status_id.description", String.valueOf(search.getText()));
 
-                    final RealmResults<Request> result_request = request_query.findAll();
-                    final ListView ListRequest = (ListView) findViewById(R.id.request_list);
+                    final RealmResults<Request> requestRealmResults = requestRealmQuery.findAll();
+                    final ListView ListRequest                      = (ListView) findViewById(R.id.request_list);
 
-                    RequestAdapter adapter = new RequestAdapter(result_request, act);
+                    RequestAdapter adapter = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
                 }
                 else if (filter_by_customer.isChecked() == true){
-                    System.out.println("1");
-                    Realm realm                         = Realm.getDefaultInstance();
-                    RealmQuery<Request> request_query   = realm.where(Request.class);
-                    request_query.contains("customer_id.name", String.valueOf(search.getText()));
-                    System.out.println("2");
-                    final RealmResults<Request> result_request = request_query.findAll();
-                    System.out.println("3");
-                    final ListView ListRequest = (ListView) findViewById(R.id.request_list);
-                    System.out.println("3");
-                    RequestAdapter adapter = new RequestAdapter(result_request, act);
+                    Realm realm                             = Realm.getDefaultInstance();
+                    RealmQuery<Request> requestRealmQuery   = realm.where(Request.class);
+
+                    requestRealmQuery.contains("customer_id.name", String.valueOf(search.getText()));
+
+                    final RealmResults<Request> requestRealmResults = requestRealmQuery.findAll();
+                    final ListView ListRequest                      = (ListView) findViewById(R.id.request_list);
+
+                    RequestAdapter adapter  = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
                 }
 //                else if (filter_by_value.isChecked() == true){

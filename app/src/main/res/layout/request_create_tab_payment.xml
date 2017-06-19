@@ -11,7 +11,7 @@
     <TextView
         android:layout_height="40dp"
         android:layout_width="match_parent"
-        android:text="G$ 15.000.000"
+        android:text=""
         android:textSize="15dp"
         android:textColor="@android:color/black"
         android:height="@dimen/activity_vertical_margin"
@@ -104,7 +104,7 @@
             android:layout_alignBaseline="@id/text_total_value"
             android:textAlignment="textEnd"
             android:gravity="right"
-            android:text="AAAAA" />
+            />
 
     </TableRow>
 </LinearLayout>
