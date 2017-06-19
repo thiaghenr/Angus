@@ -41,7 +41,7 @@ public class RequestCreateTabProduct extends Fragment{
     private static       View                             mView;
     private static       Context                          context;
     private static       Activity                         act;
-    private static ArrayList<RequestItem>    listItems    = new ArrayList<>();
+    public static ArrayList<RequestItem>    listItems    = new ArrayList<>();
     private static ArrayAdapter<Product>                   adapter;
 
     @Nullable
@@ -197,22 +197,22 @@ public class RequestCreateTabProduct extends Fragment{
 
         realm.beginTransaction();
 
+        // Build a query to get the product id
         RealmQuery<Product> query  = realm.where(Product.class);
         query.equalTo("id", product.getId());
 
         final RealmResults<Product> p_id = query.findAll().sort("id");
 
-
         RequestItem requestItem = realm.where(RequestItem.class).findAll().last();
         Request     request     = realm.where(Request.class).findAll().last();
 
         Product requestProduct   = realm.where(Product.class).equalTo("id", p_id.get(0).getId()).findFirst();
-
+        // Build the object requestItem
         requestItem.setProduct_id(requestProduct);
         requestItem.setRequest_id(request);
         requestItem.setQuantity(Double.parseDouble(qty));
         requestItem.setValue_total(total);
-
+        // Insert the object on the table RequestItem
         realm.insertOrUpdate(requestItem);
 
         realm.commitTransaction();
@@ -231,6 +231,11 @@ public class RequestCreateTabProduct extends Fragment{
     }
 
     public static void removeRequestItem(RequestItem requestItem){
+        // First we remove item from list
+        final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
+
+        listItems.remove(requestItem);
+
         Realm realm     = Realm.getDefaultInstance();
         //Remove Item to from Request
         realm.beginTransaction();
@@ -244,19 +249,14 @@ public class RequestCreateTabProduct extends Fragment{
         realm.commitTransaction();
         realm.close();
 
-
-        final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
-
-        listItems.remove(requestItem);
-
         RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listItems, act);
         ListProductsSelected.setAdapter(adapterLocal);
 
         onFocusChange(mView, false);
     }
 
-    public static void onFocusChange(View v, boolean hasFocus)
-    {
+    public static void onFocusChange(View v, boolean hasFocus) {
+        //This method is to keyboard's get down when the focus change.
         if (false == hasFocus) {
             ((InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
                     mView.getWindowToken(), 0);
@@ -264,6 +264,7 @@ public class RequestCreateTabProduct extends Fragment{
     }
 
     public static int getNextKeyRequestItem(RequestItem requestItem) {
+        // That's the default function to generate id
         Realm realm = Realm.getDefaultInstance();
         if(realm.where(RequestItem.class).max("id") == null){
             return 1;
@@ -286,6 +287,8 @@ public class RequestCreateTabProduct extends Fragment{
         total += requestItem.getValue_total();
         request.setValue_total(total);
 
+        RequestCreateTabPayment.calcRequestTotalValueInvoice(total);
+
         realm.insertOrUpdate(request);
         realm.commitTransaction();
         realm.close();
@@ -299,8 +302,8 @@ public class RequestCreateTabProduct extends Fragment{
         Double total    = request.getValue_total();
         total           = total - requestItem.getValue_total();
         request.setValue_total(total);
-
+        RequestCreateTabPayment.calcRequestTotalValueInvoice(total);
         realm.insertOrUpdate(request);
-
+        realm.close();
     }
 }

@@ -66,6 +66,7 @@ public class RequestCreateTabProductSelected extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // Calling the function that remove a product of the shopping cart
+                System.out.println(request_item + "     ONNN SELECTEEEEEED");
                 RequestCreateTabProduct.removeRequestItem(request_item);
             }
         });

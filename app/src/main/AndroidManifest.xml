@@ -29,7 +29,9 @@
         <!-- Venda -->
         <activity
             android:name=".RequestCreateActivity"
-            android:label="Nueva Ordem"></activity>
+            android:label="Nueva Ordem"
+            android:noHistory="true"
+            ></activity>
         <activity
             android:name=".RequestActivityList"
             android:label="Venta"></activity>

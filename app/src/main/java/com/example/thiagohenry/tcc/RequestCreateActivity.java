@@ -1,5 +1,6 @@
 package com.example.thiagohenry.tcc;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.Request;
+import com.example.thiagohenry.tcc.Model.RequestItem;
 import com.example.thiagohenry.tcc.Model.Status;
 
 import java.util.ArrayList;
@@ -32,12 +34,9 @@ import static com.example.thiagohenry.tcc.R.id.container;
  */
 
 public class RequestCreateActivity extends AppCompatActivity {
-    private AppCompatActivity activit;
-    private static final String TAG = "RequestCreateActivity";
+    Realm realm;
     private RequestSectionsPageAdapter vRequestSectionsPageAdapter;
-    private ViewPager requestViewPager;
-    private Long id;
-    private String act;
+    private ViewPager                   requestViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,9 +52,8 @@ public class RequestCreateActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(requestViewPager);
 
         // Create request
-        Realm realm     = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-
         Date now = new Date();
         Request request = new Request();
 
@@ -74,11 +72,10 @@ public class RequestCreateActivity extends AppCompatActivity {
         RealmQuery<Status> query_status = realm.where(Status.class).contains("description", "Aberto");
         RealmResults<Status> result_status = query_status.findAll();
 
-        System.out.println(result_status);
-
         Status status   = realm.where(Status.class).equalTo("id", result_status.get(0).getId()).findFirst();
         Date today = new Date();
 
+        // Here we set some default datas to start the request
         r.setStatus_id          (status);
         r.setCurrency("U$");
         r.setDue_date(today);
@@ -86,6 +83,7 @@ public class RequestCreateActivity extends AppCompatActivity {
 
         realm.insertOrUpdate(r);
         realm.commitTransaction();
+        realm.refresh();
         realm.close();
     }
 
@@ -100,6 +98,7 @@ public class RequestCreateActivity extends AppCompatActivity {
     }
 
     private int getNextKey(Request request) {
+        // That's the default function to generate id
         Realm realm = Realm.getDefaultInstance();
         if(realm.where(Request.class).max("id") == null){
             return 1;
@@ -117,10 +116,27 @@ public class RequestCreateActivity extends AppCompatActivity {
 
         Request request = realm.where(Request.class).findAll().last();
 
+        RealmQuery<RequestItem> requestItemRealmQuery       = realm.where(RequestItem.class).equalTo("request_id.id", request.getId());
+        RealmResults<RequestItem> requestItemRealmResults   = requestItemRealmQuery.findAll();
+
+        for (int i = requestItemRealmResults.size() - 1; i >= 0; i--){
+            // Delete itens from list and from requestItem table in realm database
+            RequestCreateTabProduct.listItems.remove(requestItemRealmResults.get(i));
+            requestItemRealmResults.deleteFromRealm(i);
+        }
+        // Could used "deleteAllFromRealm" but we needed delete the itens from list too
+        //requestItemRealmResults.deleteAllFromRealm();
         request.deleteFromRealm();
         realm.commitTransaction();
+
+        Intent act_cust = new Intent(this, DashboardActivity.class);
+        RequestCreateActivity.this.finish();
+        startActivity(act_cust);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         realm.close();
-        //onDestroy();
-        finish();
     }
 }

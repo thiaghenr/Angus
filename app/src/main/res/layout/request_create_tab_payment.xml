@@ -79,21 +79,32 @@
 
     </TableRow>
 
-    <TextView
-        android:layout_height="50dp"
-        android:layout_width="wrap_content"
-        android:text="Total da Venda"
-        android:textSize="25dp"
-        android:textColor="@android:color/black"
-        android:height="@dimen/activity_vertical_margin"
-        android:elegantTextHeight="true"
-        android:textStyle="bold"
-        android:scrollHorizontally="true" />
+    <TableRow
+        android:id="@+id/total_invoice"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/request_total_value"
-        />
+        <TextView
+            android:id="@+id/text_total_value"
+            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:text="Total da Venda"
+            android:textSize="25dp"
+            android:textColor="@android:color/black"
+            android:height="@dimen/activity_vertical_margin"
+            android:elegantTextHeight="true"
+            android:textStyle="bold"
+            android:scrollHorizontally="true" />
 
+        <TextView
+            android:id="@+id/request_total_value"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_alignBaseline="@id/text_total_value"
+            android:textAlignment="textEnd"
+            android:gravity="right"
+            android:text="AAAAA" />
+
+    </TableRow>
 </LinearLayout>

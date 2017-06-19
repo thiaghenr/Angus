@@ -28,16 +28,17 @@ import static com.example.thiagohenry.tcc.RequestCreateTabProduct.removeRequestI
 
 public class RequestCreateTabPayment extends Fragment{
     private static final String TAG = "RequestCreateTabPaymento";
-    private static View request_create_tab_payment_view;
+    private static View mView;
+    public static TextView total_invoice;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_create_tab_payment, container, false);
-        request_create_tab_payment_view = view;
+        this.mView = view;
         populateSpinnerCondicao(view);
         populateSpinnerFatura(view);
-        calcRequestTotalValue(view);
+        total_invoice = (TextView) view.findViewById(R.id.request_total_value);
         return view;
     }
 
@@ -60,27 +61,25 @@ public class RequestCreateTabPayment extends Fragment{
 
     }
 
-    public static void calcRequestTotalValue(View view){
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
+    public static void calcRequestTotalValueInvoice(Double current_total){
+//        Realm realm = Realm.getDefaultInstance();
+//        realm.beginTransaction();
 
-        Request request_recalc = realm.where(Request.class).findAll().last();
+        //Request request_recalc = realm.where(Request.class).findAll().last();
 
-        Double total = request_recalc.getValue_total();
+        //Double total = request_recalc.getValue_total();
 
-        final TextView total_value = (TextView) view.findViewById(R.id.request_total_value);
-
-        total_value.setText(String.valueOf(total));
-        System.out.println(total + "     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-        realm.commitTransaction();
-        realm.close();
+        total_invoice.setText(current_total.toString());
+        //System.out.println(total + "     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+//        realm.commitTransaction();
+//        realm.close();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        populateSpinnerCondicao(getView());
-        populateSpinnerFatura(getView());
-        calcRequestTotalValue(getView());
+        populateSpinnerCondicao(mView);
+        populateSpinnerFatura(mView);
+        //calcRequestTotalValueInvoice();
     }
 }
