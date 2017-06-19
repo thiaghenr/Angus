@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Product;
@@ -30,7 +31,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
     final Context context;
     private final List<Product> productss;
     private final Activity act;
-    private Button add_prod;
+    private ImageButton add_prod;
 
     public RequestCreateTabProductAdapter(Context context, List<Product> productss, Activity act) {
         this.context = context;
@@ -73,7 +74,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
         unity.      setText(products.getUnity());
         mark.       setText(products.getMark());
 
-        add_prod                 = (Button) view.findViewById(R.id.add_product_in_list);
+        add_prod                 = (ImageButton) view.findViewById(R.id.add_product_in_list);
 
         add_prod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +106,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
             }
         });
 
-        Button prod_detail  =   (Button) view.findViewById(R.id.product_detail);
+        ImageButton prod_detail  =   (ImageButton) view.findViewById(R.id.product_detail);
         prod_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

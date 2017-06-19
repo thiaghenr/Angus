@@ -82,6 +82,7 @@ public class RequestCreateActivity extends AppCompatActivity {
         r.setStatus_id          (status);
         r.setCurrency("U$");
         r.setDue_date(today);
+        r.setValue_total(0.0);
 
         realm.insertOrUpdate(r);
         realm.commitTransaction();

@@ -71,7 +71,7 @@ public class RequestCreateTabPayment extends Fragment{
         final TextView total_value = (TextView) view.findViewById(R.id.request_total_value);
 
         total_value.setText(String.valueOf(total));
-        
+        System.out.println(total + "     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
         realm.commitTransaction();
         realm.close();
     }
@@ -81,5 +81,6 @@ public class RequestCreateTabPayment extends Fragment{
         super.onResume();
         populateSpinnerCondicao(getView());
         populateSpinnerFatura(getView());
+        calcRequestTotalValue(getView());
     }
 }

@@ -64,18 +64,20 @@
         android:textSize="20dp"
         android:textStyle="italic" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
+        android:id="@+id/add_product_in_list"
         android:layout_alignEnd="@+id/mark"
         android:layout_alignRight="@+id/mark"
-        android:id="@+id/add_product_in_list" />
+        android:src="@drawable/icon_one_more_product" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Details"
+        android:src="@drawable/icon_product_detail"
         android:layout_alignRight="@+id/description"
         android:layout_alignEnd="@+id/description"
         android:layout_alignParentBottom="true"
