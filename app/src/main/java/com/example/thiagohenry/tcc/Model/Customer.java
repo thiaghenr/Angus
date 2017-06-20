@@ -50,10 +50,6 @@ public class Customer extends RealmObject{
     @SerializedName("app_id")
     private String              app_id;
 
-    @SerializedName("seller_id")
-    @LinkingObjects
-    private User              seller_id;
-
     @SerializedName("last_update")
     private Date                last_update;
 
@@ -136,14 +132,6 @@ public class Customer extends RealmObject{
 
     public void setPhone_2(String phone_2) {
         this.phone_2 = phone_2;
-    }
-
-    public User getSeller_id() {
-        return seller_id;
-    }
-
-    public void setSeller_id(User seller_id) {
-        this.seller_id = seller_id;
     }
 
     public Date getLast_update() {
