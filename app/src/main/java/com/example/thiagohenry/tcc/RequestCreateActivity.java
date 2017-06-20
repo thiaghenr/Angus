@@ -16,6 +16,7 @@ import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 import com.example.thiagohenry.tcc.Model.Status;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -54,11 +55,11 @@ public class RequestCreateActivity extends AppCompatActivity {
         // Create request
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        Date now = new Date();
+        SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         Request request = new Request();
 
         request.setId((long) getNextKey(request));
-        request.setLast_update(now);
+        //request.setLast_update(now);
 
         realm.copyToRealm(request);
         realm.commitTransaction();

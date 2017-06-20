@@ -1,5 +1,6 @@
 package com.example.thiagohenry.tcc.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -17,7 +18,7 @@ public class ProductPrice extends RealmObject {
     private Price               price_id;
     private String              currency;
     private Double              value;
-    private Date                last_update;
+    private Date last_update;
 
     public Long getId() {
         return id;

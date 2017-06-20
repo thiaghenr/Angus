@@ -2,6 +2,7 @@ package com.example.thiagohenry.tcc;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,10 +23,16 @@ import android.widget.Toast;
 import com.example.thiagohenry.tcc.Connection.iConnection;
 import com.example.thiagohenry.tcc.Model.Customer;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
 
+import io.realm.Realm;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +40,7 @@ import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Resources resources;
     ProgressDialog dialog;
 
     @Override
@@ -89,10 +97,21 @@ public class DashboardActivity extends AppCompatActivity
                         if (dialog.isShowing())
                             dialog.dismiss();
                         System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-                        System.out.println(response.body()   +   "   REEEESSSPOOOONSEEE BODY");
+                        //System.out.println(response.body()   +   "   REEEESSSPOOOONSEEE BODY");
                         final JsonArray listaCustomer = response.body();
-                        System.out.println(listaCustomer);
 
+                        for (int i = 0; i < listaCustomer.size(); i++){
+                            Realm realm = Realm.getDefaultInstance();
+                            realm.beginTransaction();
+                            String newCustomer = listaCustomer.get(i).toString();
+                            System.out.println(newCustomer);
+                            //realm.createAllFromJson(Customer.class, listaCustomer.);
+                            //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
+                            //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());
+                            realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
+                            realm.commitTransaction();
+                            realm.close();
+                        }
                     }
                     @Override
                     public void onFailure(Call<JsonArray> call, Throwable t) {

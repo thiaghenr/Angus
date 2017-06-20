@@ -2,7 +2,6 @@ package com.example.thiagohenry.tcc.Model;
 
 import android.text.method.DateTimeKeyListener;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
@@ -20,12 +19,11 @@ public class Customer extends RealmObject{
     private String              fantasy_name;
     private String              ruc;
     private String              currency;
-    private String              contact;
+    private String              email;
     private String              phone_1;
     private String              phone_2;
-    private Seller              seller_id;
     private String              app_id;
-    //private SimpleDateFormat    last_update;
+    private Date                last_update;
     public Long getId() {
         return id;
     }
@@ -82,12 +80,12 @@ public class Customer extends RealmObject{
         this.currency = currency;
     }
 
-    public String getContact() {
-        return contact;
+    public String getEmail() {
+        return email;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone_1() {
@@ -106,19 +104,11 @@ public class Customer extends RealmObject{
         this.phone_2 = phone_2;
     }
 
-    public Seller getSeller_id() {
-        return seller_id;
-    }
-
-    public void setSeller_id(Seller seller_id) {
-        this.seller_id = seller_id;
-    }
-
-//    public SimpleDateFormat getLast_update() {
+//    public Date getLast_update() {
 //        return last_update;
 //    }
 //
-//    public void setLast_update(SimpleDateFormat last_update) {
+//    public void setLast_update(Date last_update) {
 //        this.last_update = last_update;
 //    }
 

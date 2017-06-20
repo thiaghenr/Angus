@@ -2,6 +2,7 @@ package com.example.thiagohenry.tcc.Model;
 
 import android.text.method.DateTimeKeyListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -23,8 +24,8 @@ public class Request extends RealmObject{
     private Date                due_date;
     private String              observation;
     private Double              value_total;
-    private Date                last_update;
-    //private Integer user_id;
+    private Date    last_update;
+    private User                user_id;
     private String              app_id;
 
     public Long getId() {
@@ -97,5 +98,13 @@ public class Request extends RealmObject{
 
     public void setLast_update(Date last_update) {
         this.last_update = last_update;
+    }
+
+    public User getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
     }
 }

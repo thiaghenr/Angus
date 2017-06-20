@@ -1,5 +1,6 @@
 package com.example.thiagohenry.tcc.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;

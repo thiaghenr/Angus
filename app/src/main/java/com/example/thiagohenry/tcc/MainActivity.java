@@ -28,25 +28,27 @@ public class MainActivity extends AppCompatActivity{
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkUser(username.getText().toString(), password.getText().toString());
+                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
+                startActivity(act_dash);
+                //checkUser(username.getText().toString(), password.getText().toString());
             }
         });
     }
 
-    private boolean checkUser(String username, String password) {
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<User> realmObjects = realm.where(User.class).findAll();
-        for (User myRealmObject : realmObjects) {
-            if (username.equals(myRealmObject.getUsername()) && password.equals(myRealmObject.getPassword())) {
-                System.out.println("aa");
-                Toast.makeText(getApplicationContext(), "Olá " + username, Toast.LENGTH_LONG).show();
-                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
-                startActivity(act_dash);
-
-                return true;
-            }
-        }
-        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
-        return false;
-    }
+//    private boolean checkUser(String username, String password) {
+//        Realm realm = Realm.getDefaultInstance();
+//        RealmResults<User> realmObjects = realm.where(User.class).findAll();
+//        for (User myRealmObject : realmObjects) {
+//            if (username.equals(myRealmObject.getUsername()) && password.equals(myRealmObject.getPassword())) {
+//                System.out.println("aa");
+//                Toast.makeText(getApplicationContext(), "Olá " + username, Toast.LENGTH_LONG).show();
+//                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
+//                startActivity(act_dash);
+//
+//                return true;
+//            }
+//        }
+//        Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+//        return false;
+//    }
 }

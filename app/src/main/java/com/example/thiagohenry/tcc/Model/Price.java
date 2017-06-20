@@ -13,7 +13,7 @@ public class Price extends RealmObject {
     @PrimaryKey
     private Long            id;
     private String          name;
-    private Date            last_update;
+    private Date last_update;
 
     public Long getId() {
         return id;
