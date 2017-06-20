@@ -7,9 +7,9 @@
     <application
         android:name=".DAO.ConfigRealm"
         android:allowBackup="true"
-        android:icon="@drawable/logo_angus2"
+        android:icon="@drawable/logo_angus_blue"
         android:label="Bienvenido al Angus Mobile"
-        android:roundIcon="@drawable/logo_angus2"
+        android:roundIcon="@drawable/logo_angus_white"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

@@ -67,8 +67,8 @@ public class ContentActivity extends AppCompatActivity{
 //        opcao.setOnClickListener(new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v) {
-//                Intent form_opcao = new Intent (ContentActivity.this, CLASS HERE);
-//                startActivity(form_opcao);
+//                Intent form_usuario = new Intent (ContentActivity.this, CLASS HERE);
+//                startActivity(form_usuario);
 //            }
 //        });
     }

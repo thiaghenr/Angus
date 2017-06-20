@@ -7,9 +7,9 @@
         >
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/sidebar_icon_vendas"
+            android:icon="@drawable/sidebar_icon_ventas"
             android:actionLayout="@layout/nav_header_main"
-            android:title="Vendas"
+            android:title="Ventas"
             />
     </group>
     <group
@@ -17,33 +17,35 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/sidebar_icon_pagamentos"
+            android:icon="@drawable/sidebar_icon_pedidos"
             android:actionLayout="@layout/nav_header_main"
-            android:title="Pagamentos" />
+            android:title="Pedidos"
+            />
     </group>
     <group
         android:id="@+id/group_cliente"
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/sidebar_icon_cliente"
-            android:title="Cliente" />
+            android:icon="@drawable/sidebar_icon_clientes"
+            android:title="Clientes"
+            />
     </group>
     <group
         android:id="@+id/group_produtos"
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/sidebar_icon_produtos"
-            android:title="Produtos" />
+            android:icon="@drawable/sidebar_icon_productos"
+            android:title="Productos" />
     </group>
     <group
         android:id="@+id/group_opcoes"
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_opcoes"
-            android:icon="@drawable/sidebar_icon_opcoes"
-            android:title="Opções"
+            android:icon="@drawable/sidebar_icon_usuario"
+            android:title="Usuario"
             />
     </group>
     <group
@@ -51,7 +53,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_sinc"
-            android:icon="@drawable/sidebar_icon_sincronizacao"
+            android:icon="@drawable/sidebar_icon_sincronizar"
             android:title="Sincronizar"
             />
     </group>
