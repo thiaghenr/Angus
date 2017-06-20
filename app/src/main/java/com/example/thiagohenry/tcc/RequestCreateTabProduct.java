@@ -218,42 +218,12 @@ public class RequestCreateTabProduct extends Fragment{
         realm.commitTransaction();
         realm.close();
 
-        final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
-
-        listItems.add(requestItem);
-
-        calcRequestTotalValue();
-
-        RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listItems, act);
-        ListProductsSelected.setAdapter(adapterLocal);
+        RequestCreateTabCart.newItem(requestItem);
 
         onFocusChange(mView, false);
     }
 
-    public static void removeRequestItem(RequestItem requestItem){
-        // First we remove item from list
-        final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);
 
-        listItems.remove(requestItem);
-
-        Realm realm     = Realm.getDefaultInstance();
-        //Remove Item to from Request
-        realm.beginTransaction();
-
-        reCalcRequestTotalValue(requestItem);
-
-        RequestItem requestItemRemoved = realm.where(RequestItem.class).equalTo("id", requestItem.getId()).findFirst();
-
-        requestItemRemoved.deleteFromRealm();
-
-        realm.commitTransaction();
-        realm.close();
-
-        RequestCreateTabProductSelected adapterLocal = new RequestCreateTabProductSelected(context, listItems, act);
-        ListProductsSelected.setAdapter(adapterLocal);
-
-        onFocusChange(mView, false);
-    }
 
     public static void onFocusChange(View v, boolean hasFocus) {
         //This method is to keyboard's get down when the focus change.
@@ -287,23 +257,10 @@ public class RequestCreateTabProduct extends Fragment{
         total += requestItem.getValue_total();
         request.setValue_total(total);
 
-        RequestCreateTabPayment.calcRequestTotalValueInvoice(total);
+        RequestCreateTabCart.calcRequestTotalValueInvoice(total);
 
         realm.insertOrUpdate(request);
         realm.commitTransaction();
-        realm.close();
-    }
-
-    public static void reCalcRequestTotalValue(RequestItem requestItem){
-        // in this function we made the calc of the value total of the request when the user remove an item on the shopping cart
-        Realm realm = Realm.getDefaultInstance();
-        // Here we don't begin a new transaction because apparently the function pull the transaction where the function is called
-        Request request = realm.where(Request.class).findAll().last();
-        Double total    = request.getValue_total();
-        total           = total - requestItem.getValue_total();
-        request.setValue_total(total);
-        RequestCreateTabPayment.calcRequestTotalValueInvoice(total);
-        realm.insertOrUpdate(request);
         realm.close();
     }
 }

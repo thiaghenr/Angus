@@ -58,6 +58,105 @@
         android:textStyle="bold"
         android:scrollHorizontally="true" />
 
+    <TextView
+        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:text=""
+        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        android:height="@dimen/activity_vertical_margin"
+        android:elegantTextHeight="true"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:layout_marginRight="1dp"
+        android:scrollHorizontally="true" />
+
+    <TableRow
+        android:id="@+id/row_condicao"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:id="@+id/pag_condi"
+            android:layout_height="50dp"
+            android:layout_width="230dp"
+            android:text="Vencimiento"
+            android:textSize="25dp"
+            android:layout_gravity=""
+            android:textColor="@android:color/black"
+            android:height="@dimen/activity_vertical_margin"
+            android:elegantTextHeight="true"
+            android:textStyle="bold"
+            android:scrollHorizontally="true"/>
+
+        <Spinner
+            android:id="@+id/spinner_condicao"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_alignBaseline="@id/pag_condi"
+            android:gravity="right"
+            android:drawSelectorOnTop="true" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_fatura"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:id="@+id/pag_fatura"
+            android:layout_height="50dp"
+            android:layout_width="230dp"
+            android:text="Facturar en"
+            android:textSize="25dp"
+            android:layout_gravity=""
+            android:textColor="@android:color/black"
+            android:height="@dimen/activity_vertical_margin"
+            android:elegantTextHeight="true"
+            android:textStyle="bold"
+            android:scrollHorizontally="true"/>
+
+        <Spinner
+            android:id="@+id/spinner_fatura"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_alignBaseline="@id/pag_fatura"
+            android:gravity="right"
+            android:drawSelectorOnTop="true" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/total_invoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:height="@dimen/activity_vertical_margin"
+            android:elegantTextHeight="true"
+            android:scrollHorizontally="true"
+            android:text="Total da Venda"
+            android:textColor="@android:color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/request_total_value"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_alignBaseline="@id/text_total_value"
+            android:gravity="right"
+            android:textAlignment="textEnd" />
+
+    </TableRow>
+
     <Button
         android:id="@+id/finish_sale"
         android:layout_width="match_parent"

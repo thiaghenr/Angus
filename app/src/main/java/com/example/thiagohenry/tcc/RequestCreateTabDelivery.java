@@ -9,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class RequestCreateTabDelivery extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
         finishSale(view);
+        populateSpinnerCondicao(view);
+        populateSpinnerFatura(view);
         return view;
     }
 
@@ -56,6 +60,25 @@ public class RequestCreateTabDelivery extends Fragment{
             timerDelayRemoveDialog(1000, dialog);
             }
         });
+    }
+
+    public void populateSpinnerCondicao(View view){
+        Spinner spinner                     = (Spinner) view.findViewById(R.id.spinner_condicao);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.condicao_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+    }
+
+    public void populateSpinnerFatura(View view){
+
+        Spinner spinner                     = (Spinner) view.findViewById(R.id.spinner_fatura);
+        ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this.getContext(), R.array.fatura_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
     }
 
     public void timerDelayRemoveDialog(long time, final ProgressDialog d){

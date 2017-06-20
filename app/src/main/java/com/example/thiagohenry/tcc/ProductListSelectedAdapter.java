@@ -5,21 +5,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Product;
-import com.example.thiagohenry.tcc.Model.Request;
-import com.example.thiagohenry.tcc.Model.RequestItem;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 
 public class ProductListSelectedAdapter extends BaseAdapter {
     final Context context;
@@ -49,7 +40,7 @@ public class ProductListSelectedAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, final View convertView, final ViewGroup parent) {
-        final View view                     =  LayoutInflater.from(parent.getContext()).inflate(R.layout.request_create_tab_product_added, parent, false);
+        final View view                     =  LayoutInflater.from(parent.getContext()).inflate(R.layout.request_create_tab_cart_by_line, parent, false);
         final Product products              = product.get(position);
 
         final TextView product_selected     = (TextView) view.findViewById(R.id.product_selectec_added);

@@ -1,37 +1,21 @@
 package com.example.thiagohenry.tcc;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import static java.lang.Math.toIntExact;
-import android.widget.Toast;
 
-import com.example.thiagohenry.tcc.Connection.iConnectionCustomer;
 import com.example.thiagohenry.tcc.Model.Customer;
-import com.example.thiagohenry.tcc.Model.CustomerAddress;
-
-import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmChangeListener;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by thiagohenry on 23/03/17.

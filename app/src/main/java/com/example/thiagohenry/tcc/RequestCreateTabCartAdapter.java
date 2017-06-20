@@ -5,30 +5,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.thiagohenry.tcc.Model.Product;
-import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
-
-public class RequestCreateTabProductSelected extends BaseAdapter {
+public class RequestCreateTabCartAdapter extends BaseAdapter {
     final Context context;
     private ArrayList<RequestItem> requestItem = new ArrayList<>();
     private final Activity act;
 
-    public RequestCreateTabProductSelected(Context context, ArrayList<RequestItem> requestItem, Activity act) {
+    public RequestCreateTabCartAdapter(Context context, ArrayList<RequestItem> requestItem, Activity act) {
         this.context = context;
         this.requestItem = requestItem;
         this.act = act;
@@ -52,7 +42,7 @@ public class RequestCreateTabProductSelected extends BaseAdapter {
     @Override
     public View getView(int position, final View convertView, final ViewGroup parent) {
         // Here we build the shopphing cart or the list of the selected itens
-        final View view                     =  LayoutInflater.from(parent.getContext()).inflate(R.layout.request_create_tab_product_added, parent, false);
+        final View view                     =  LayoutInflater.from(parent.getContext()).inflate(R.layout.request_create_tab_cart_by_line, parent, false);
         final RequestItem request_item      = requestItem.get(position);
 
         final TextView product_selected     = (TextView) view.findViewById(R.id.product_selectec_added);
@@ -67,7 +57,7 @@ public class RequestCreateTabProductSelected extends BaseAdapter {
             public void onClick(View v) {
                 // Calling the function that remove a product of the shopping cart
                 System.out.println(request_item + "     ONNN SELECTEEEEEED");
-                RequestCreateTabProduct.removeRequestItem(request_item);
+                RequestCreateTabCart.removeRequestItem(request_item);
             }
         });
 

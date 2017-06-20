@@ -1,5 +1,6 @@
 package com.example.thiagohenry.tcc;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,13 +10,30 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.util.JsonReader;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.thiagohenry.tcc.Connection.iConnection;
+import com.example.thiagohenry.tcc.Model.Customer;
+import com.google.gson.JsonArray;
+
+import java.sql.Connection;
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +72,38 @@ public class DashboardActivity extends AppCompatActivity
             }
         });
 
-//        sync.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent form_sync = new Intent (ContentActivity.this, CLASS HERE);
-//                startActivity(form_sync);
-//            }
-//        });
+        sync.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                dialog = new ProgressDialog(DashboardActivity.this);
+                iConnection connection = iConnection.retrofit.create(iConnection.class);
+                System.out.println(connection);
+                dialog.setMessage("Carregando...");
+                dialog.setCancelable(false);
+                dialog.show();
+                final Call<JsonArray> call = connection.getCustomer();
+                System.out.println(call.toString() + "   CAAAAAAAAAL     .TOSTRING()");
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        if (dialog.isShowing())
+                            dialog.dismiss();
+                        System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                        System.out.println(response.body()   +   "   REEEESSSPOOOONSEEE BODY");
+                        final JsonArray listaCustomer = response.body();
+                        System.out.println(listaCustomer);
+
+                    }
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        if (dialog.isShowing())
+                            dialog.dismiss();
+                        System.out.println(call);
+                        Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
 //
         pagamento.setOnClickListener(new View.OnClickListener(){
             @Override

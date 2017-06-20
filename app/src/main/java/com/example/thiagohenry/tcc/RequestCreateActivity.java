@@ -92,7 +92,7 @@ public class RequestCreateActivity extends AppCompatActivity {
         
             adapter.addFragment(new RequestCreateTabCustomer(), "Cliente");
             adapter.addFragment(new RequestCreateTabProduct(),  "Producto");
-            adapter.addFragment(new RequestCreateTabPayment(),  "Pago");
+            adapter.addFragment(new RequestCreateTabCart(),     "Carrito");
             adapter.addFragment(new RequestCreateTabDelivery(), "Entrega");
             viewPager.setAdapter(adapter);
     }
