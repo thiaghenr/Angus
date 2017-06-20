@@ -100,18 +100,18 @@ public class DashboardActivity extends AppCompatActivity
                         //System.out.println(response.body()   +   "   REEEESSSPOOOONSEEE BODY");
                         final JsonArray listaCustomer = response.body();
 
-                        for (int i = 0; i < listaCustomer.size(); i++){
+                        //for (int i = 0; i < listaCustomer.size(); i++){
                             Realm realm = Realm.getDefaultInstance();
                             realm.beginTransaction();
-                            String newCustomer = listaCustomer.get(i).toString();
-                            System.out.println(newCustomer);
-                            //realm.createAllFromJson(Customer.class, listaCustomer.);
+                            //String newCustomer = listaCustomer.get(i).toString();
+                            //System.out.println(newCustomer);
+                            realm.createAllFromJson(Customer.class, listaCustomer.toString());
                             //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
                             //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());
-                            realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
+                            //realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
                             realm.commitTransaction();
                             realm.close();
-                        }
+                        //}
                     }
                     @Override
                     public void onFailure(Call<JsonArray> call, Throwable t) {

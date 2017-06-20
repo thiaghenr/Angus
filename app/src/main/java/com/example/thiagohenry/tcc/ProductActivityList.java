@@ -30,9 +30,9 @@ public class ProductActivityList extends AppCompatActivity{
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
-        List<Product> products = realm.where(Product.class).findAll();
-        ListView ProductsList = (ListView) findViewById(R.id.products_list);
-        ProductAdapter adapter = new ProductAdapter(getBaseContext(), products, this);
+        List<Product> products  = realm.where(Product.class).findAll();
+        ListView ProductsList   = (ListView) findViewById(R.id.products_list);
+        ProductAdapter adapter  = new ProductAdapter(getBaseContext(), products, this);
 
         ProductsList.setAdapter(adapter);
 

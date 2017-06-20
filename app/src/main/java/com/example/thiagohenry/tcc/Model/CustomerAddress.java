@@ -1,29 +1,55 @@
 package com.example.thiagohenry.tcc.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by thiagohenry on 27/04/17.
  */
 
 public class CustomerAddress extends RealmObject{
+    @SerializedName("id")
     @PrimaryKey
+    @Required
     private Long       id;
+
+    @SerializedName("customer_id")
     private Customer   customer_id;
+
+    @SerializedName("street")
     private String     street;
+
+    @SerializedName("number")
     private Integer    number;
+
+    @SerializedName("block")
     private String     block;
+
+    @SerializedName("city")
     private String     city;
+
+    @SerializedName("state")
     private String     state;
+
+    @SerializedName("country")
     private String     country;
+
+    @SerializedName("type")
     private String     type;
+
+    @SerializedName("last_update")
     private Date last_update;
+
+    @SerializedName("app_id")
     private String     app_id;
 
+    // start getters and setters
     public void setId(Long id) {
         this.id = id;
     }

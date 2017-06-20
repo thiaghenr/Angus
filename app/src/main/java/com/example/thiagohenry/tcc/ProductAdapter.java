@@ -86,20 +86,17 @@ public class ProductAdapter extends BaseAdapter{
                 dialog.setTitle("Title...");
 
                 // set the custom dialog components - text, image and button
-                TextView qty = (TextView) dialog.findViewById(R.id.quantity_product);
-                final TextView price = (TextView) dialog.findViewById(R.id.price_product);
+                TextView qty            = (TextView) dialog.findViewById(R.id.quantity_product);
+                final TextView price    = (TextView) dialog.findViewById(R.id.price_product);
+                Button dialogButton     = (Button)   dialog.findViewById(R.id.add_product_dialog);
 
                 qty.setText("Android custom dialog example!");
                 price.setText("222222");
 
-                Button dialogButton = (Button) dialog.findViewById(R.id.add_product_dialog);
                 // if button is clicked, close the custom dialog
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //RequestCreateTabProduct.newRequestItem(products);
-                        //new_item.newRequestItem(products);
-
                         dialog.dismiss();
                     }
                 });
@@ -110,14 +107,5 @@ public class ProductAdapter extends BaseAdapter{
         //TextView qtd            = (TextView)  view.findViewById(R.id.qtd);
         //TextView price          = (TextView)  view.findViewById(R.id.price);
         return view;
-    }
-
-    public static int getNextKey(RequestItem requestItem) {
-        Realm realm = Realm.getDefaultInstance();
-        if(realm.where(RequestItem.class).max("id") == null){
-            return 1;
-        } else {
-            return realm.where(requestItem.getClass()).max("id").intValue() + 1;
-        }
     }
 }

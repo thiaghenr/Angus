@@ -1,20 +1,40 @@
 package com.example.thiagohenry.tcc.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmModel;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by thiagohenry on 16/06/17.
  */
 
 public class User extends RealmObject {
+    @SerializedName("id")
     @PrimaryKey
+    @Required
     private Long   id;
+
+    @SerializedName("name")
+    @Required
     private String name;
+
+    @SerializedName("lastName")
+    @Required
     private String lastName;
+
+    @SerializedName("username")
+    @Required
     private String username;
+
+    @SerializedName("password")
+    @Required
     private String password;
+
+    @SerializedName("confirmPassword")
+    @Required
     private String confirmPassword;
 
     public Long getId() {

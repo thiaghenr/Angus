@@ -45,12 +45,11 @@ public class CustomerActivityList extends AppCompatActivity {
                 RealmQuery<Customer> query  = realm.where(Customer.class);
 
                 query.contains("name", String.valueOf(search.getText()));
-                final RealmResults<Customer> result1 = query.findAll();
-                final ListView ListCustomers = (ListView) findViewById(R.id.customer_list);
+                final RealmResults<Customer> result1    = query.findAll();
+                final ListView ListCustomers            = (ListView) findViewById(R.id.customer_list);
 
                 CustomerAdapter adapter = new CustomerAdapter(result1, act);
                 ListCustomers.setAdapter(adapter);
-                //Toast.makeText(act, "onchange", Toast.LENGTH_SHORT).show();
                 ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

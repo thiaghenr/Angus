@@ -2,12 +2,15 @@ package com.example.thiagohenry.tcc.Model;
 
 import android.text.method.DateTimeKeyListener;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.RealmQuery;
 import io.realm.annotations.Index;
+import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
@@ -16,18 +19,39 @@ import io.realm.annotations.Required;
  */
 
 public class Request extends RealmObject{
+    @SerializedName("id")
     @PrimaryKey
+    @Required
     private Long                id;
+
+    @SerializedName("customer_id")
     private Customer            customer_id;
+
+    @SerializedName("status_id")
     private Status              status_id;
+
+    @SerializedName("currency")
     private String              currency;
+
+    @SerializedName("due_date")
     private Date                due_date;
+
+    @SerializedName("observation")
     private String              observation;
+
+    @SerializedName("value_total")
     private Double              value_total;
+
+    @SerializedName("last_update")
     private Date    last_update;
+
+    @SerializedName("user_id")
     private User                user_id;
+
+    @SerializedName("app_id")
     private String              app_id;
 
+    // start getters and setters
     public Long getId() {
         return id;
     }

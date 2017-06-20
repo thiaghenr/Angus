@@ -2,28 +2,62 @@ package com.example.thiagohenry.tcc.Model;
 
 import android.text.method.DateTimeKeyListener;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
+import io.realm.annotations.LinkingObjects;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by thiagohenry on 20/04/17.
  */
 
 public class Customer extends RealmObject{
+    @SerializedName("id")
     @PrimaryKey
+    @Required
     private Long                id;
+
+    @SerializedName("code")
+    @Required
     private String              code;
+
+    @SerializedName("name")
+    @Required
     private String              name;
+
+    @SerializedName("fantasy_name")
     private String              fantasy_name;
+
+    @SerializedName("ruc")
     private String              ruc;
+
+    @SerializedName("currency")
     private String              currency;
+
+    @SerializedName("email")
     private String              email;
+
+    @SerializedName("phone_1")
     private String              phone_1;
+
+    @SerializedName("phone_2")
     private String              phone_2;
+
+    @SerializedName("app_id")
     private String              app_id;
+
+    @SerializedName("seller_id")
+    @LinkingObjects
+    private User              seller_id;
+
+    @SerializedName("last_update")
     private Date                last_update;
+
+    // start getters and setters
     public Long getId() {
         return id;
     }
@@ -104,7 +138,23 @@ public class Customer extends RealmObject{
         this.phone_2 = phone_2;
     }
 
-//    public Date getLast_update() {
+    public User getSeller_id() {
+        return seller_id;
+    }
+
+    public void setSeller_id(User seller_id) {
+        this.seller_id = seller_id;
+    }
+
+    public Date getLast_update() {
+        return last_update;
+    }
+
+    public void setLast_update(Date last_update) {
+        this.last_update = last_update;
+    }
+
+    //    public Date getLast_update() {
 //        return last_update;
 //    }
 //

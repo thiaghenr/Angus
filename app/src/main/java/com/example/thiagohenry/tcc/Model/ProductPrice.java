@@ -1,25 +1,41 @@
 package com.example.thiagohenry.tcc.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by thiagohenry on 13/05/17.
  */
 
 public class ProductPrice extends RealmObject {
+    @SerializedName("id")
     @PrimaryKey
+    @Required
     private Long                id;
+
+    @SerializedName("product_id")
     private Product             product_id;
+
+    @SerializedName("price_id")
     private Price               price_id;
+
+    @SerializedName("currency")
     private String              currency;
+
+    @SerializedName("value")
     private Double              value;
+
+    @SerializedName("last_update")
     private Date last_update;
 
+    // start getters and setters
     public Long getId() {
         return id;
     }
