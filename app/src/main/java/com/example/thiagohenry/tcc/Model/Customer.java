@@ -18,15 +18,12 @@ import io.realm.annotations.Required;
 public class Customer extends RealmObject{
     @SerializedName("id")
     @PrimaryKey
-    @Required
     private Long                id;
 
     @SerializedName("code")
-    @Required
     private String              code;
 
     @SerializedName("name")
-    @Required
     private String              name;
 
     @SerializedName("fantasy_name")

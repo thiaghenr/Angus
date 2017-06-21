@@ -13,11 +13,9 @@ import io.realm.annotations.Required;
 public class Status extends RealmObject {
     @SerializedName("id")
     @PrimaryKey
-    @Required
     private Long id;
 
     @SerializedName("description")
-    @Required
     private String description;
 
     // start getters and setters

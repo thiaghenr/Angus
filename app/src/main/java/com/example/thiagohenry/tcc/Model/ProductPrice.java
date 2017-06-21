@@ -17,7 +17,6 @@ import io.realm.annotations.Required;
 public class ProductPrice extends RealmObject {
     @SerializedName("id")
     @PrimaryKey
-    @Required
     private Long                id;
 
     @SerializedName("product_id")

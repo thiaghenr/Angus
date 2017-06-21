@@ -16,7 +16,6 @@ import io.realm.annotations.Required;
 public class CustomerAddress extends RealmObject{
     @SerializedName("id")
     @PrimaryKey
-    @Required
     private Long       id;
 
     @SerializedName("customer_id")

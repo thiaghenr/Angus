@@ -14,29 +14,24 @@ import io.realm.annotations.Required;
 public class User extends RealmObject {
     @SerializedName("id")
     @PrimaryKey
-    @Required
     private Long   id;
 
     @SerializedName("name")
-    @Required
     private String name;
 
     @SerializedName("lastName")
-    @Required
     private String lastName;
 
     @SerializedName("username")
-    @Required
     private String username;
 
     @SerializedName("password")
-    @Required
     private String password;
 
     @SerializedName("confirmPassword")
-    @Required
     private String confirmPassword;
 
+    // start getters and setters
     public Long getId() {
         return id;
     }
