@@ -12,6 +12,7 @@ import com.example.thiagohenry.tcc.Model.CustomerAddress;
 import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.Status;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class RequestAdapter extends BaseAdapter {
             TextView due_date           = (TextView) view.findViewById(R.id.due_date);
             TextView total              = (TextView) view.findViewById(R.id.total);
 
-            Date due_date_request = request.getDue_date();
+            SimpleDateFormat due_date_request = request.getDue_date();
 
             customer.setText(customer_find.getName());
             status  .setText(status_find.getDescription());

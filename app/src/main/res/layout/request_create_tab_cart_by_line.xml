@@ -10,6 +10,7 @@
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:textStyle="italic" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -21,6 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="100dp"
         android:text="Precio "/>
 
     <TextView
@@ -31,6 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:textColor="?attr/colorPrimary"
+        android:paddingTop="100dp"
         android:textSize="20dp"
         android:textStyle="italic" />
 

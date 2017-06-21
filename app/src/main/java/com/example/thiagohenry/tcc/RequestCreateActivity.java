@@ -59,7 +59,7 @@ public class RequestCreateActivity extends AppCompatActivity {
         Request request = new Request();
 
         request.setId((long) getNextKey(request));
-        //request.setLast_update(now);
+        request.setLast_update(now);
 
         realm.copyToRealm(request);
         realm.commitTransaction();
@@ -74,7 +74,8 @@ public class RequestCreateActivity extends AppCompatActivity {
         RealmResults<Status> result_status = query_status.findAll();
 
         Status status   = realm.where(Status.class).equalTo("id", result_status.get(0).getId()).findFirst();
-        Date today = new Date();
+        SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        System.out.println(today);
 
         // Here we set some default datas to start the request
         r.setStatus_id          (status);
