@@ -15,7 +15,7 @@
     android:ems="15"
     android:inputType="textPersonName"
     android:textSize="30dp"
-    android:hint="Pesquisa Cliente"
+    android:hint="Buscar Cliente"
     android:layout_height="65dp" />
 
 <TableRow
@@ -47,8 +47,8 @@
         android:layout_gravity="left"
         android:layout_marginStart="13dp"
         android:checked="false"
-        android:paddingLeft="10dp"
-        android:text="Nome"
+        android:paddingLeft="2dp"
+        android:text="Nombre"
         android:textScaleX="1.2"
         android:textSize="14sp"
         android:thumbTextPadding="4dp" />

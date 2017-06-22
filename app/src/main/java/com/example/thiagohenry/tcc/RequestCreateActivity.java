@@ -70,12 +70,12 @@ public class RequestCreateActivity extends AppCompatActivity {
 
         Request r = realm.where(Request.class).findAll().last();
 
-        RealmQuery<Status> statusRealmQuery     = realm.where(Status.class).contains("description", "Aberto");
+        RealmQuery<Status> statusRealmQuery     = realm.where(Status.class).contains("description", "EN MARCHA");
         RealmResults<Status> statusRealmResults = statusRealmQuery.findAll();
 
         Status status   = realm.where(Status.class).equalTo("id", statusRealmResults.get(0).getId()).findFirst();
         Date today = new Date();
-        System.out.println(today);
+        System.out.println(today + " ToooooooodaaaaaAAAAAAAYYYYY");
 
         // Here we set some default datas to start the request
         r.setStatus_id          (status);

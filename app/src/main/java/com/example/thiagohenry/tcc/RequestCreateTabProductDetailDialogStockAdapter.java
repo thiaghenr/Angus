@@ -32,7 +32,7 @@ public class RequestCreateTabProductDetailDialogStockAdapter extends BaseAdapter
 
     @Override
     public int getCount() {
-        return product.getId().intValue();
+        return Integer.valueOf(product.getId().toString());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class RequestCreateTabProductDetailDialogStockAdapter extends BaseAdapter
         Realm realm = Realm.getDefaultInstance();
         final View view = act.getLayoutInflater().inflate(R.layout.request_create_tab_product_detail_dialog_list_stock, parent, false);
         System.out.println(product + " RESUUUUUUUULT PRODUCT");
-        RealmQuery<ProductStock> realmProducStock       = realm.where(ProductStock.class).equalTo("product_id.id", product.getId());
+        RealmQuery<ProductStock> realmProducStock       = realm.where(ProductStock.class).equalTo("product.id", product.getId());
         RealmResults<ProductStock> resultProductStock   = realmProducStock.findAll();
 
         System.out.println(resultProductStock + " RESUUUUUUUULT STOOOOCK");

@@ -14,7 +14,7 @@
     android:layout_width="match_parent"
     android:ems="15"
     android:inputType="textPersonName"
-    android:hint="Pesquisa Cliente"
+    android:hint="Buscar Cliente"
     android:layout_height="65dp" />
 
 

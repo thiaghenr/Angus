@@ -38,7 +38,7 @@ public class RequestCreateTabProductDetailDialogPriceAdapter extends BaseAdapter
 
     @Override
     public int getCount() {
-        return product.getId().intValue();
+        return Integer.valueOf(product.getId().toString());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class RequestCreateTabProductDetailDialogPriceAdapter extends BaseAdapter
         Realm realm = Realm.getDefaultInstance();
         final View view = act.getLayoutInflater().inflate(R.layout.request_create_tab_product_detail_dialog_list_price, parent, false);
 
-        RealmQuery<ProductPrice> realmProducPrice       = realm.where(ProductPrice.class).equalTo("product_id.id", product.getId());
+        RealmQuery<ProductPrice> realmProducPrice       = realm.where(ProductPrice.class).equalTo("product.id", product.getId());
         RealmResults<ProductPrice> resultProductPrice   = realmProducPrice.findAll();
 
         //final Product products            = product;

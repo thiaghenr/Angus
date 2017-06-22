@@ -3,10 +3,12 @@ package com.example.thiagohenry.tcc.Model;
 import android.text.method.DateTimeKeyListener;
 
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.internal.bind.DateTypeAdapter;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.LinkingObjects;
@@ -46,11 +48,11 @@ public class Customer extends RealmObject{
     @SerializedName("phone_2")
     private String              phone_2;
 
-    @SerializedName("app_id")
-    private String              app_id;
+//    @SerializedName("app_id")
+//    private String              app_id;
 
     @SerializedName("last_update")
-    private Date last_update;
+    private String last_update;
 
     // start getters and setters
     public Long getId() {
@@ -69,13 +71,13 @@ public class Customer extends RealmObject{
         this.code = code;
     }
 
-    public String getApp_id() {
-        return app_id;
-    }
-
-    public void setApp_id(String erp_id) {
-        this.app_id = app_id;
-    }
+//    public String getApp_id() {
+//        return app_id;
+//    }
+//
+//    public void setApp_id(String erp_id) {
+//        this.app_id = app_id;
+//    }
 
     public String getName() {
         return name;
@@ -133,11 +135,11 @@ public class Customer extends RealmObject{
         this.phone_2 = phone_2;
     }
 
-    public Date getLast_update() {
+    public String getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(Date last_update) {
+    public void setLast_update(String last_update) {
         this.last_update = last_update;
     }
 

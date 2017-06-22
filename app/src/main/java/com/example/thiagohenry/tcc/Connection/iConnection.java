@@ -28,8 +28,26 @@ public interface iConnection {
     //Call<Customer> getCustomer(@Path("customer") String customer);
     Call<JsonArray> getCustomer();
 
+    @GET("route/app_client_address.php")
+    Call<JsonArray> getCustomerAddress();
+
+    @GET("route/app_price.php")
+    Call<JsonArray> getPrice();
+
+    @GET("route/app_product.php")
+    Call<JsonArray> getProduct();
+
+    @GET("route/app_product_price.php")
+    Call<JsonArray> getProductPrice();
+
+    @GET("route/app_product_stock.php")
+    Call<JsonArray> getProductStock();
+
+    @GET("route/app_status.php")
+    Call<JsonArray> getStatus();
+
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://191.251.95.71:8087/Angus/")
+            .baseUrl("http://aracruz.myvnc.com:8087/angus/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

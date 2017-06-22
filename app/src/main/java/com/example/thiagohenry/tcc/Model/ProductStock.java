@@ -21,7 +21,7 @@ public class ProductStock extends RealmObject {
     private Long                id;
 
     @SerializedName("product_id")
-    private Product             product_id;
+    private Product             product;
 
     @SerializedName("branch")
     private String              branch;
@@ -30,7 +30,7 @@ public class ProductStock extends RealmObject {
     private Integer             quantity;
 
     @SerializedName("last_update")
-    private Date last_update;
+    private String last_update;
 
     // start getters and setters
     public Long getId() {
@@ -42,11 +42,11 @@ public class ProductStock extends RealmObject {
     }
 
     public Product getProduct_id() {
-        return product_id;
+        return product;
     }
 
     public void setProduct_id(Product product_id) {
-        this.product_id = product_id;
+        this.product = product_id;
     }
 
     public String getBranch() {
@@ -65,11 +65,11 @@ public class ProductStock extends RealmObject {
         this.quantity = quantity;
     }
 
-    public Date getLast_update() {
+    public String getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(Date last_update) {
+    public void setLast_update(String last_update) {
         this.last_update = last_update;
     }
 }

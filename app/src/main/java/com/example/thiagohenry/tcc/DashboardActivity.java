@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +23,12 @@ import android.widget.Toast;
 
 import com.example.thiagohenry.tcc.Connection.iConnection;
 import com.example.thiagohenry.tcc.Model.Customer;
+import com.example.thiagohenry.tcc.Model.CustomerAddress;
+import com.example.thiagohenry.tcc.Model.Price;
+import com.example.thiagohenry.tcc.Model.Product;
+import com.example.thiagohenry.tcc.Model.ProductPrice;
+import com.example.thiagohenry.tcc.Model.ProductStock;
+import com.example.thiagohenry.tcc.Model.Status;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -83,43 +90,12 @@ public class DashboardActivity extends AppCompatActivity
         sync.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                dialog = new ProgressDialog(DashboardActivity.this);
-                iConnection connection = iConnection.retrofit.create(iConnection.class);
-                dialog.setMessage("Carregando...");
-                dialog.setCancelable(false);
-                dialog.show();
-                final Call<JsonArray> call = connection.getCustomer();
-                System.out.println(call.toString() + "   CAAAAAAAAAL     .TOSTRING()");
-                call.enqueue(new Callback<JsonArray>() {
-                    @Override
-                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                        if (dialog.isShowing())
-                            dialog.dismiss();
-                        System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-                        //System.out.println(response.body()   +   "   REEEESSSPOOOONSEEE BODY");
-                        final JsonArray listaCustomer = response.body();
-
-                        //for (int i = 0; i < listaCustomer.size(); i++){
-                            Realm realm = Realm.getDefaultInstance();
-                            realm.beginTransaction();
-                            //String newCustomer = listaCustomer.get(i).toString();
-                            //System.out.println(newCustomer);
-                            realm.createAllFromJson(Customer.class, listaCustomer.toString());
-                            //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
-                            //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());
-                            //realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
-                            realm.commitTransaction();
-                            realm.close();
-                        //}
-                    }
-                    @Override
-                    public void onFailure(Call<JsonArray> call, Throwable t) {
-                        if (dialog.isShowing())
-                            dialog.dismiss();
-                        System.out.println(call);
-                        Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
-                    }
-                });
+            dialog = new ProgressDialog(DashboardActivity.this);
+            dialog.setMessage("Carregando...");
+            dialog.setCancelable(false);
+            dialog.show();
+            syncAll();
+            timerDelayRemoveDialog(1000, dialog);
             }
         });
 //
@@ -198,5 +174,195 @@ public class DashboardActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void syncAll(){
+        syncCustomer();
+        //syncCustomerAddress(); //tirar os C dos id
+        syncPrice();
+        syncProduct();
+        //syncProductPrice(); dados repetidos
+        //syncProductStock(); dados repetidos
+        syncStatus();
+    }
+
+    public void syncCustomer(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getCustomer();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listaCustomer = response.body();
+
+                //for (int i = 0; i < listaCustomer.size(); i++){
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                //String newCustomer = listaCustomer.get(i).toString();
+                //System.out.println(newCustomer);
+                realm.createAllFromJson(Customer.class, listaCustomer.toString());
+                //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
+                //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());
+                //realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
+                realm.commitTransaction();
+                realm.close();
+                //}
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncCustomerAddress(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getCustomerAddress();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listaCustomerAddress = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(CustomerAddress.class, listaCustomerAddress.toString());
+                realm.commitTransaction();
+                realm.close();
+                //}
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncPrice(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getPrice();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listPrice = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(Price.class, listPrice.toString());
+                realm.commitTransaction();
+                realm.close();
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncProduct(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getProduct();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listProduct = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(Product.class, listProduct.toString());
+                realm.commitTransaction();
+                realm.close();
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncProductPrice(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getProductPrice();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listProductPrice = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(ProductPrice.class, listProductPrice.toString());
+                realm.commitTransaction();
+                realm.close();
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncProductStock(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getProductStock();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listProductStock = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(ProductStock.class, listProductStock.toString());
+                realm.commitTransaction();
+                realm.close();
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void syncStatus(){
+        iConnection connection = iConnection.retrofit.create(iConnection.class);
+        final Call<JsonArray> call = connection.getStatus();
+        call.enqueue(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                final JsonArray listStatus = response.body();
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                realm.createAllFromJson(Status.class, listStatus.toString());
+                realm.commitTransaction();
+                realm.close();
+            }
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if (dialog.isShowing())
+                    dialog.dismiss();
+                System.out.println(call);
+                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void timerDelayRemoveDialog(long time, final ProgressDialog d){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+            d.dismiss();
+            Toast.makeText(getBaseContext(), "Sincronizacíon Efetuada com Sucesso", Toast.LENGTH_LONG).show();
+            }
+        }, time);
     }
 }

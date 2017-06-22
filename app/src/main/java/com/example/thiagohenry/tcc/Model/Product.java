@@ -33,26 +33,26 @@ public class Product extends RealmObject{
     private String      unity;
 
     @SerializedName("last_update")
-    private Date        last_update;
+    private String        last_update;
 
     @SerializedName("mark")
     private String      mark;
 
-    @SerializedName("app_id")
-    private String      app_id;
+//    @SerializedName("app_id")
+//    private String      app_id;
 
     // start getters and setters
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getApp_id() {
-        return app_id;
-    }
-
-    public void setApp_id(String app_id) {
-        this.app_id = app_id;
-    }
+//    public String getApp_id() {
+//        return app_id;
+//    }
+//
+//    public void setApp_id(String app_id) {
+//        this.app_id = app_id;
+//    }
 
     public String getName() {
         return name;
@@ -86,11 +86,11 @@ public class Product extends RealmObject{
         this.unity = unity;
     }
 
-    public Date getLast_update() {
+    public String getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(Date last_update) {
+    public void setLast_update(String last_update) {
         this.last_update = last_update;
     }
 

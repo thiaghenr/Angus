@@ -20,6 +20,7 @@ public class ConfigRealm extends Application{
         // creation of the Realm configuration
         RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(config);
+        Realm.deleteRealm(config);
 
 //        // Example migration adding a new class
 //        RealmMigration migration = new RealmMigration() {

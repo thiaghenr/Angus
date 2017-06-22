@@ -18,8 +18,8 @@ public class CustomerAddress extends RealmObject{
     @PrimaryKey
     private Long       id;
 
-    @SerializedName("customer_id")
-    private Customer   customer_id;
+    @SerializedName("customer")
+    private Customer   customer;
 
     @SerializedName("street")
     private String     street;
@@ -43,22 +43,22 @@ public class CustomerAddress extends RealmObject{
     private String     type;
 
     @SerializedName("last_update")
-    private Date last_update;
+    private String last_update;
 
-    @SerializedName("app_id")
-    private String     app_id;
+//    @SerializedName("app_id")
+//    private String     app_id;
 
     // start getters and setters
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Customer getCustomer_id() {
-        return customer_id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomer_id(Customer Customer_id) {
-        this.customer_id = Customer_id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Integer getNumber() {
@@ -121,19 +121,19 @@ public class CustomerAddress extends RealmObject{
         return id;
     }
 
-    public Date getLast_update() {
+    public String getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(Date last_update) {
+    public void setLast_update(String last_update) {
         this.last_update = last_update;
     }
 
-    public String getApp_id() {
-        return app_id;
-    }
-
-    public void setApp_id(String app_id) {
-        this.app_id = app_id;
-    }
+//    public String getApp_id() {
+//        return app_id;
+//    }
+//
+//    public void setApp_id(String app_id) {
+//        this.app_id = app_id;
+//    }
 }
