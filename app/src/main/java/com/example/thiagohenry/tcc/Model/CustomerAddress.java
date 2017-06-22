@@ -2,8 +2,7 @@ package com.example.thiagohenry.tcc.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
@@ -44,7 +43,7 @@ public class CustomerAddress extends RealmObject{
     private String     type;
 
     @SerializedName("last_update")
-    private DateFormat last_update;
+    private Date last_update;
 
     @SerializedName("app_id")
     private String     app_id;
@@ -122,11 +121,11 @@ public class CustomerAddress extends RealmObject{
         return id;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 

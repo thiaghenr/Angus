@@ -34,7 +34,7 @@ public class Request extends RealmObject{
     private String              currency;
 
     @SerializedName("due_date")
-    private DateFormat                due_date;
+    private Date                due_date;
 
     @SerializedName("observation")
     private String              observation;
@@ -43,7 +43,7 @@ public class Request extends RealmObject{
     private Double              value_total;
 
     @SerializedName("last_update")
-    private DateFormat    last_update;
+    private Date    last_update;
 
     @SerializedName("user_id")
     private User                user_id;
@@ -84,11 +84,11 @@ public class Request extends RealmObject{
         this.currency = currency;
     }
 
-    public DateFormat getDue_date() {
+    public Date getDue_date() {
         return due_date;
     }
 
-    public void setDue_date(DateFormat due_date) {
+    public void setDue_date(Date due_date) {
         this.due_date = due_date;
     }
 
@@ -116,11 +116,11 @@ public class Request extends RealmObject{
         this.app_id = app_id;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 

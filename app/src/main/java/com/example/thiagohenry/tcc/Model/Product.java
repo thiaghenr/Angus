@@ -33,7 +33,7 @@ public class Product extends RealmObject{
     private String      unity;
 
     @SerializedName("last_update")
-    private DateFormat        last_update;
+    private Date        last_update;
 
     @SerializedName("mark")
     private String      mark;
@@ -86,11 +86,11 @@ public class Product extends RealmObject{
         this.unity = unity;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 

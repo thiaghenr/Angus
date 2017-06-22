@@ -30,6 +30,7 @@ public class RequestCreateTabCart extends Fragment{
     public static TextView total_invoice;
     private static Context context;
     private static Activity act;
+    public static Double total;
     public static ArrayList<RequestItem> listItems    = new ArrayList<>();
 
     @Nullable
@@ -39,15 +40,15 @@ public class RequestCreateTabCart extends Fragment{
         this.mView  = view;
         context     = this.getContext();
         act         = this.getActivity();
-        total_invoice = (TextView) view.findViewById(R.id.request_total_value);
         return view;
     }
 
 
 
-    public static void calcRequestTotalValueInvoice(Double current_total){
-        total_invoice.setText(current_total.toString());
-    }
+//    public static void calcRequestTotalValueInvoice(Double current_total){
+//        System.out.println(current_total + "   CUUUUURRREEEENT");
+//        total_invoice.setText(current_total.toString());
+//    }
 
     public static void removeRequestItem(RequestItem requestItem){
         // First we remove item from list
@@ -79,10 +80,12 @@ public class RequestCreateTabCart extends Fragment{
         Realm realm = Realm.getDefaultInstance();
         // Here we don't begin a new transaction because apparently the function pull the transaction where the function is called
         Request request = realm.where(Request.class).findAll().last();
-        Double total    = request.getValue_total();
+
+        total           = request.getValue_total();
         total           = total - requestItem.getValue_total();
+
         request.setValue_total(total);
-        calcRequestTotalValueInvoice(total);
+        //calcRequestTotalValueInvoice(total);
         realm.insertOrUpdate(request);
         realm.close();
     }

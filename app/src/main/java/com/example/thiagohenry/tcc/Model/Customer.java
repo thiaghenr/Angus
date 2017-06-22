@@ -50,7 +50,7 @@ public class Customer extends RealmObject{
     private String              app_id;
 
     @SerializedName("last_update")
-    private DateFormat last_update;
+    private Date last_update;
 
     // start getters and setters
     public Long getId() {
@@ -133,11 +133,11 @@ public class Customer extends RealmObject{
         this.phone_2 = phone_2;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 

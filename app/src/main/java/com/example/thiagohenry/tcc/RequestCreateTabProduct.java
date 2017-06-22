@@ -257,7 +257,7 @@ public class RequestCreateTabProduct extends Fragment{
         total += requestItem.getValue_total();
         request.setValue_total(total);
 
-        RequestCreateTabCart.calcRequestTotalValueInvoice(total);
+        //RequestCreateTabCart.calcRequestTotalValueInvoice(total);
 
         realm.insertOrUpdate(request);
         realm.commitTransaction();

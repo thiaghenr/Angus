@@ -8,7 +8,7 @@
         android:layout_width="259dp"
         android:layout_height="wrap_content"
         android:textColor="?attr/colorPrimary"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textStyle="italic" />
 
     <View
@@ -22,8 +22,63 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="40dp"
+        android:text="Cantidad"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/product_selected_added_qty"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/packag"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="?attr/actionMenuTextColor"
+        android:paddingTop="40dp"
+        android:textSize="20dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/separator_list_product_cart_2"
+        android:layout_below="@+id/remove_selected_product"
+        android:background="@android:color/transparent"
+        ></View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="70dp"
+        android:text="Precio"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/product_selected_added_price"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/packag"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:textColor="?attr/actionMenuTextColor"
+        android:paddingTop="70dp"
+        android:textSize="20dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/separator_list_product_cart_3"
+        android:layout_below="@+id/remove_selected_product"
+        android:background="@android:color/transparent"
+        ></View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingTop="100dp"
-        android:text="Precio "/>
+        android:text="Total"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/product_selected_added_final_price"
@@ -34,8 +89,8 @@
         android:layout_alignParentRight="true"
         android:textColor="?attr/colorPrimary"
         android:paddingTop="100dp"
-        android:textSize="20dp"
-        android:textStyle="italic" />
+        android:textSize="30dp"
+        android:textStyle="italic"/>
 
     <ImageButton
         android:id="@+id/remove_selected_product"
@@ -47,7 +102,6 @@
         android:layout_alignRight="@+id/product_selected_added_final_price"
         android:layout_marginEnd="50dp"
         android:src="@drawable/icon_remove_product"
-        android:background="@drawable/button_one_more_product"
-        android:text="Add" />
+        android:background="@drawable/button_one_more_product"/>
 
 </RelativeLayout>

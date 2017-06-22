@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thiagohenry.tcc.Model.Request;
@@ -27,13 +28,17 @@ import io.realm.RealmQuery;
 
 public class RequestCreateTabDelivery extends Fragment{
     private static final String TAG = "RequestCreateTabDelivery";
+    public static TextView total_request_value;;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
+        total_request_value = (TextView) view.findViewById(R.id.request_total_value);
+
         finishSale(view);
         populateSpinnerCondicao(view);
         populateSpinnerFatura(view);
+        setTotalRequestValue();
         return view;
     }
 
@@ -92,5 +97,20 @@ public class RequestCreateTabDelivery extends Fragment{
             getActivity().finish();
             }
         }, time);
+    }
+
+    public void setTotalRequestValue(){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Request request = realm.where(Request.class).findAll().last();
+        total_request_value.setText(request.getValue_total().toString());
+        realm.commitTransaction();
+        realm.close();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setTotalRequestValue();
     }
 }

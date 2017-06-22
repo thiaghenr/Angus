@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Product;
@@ -32,6 +33,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
     private final List<Product> productss;
     private final Activity act;
     private ImageButton add_prod;
+    public static EditText    price;
 
     public RequestCreateTabProductAdapter(Context context, List<Product> productss, Activity act) {
         this.context = context;
@@ -87,7 +89,7 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
             dialog.setTitle("Elija el precio y el valor ...");
 
             final EditText    qty    = (EditText)     dialog.findViewById(R.id.quantity_product_selected);
-            final EditText    price  = (EditText)     dialog.findViewById(R.id.price_product_selected);
+                              price  = (EditText)     dialog.findViewById(R.id.price_product_selected);
 
             Button add_product_dialog = (Button) dialog.findViewById(R.id.add_product_dialog);
             // if button is clicked, close the custom dialog
@@ -114,25 +116,23 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.request_create_tab_product_detail_dialog);
                 dialog.setTitle("Title...");
-
+                Product p = productss.get(position);
+                System.out.println(p + " ppppppppppppppppppppppppppppppppppppppppppppppppp");
                 // set the custom dialog components - text, image and button
-                TextView qty = (TextView) dialog.findViewById(R.id.quantity_product);
-                final TextView price = (TextView) dialog.findViewById(R.id.price_product);
+                TextView product_selected_in_detail_dialog                          = (TextView) dialog.findViewById(R.id.product_selected_in_detail_dialog);
+                TextView brand_product_selected_in_detail_dialog                    = (TextView) dialog.findViewById(R.id.brand_product_selected_in_detail_dialog);
 
-                qty.setText(qty.getText());
-                price.setText("222222");
+                ListView ProductsPriceList                                          = (ListView) dialog.findViewById(R.id.price_selected_in_detail_dialog);
+                ListView ProductsStockList                                          = (ListView) dialog.findViewById(R.id.stock_selected_in_detail_dialog);
 
-                Button dialogButton = (Button) dialog.findViewById(R.id.add_product_dialog);
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //RequestCreateTabProduct.newRequestItem(products);
-                        //new_item.newRequestItem(products);
+                RequestCreateTabProductDetailDialogPriceAdapter adapterPrice        = new RequestCreateTabProductDetailDialogPriceAdapter(p, act);
+                RequestCreateTabProductDetailDialogStockAdapter adapterStock        = new RequestCreateTabProductDetailDialogStockAdapter(p, act);
 
-                        dialog.dismiss();
-                    }
-                });
+                ProductsPriceList.setAdapter(adapterPrice);
+                ProductsStockList.setAdapter(adapterStock);
+
+                product_selected_in_detail_dialog.setText(products.getName());
+                brand_product_selected_in_detail_dialog.setText(products.getMark());
 
                 dialog.show();
             }

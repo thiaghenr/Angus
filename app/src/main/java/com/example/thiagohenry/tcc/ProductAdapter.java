@@ -86,11 +86,11 @@ public class ProductAdapter extends BaseAdapter{
                 dialog.setTitle("Title...");
 
                 // set the custom dialog components - text, image and button
-                TextView qty            = (TextView) dialog.findViewById(R.id.quantity_product);
+                //TextView qty            = (TextView) dialog.findViewById(R.id.quantity_product);
                 final TextView price    = (TextView) dialog.findViewById(R.id.price_product);
                 Button dialogButton     = (Button)   dialog.findViewById(R.id.add_product_dialog);
 
-                qty.setText("Android custom dialog example!");
+                //qty.setText("Android custom dialog example!");
                 price.setText("222222");
 
                 // if button is clicked, close the custom dialog

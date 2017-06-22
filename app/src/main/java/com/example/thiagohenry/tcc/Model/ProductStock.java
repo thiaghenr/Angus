@@ -30,7 +30,7 @@ public class ProductStock extends RealmObject {
     private Integer             quantity;
 
     @SerializedName("last_update")
-    private DateFormat last_update;
+    private Date last_update;
 
     // start getters and setters
     public Long getId() {
@@ -65,11 +65,11 @@ public class ProductStock extends RealmObject {
         this.quantity = quantity;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 }

@@ -23,7 +23,7 @@ public class Price extends RealmObject {
     private String          name;
 
     @SerializedName("last_update")
-    private DateFormat last_update;
+    private Date last_update;
 
     // start getters and setters
     public Long getId() {
@@ -42,11 +42,11 @@ public class Price extends RealmObject {
         this.name = name;
     }
 
-    public DateFormat getLast_update() {
+    public Date getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(DateFormat last_update) {
+    public void setLast_update(Date last_update) {
         this.last_update = last_update;
     }
 }

@@ -85,7 +85,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onClick(View v) {
                 dialog = new ProgressDialog(DashboardActivity.this);
                 iConnection connection = iConnection.retrofit.create(iConnection.class);
-                System.out.println(connection);
                 dialog.setMessage("Carregando...");
                 dialog.setCancelable(false);
                 dialog.show();

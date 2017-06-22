@@ -1,37 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="600dp"
+    android:minHeight="600dp"
     android:orientation="vertical"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/product_selected"
+        android:id="@+id/product_selected_in_detail_dialog"
+        />
+
+    <ListView
+        android:id="@+id/price_selected_in_detail_dialog"
+        android:layout_width="wrap_content"
+        android:divider="#ECECEC"
+        android:dividerHeight="3sp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/quantity_selected_in_detail_dialog"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/separator_list_product_cart_3"
+        android:layout_below="@+id/price_selected_in_detail_dialog"
+        android:background="@android:color/transparent"
+        ></View>
+
+    <ListView
+        android:id="@+id/stock_selected_in_detail_dialog"
+        android:layout_width="wrap_content"
+        android:divider="#ECECEC"
+        android:dividerHeight="3sp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/row_filters"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/separator_list_product_cart_4"
+        android:layout_below="@+id/stock_selected_in_detail_dialog"
+        android:background="@android:color/transparent"
+        ></View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brand_selected_in_detail_dialog"
+        android:text="Marca: "
         />
 
     <TextView
-        android:id="@+id/quantity_product"
+        android:id="@+id/brand_product_selected_in_detail_dialog"
         android:layout_width="match_parent"
         android:ems="15"
-        android:layout_below="@+id/product_selected"
+        android:layout_alignRight="@+id/brand_selected_in_detail_dialog"
         android:inputType="number"
         android:textSize="30dp"
         android:hint="quantity"
         android:layout_height="65dp" />
-
-    <TextView
-        android:id="@+id/price_product"
-        android:layout_width="match_parent"
-        android:ems="15"
-        android:layout_below="@+id/quantity_product"
-        android:inputType="number"
-        android:textSize="30dp"
-        android:hint="price"
-        android:layout_height="65dp" />
-
-
 
     <Button
         android:layout_width="wrap_content"

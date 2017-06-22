@@ -10,24 +10,10 @@
     android:showDividers="middle">
 
     <TextView
-        android:layout_height="40dp"
-        android:layout_width="match_parent"
-        android:text=""
-        android:textSize="15dp"
-        android:textColor="@android:color/black"
-        android:height="@dimen/activity_vertical_margin"
-        android:elegantTextHeight="true"
-        android:textStyle="bold"
-        android:gravity="right"
-        android:layout_marginRight="1dp"
-        android:scrollHorizontally="true" />
-
-
-    <TextView
         android:id="@+id/end_entrega"
         android:layout_height="40dp"
         android:layout_width="wrap_content"
-        android:text="Endereço de Entrega"
+        android:text="Direccióm de Entrega"
         android:textSize="20dp"
         android:layout_gravity=""
         android:textColor="@android:color/black"
@@ -35,11 +21,11 @@
         android:elegantTextHeight="true"
         android:scrollHorizontally="true"/>
 
-    <TextView
+    <EditText
         android:id="@+id/end_entrega_cliente"
-        android:layout_height="75dp"
-        android:layout_width="230dp"
-        android:textSize="20dp"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:textSize="15dp"
         android:layout_gravity=""
         android:textColor="@android:color/black"
         android:height="@dimen/activity_vertical_margin"
@@ -50,7 +36,7 @@
     <TextView
         android:layout_height="50dp"
         android:layout_width="wrap_content"
-        android:text="Previsão"
+        android:text="Observación"
         android:textSize="25dp"
         android:textColor="@android:color/black"
         android:height="@dimen/activity_vertical_margin"
@@ -58,18 +44,16 @@
         android:textStyle="bold"
         android:scrollHorizontally="true" />
 
-    <TextView
-        android:layout_height="40dp"
+    <EditText
+        android:id="@+id/obs_cliente"
+        android:layout_height="50dp"
         android:layout_width="match_parent"
-        android:text=""
         android:textSize="15dp"
+        android:layout_gravity=""
         android:textColor="@android:color/black"
         android:height="@dimen/activity_vertical_margin"
         android:elegantTextHeight="true"
-        android:textStyle="bold"
-        android:gravity="right"
-        android:layout_marginRight="1dp"
-        android:scrollHorizontally="true" />
+        android:scrollHorizontally="true"/>
 
     <TableRow
         android:id="@+id/row_condicao"
