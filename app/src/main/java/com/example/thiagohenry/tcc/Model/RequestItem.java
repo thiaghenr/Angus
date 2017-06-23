@@ -22,8 +22,8 @@ public class RequestItem extends RealmObject{
     @SerializedName("request_id")
     private Request     request_id;
 
-    @SerializedName("product_id")
-    private Product     product_id;
+    @SerializedName("product")
+    private Product     product;
 
     @SerializedName("quantity")
     private Double      quantity;
@@ -48,12 +48,12 @@ public class RequestItem extends RealmObject{
         this.request_id = request_id;
     }
 
-    public Product getProduct_id() {
-        return product_id;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduct_id(Product product_id) {
-        this.product_id = product_id;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Double getQuantity() {

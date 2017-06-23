@@ -75,7 +75,6 @@ public class RequestCreateActivity extends AppCompatActivity {
 
         Status status   = realm.where(Status.class).equalTo("id", statusRealmResults.get(0).getId()).findFirst();
         Date today = new Date();
-        System.out.println(today + " ToooooooodaaaaaAAAAAAAYYYYY");
 
         // Here we set some default datas to start the request
         r.setStatus_id          (status);

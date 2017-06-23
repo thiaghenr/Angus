@@ -20,11 +20,11 @@ public class ProductPrice extends RealmObject {
     @PrimaryKey
     private Long                id;
 
-    @SerializedName("product_id")
-    private Product             product_id;
+    @SerializedName("product")
+    private Product             product;
 
-    @SerializedName("price_id")
-    private Price               price_id;
+    @SerializedName("price")
+    private Price               price;
 
     @SerializedName("currency")
     private String              currency;
@@ -44,20 +44,20 @@ public class ProductPrice extends RealmObject {
         this.id = id;
     }
 
-    public Product getProduct_id() {
-        return product_id;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduct_id(Product product_id) {
-        this.product_id = product_id;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Price getPrice_id() {
-        return price_id;
+    public Price getPrice() {
+        return price;
     }
 
-    public void setPrice_id(Price price_id) {
-        this.price_id = price_id;
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     public String getCurrency() {

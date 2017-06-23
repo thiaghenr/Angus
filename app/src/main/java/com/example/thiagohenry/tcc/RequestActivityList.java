@@ -34,12 +34,14 @@ import io.realm.RealmResults;
  */
 
 public class RequestActivityList extends AppCompatActivity{
-    private AppCompatActivity act;
+    private Activity act;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.request_list);
+        act = this;
+        loadRequests();
     }
 
     @Override
@@ -57,8 +59,6 @@ public class RequestActivityList extends AppCompatActivity{
             }
         });
 
-        loadRequests();
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -71,28 +71,28 @@ public class RequestActivityList extends AppCompatActivity{
 
         filter_by_status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
-                    filter_by_customer.setChecked(false);
-                    filter_by_value.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_customer.setChecked(false);
+                filter_by_value.setChecked(false);
+            }
             }
         });
 
         filter_by_customer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_status.setChecked(false);
-                    filter_by_value.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_status.setChecked(false);
+                filter_by_value.setChecked(false);
+            }
             }
         });
 
         filter_by_value.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_status.setChecked(false);
-                    filter_by_customer.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_status.setChecked(false);
+                filter_by_customer.setChecked(false);
+            }
             }
         });
 
@@ -122,34 +122,22 @@ public class RequestActivityList extends AppCompatActivity{
                     RequestAdapter adapter  = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
                 }
-//                else if (filter_by_value.isChecked() == true){
-//                    Realm realm                 = Realm.getDefaultInstance();
-//                    RealmQuery<Customer> query  = realm.where(Customer.class);
-//
-//                    query.contains("phone_1", String.valueOf(search.getText()));
-//                    final RealmResults<Customer> result1 = query.findAll();
-//                    final ListView ListCustomers = (ListView) view.findViewById(R.id.customer_list);
-//
-//                    RequestCreateTabCustomerAdapter adapter = new RequestCreateTabCustomerAdapter(result1, getActivity());
-//                    ListCustomers.setAdapter(adapter);
-//
-//                    ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-//                            Intent act_cust = new Intent(getActivity(), RequestCreateActivity.class);
-//                            Bundle bundle = new Bundle();
-//                            bundle.putLong("id", result1.get(position).getId());
-//                            bundle.putString("fragment", "customer");
-//                            act_cust.putExtras(bundle);
-//                            startActivity(act_cust);
-//                        }
-//                    });
-//                }
+                else if (filter_by_value.isChecked() == true){
+                    Realm realm                             = Realm.getDefaultInstance();
+                    RealmQuery<Request> requestRealmQuery   = realm.where(Request.class);
+
+                    requestRealmQuery.equalTo("value_total", Double.parseDouble(search.getText().toString()));
+
+                    final RealmResults<Request> requestRealmResults = requestRealmQuery.findAll();
+                    final ListView ListRequest                      = (ListView) findViewById(R.id.request_list);
+
+                    RequestAdapter adapter  = new RequestAdapter(requestRealmResults, act);
+                    ListRequest.setAdapter(adapter);
+                }
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // TODO Auto-generated method stub
                 //Toast.makeText(act, "beforechanged", Toast.LENGTH_SHORT).show();
             }
@@ -162,4 +150,9 @@ public class RequestActivityList extends AppCompatActivity{
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadRequests();
+    }
 }

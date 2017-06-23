@@ -38,9 +38,9 @@
             android:layout_marginStart="13dp"
             android:checked="true"
             android:paddingLeft="10dp"
-            android:text="Nome"
+            android:text="Nombre"
             android:textScaleX="1.2"
-            android:textSize="13dp" />
+            android:textSize="12dp" />
 
         <Switch
             android:id="@+id/filter_by_brand"

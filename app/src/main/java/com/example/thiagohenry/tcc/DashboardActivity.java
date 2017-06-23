@@ -211,7 +211,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -235,7 +234,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -258,7 +256,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -281,7 +278,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -304,7 +300,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -327,7 +322,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });
@@ -350,7 +344,6 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                System.out.println(call);
                 Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
             }
         });

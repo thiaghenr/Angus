@@ -20,7 +20,7 @@ public class ProductStock extends RealmObject {
     @PrimaryKey
     private Long                id;
 
-    @SerializedName("product_id")
+    @SerializedName("product")
     private Product             product;
 
     @SerializedName("branch")
@@ -41,12 +41,12 @@ public class ProductStock extends RealmObject {
         this.id = id;
     }
 
-    public Product getProduct_id() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct_id(Product product_id) {
-        this.product = product_id;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public String getBranch() {

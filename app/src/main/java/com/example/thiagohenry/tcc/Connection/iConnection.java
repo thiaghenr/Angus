@@ -46,6 +46,9 @@ public interface iConnection {
     @GET("route/app_status.php")
     Call<JsonArray> getStatus();
 
+    @GET("route/app_user.php")
+    Call<JsonArray> getUsers();
+
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://aracruz.myvnc.com:8087/angus/")
             .addConverterFactory(GsonConverterFactory.create())

@@ -208,7 +208,7 @@ public class RequestCreateTabProduct extends Fragment{
 
         Product requestProduct   = realm.where(Product.class).equalTo("id", p_id.get(0).getId()).findFirst();
         // Build the object requestItem
-        requestItem.setProduct_id(requestProduct);
+        requestItem.setProduct(requestProduct);
         requestItem.setRequest_id(request);
         requestItem.setQuantity(Double.parseDouble(qty));
         requestItem.setValue_total(total);

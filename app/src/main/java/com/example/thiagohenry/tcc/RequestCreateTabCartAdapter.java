@@ -45,13 +45,13 @@ public class RequestCreateTabCartAdapter extends BaseAdapter {
         final View view                     =  LayoutInflater.from(parent.getContext()).inflate(R.layout.request_create_tab_cart_by_line, parent, false);
         final RequestItem request_item      = requestItem.get(position);
 
-        final TextView product_selected     = (TextView) view.findViewById(R.id.product_selectec_added);
-        final TextView qty_setted           = (TextView) view.findViewById(R.id.product_selected_added_qty);
-        final TextView price_setted         = (TextView) view.findViewById(R.id.product_selected_added_price);
-        final TextView product_final_price  = (TextView) view.findViewById(R.id.product_selected_added_final_price);
-        final ImageButton remove_item       = (ImageButton)   view.findViewById(R.id.remove_selected_product);
+        final TextView product_selected     = (TextView)        view.findViewById(R.id.product_selectec_added);
+        final TextView qty_setted           = (TextView)        view.findViewById(R.id.product_selected_added_qty);
+        final TextView price_setted         = (TextView)        view.findViewById(R.id.product_selected_added_price);
+        final TextView product_final_price  = (TextView)        view.findViewById(R.id.product_selected_added_final_price);
+        final ImageButton remove_item       = (ImageButton)     view.findViewById(R.id.remove_selected_product);
 
-        product_selected.       setText(request_item.getProduct_id().getName());
+        product_selected.       setText(request_item.getProduct().getName());
         qty_setted.             setText(request_item.getQuantity().toString());
         price_setted.           setText(RequestCreateTabProductAdapter.price.getText());
         product_final_price.    setText(String.valueOf(request_item.getValue_total()));
@@ -60,12 +60,9 @@ public class RequestCreateTabCartAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // Calling the function that remove a product of the shopping cart
-                System.out.println(request_item + "     ONNN SELECTEEEEEED");
                 RequestCreateTabCart.removeRequestItem(request_item);
             }
         });
-
-
         return view;
     }
 }

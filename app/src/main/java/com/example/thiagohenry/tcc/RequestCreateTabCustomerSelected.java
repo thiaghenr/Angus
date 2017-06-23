@@ -54,7 +54,7 @@ public class RequestCreateTabCustomerSelected extends BaseAdapter {
         RealmQuery<Customer> query      = realm.where(Customer.class).equalTo("id", customer.getId());
         RealmResults<Customer> c        = query.findAll();
         // and here we build the "query" ("query" because in realm there's no join) to find the address by customer
-        CustomerAddress customerAddress = realm.where(CustomerAddress.class).equalTo("customer_id.id", c.get(position).getId()).findFirst();
+        CustomerAddress customerAddress = realm.where(CustomerAddress.class).equalTo("customer.id", c.get(position).getId()).findFirst();
 
         TextView code           = (TextView) view.findViewById(R.id.code);
         TextView name           = (TextView) view.findViewById(R.id.name);
@@ -69,11 +69,10 @@ public class RequestCreateTabCustomerSelected extends BaseAdapter {
         name.setText            (                 customer.getName());
         fantasy_name.setText    (                 customer.getFantasy_name());
         phone.setText           ("Telefone: "   + customer.getPhone_1());
-        street_name.setText     ("Calle : "     + customerAddress.getStreet());
-        block.setText           ("Barrio: "     + customerAddress.getBlock());
-        city.setText            ("Ciudad: "     + customerAddress.getCity());
-        country.setText         ("País: "       + customerAddress.getCountry());
-
+        street_name.setText     ("Calle :   "   + customerAddress.getStreet());
+        block.setText           ("Barrio:   "   + customerAddress.getBlock());
+        city.setText            ("Ciudad:   "   + customerAddress.getCity());
+        country.setText         ("País:     "   + customerAddress.getCountry());
 
         return view;
     }

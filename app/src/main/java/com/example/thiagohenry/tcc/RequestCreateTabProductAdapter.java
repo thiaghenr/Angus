@@ -117,7 +117,6 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
                 dialog.setContentView(R.layout.request_create_tab_product_detail_dialog);
                 dialog.setTitle("Title...");
                 Product p = productss.get(position);
-                System.out.println(p + " ppppppppppppppppppppppppppppppppppppppppppppppppp");
                 // set the custom dialog components - text, image and button
                 TextView product_selected_in_detail_dialog                          = (TextView) dialog.findViewById(R.id.product_selected_in_detail_dialog);
                 TextView brand_product_selected_in_detail_dialog                    = (TextView) dialog.findViewById(R.id.brand_product_selected_in_detail_dialog);
