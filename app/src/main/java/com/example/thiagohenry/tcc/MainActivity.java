@@ -34,93 +34,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Realm realm = Realm.getDefaultInstance();
-//        realm.executeTransaction(new Realm.Transaction() {
-//            @Override
-//            public void execute(Realm realm) {
-//                realm.beginTransaction();
-//                //User
-//                User user = realm.createObject(User.class);
-//                user.setId((long) 10.0);
-//                user.setName("John");
-//                user.setLastName("malkovich");
-//                user.setUsername("4");
-//                user.setPassword("4");
-//
-//                // Customer
-//                Customer customer = realm.createObject(Customer.class);
-//                customer.setId((long) 2);
-//                customer.setCode("2");
-//                customer.setFantasy_name("fantasy name");
-//                customer.setName("Jooseeee");
-//                customer.setCurrency("U$");
-//                customer.setEmail("j@gmail.com");
-//                customer.setPhone_1("3333-3333");
-//                customer.setPhone_2("5555-5555");
-//                customer.setRuc("2222");
-//
-//                // CUSTOMER ADdress
-//                CustomerAddress customerAddress = realm.createObject(CustomerAddress.class);
-//                customerAddress.setId((long) 2);
-//                customerAddress.setCustomer(customer);
-//                customerAddress.setStreet("Rua Taruma");
-//                customerAddress.setBlock("Centro");
-//                customerAddress.setCity("Foz");
-//                customerAddress.setState("Parana");
-//                customerAddress.setCountry("Brasil");
-//
-//                // Price
-//                Price price = realm.createObject(Price.class);
-//                price.setId((long) 3);
-//                price.setName("preço 1");
-//
-//                //Product
-//                Product product = realm.createObject(Product.class);
-//                product.setId((long) 3);
-//                product.setName("Porta sanfonada p");
-//                product.setDescription("porta sanfonada de plastico");
-//                product.setCategory("Porta");
-//                product.setMark("PortasBoas");
-//                product.setUnity("UN");
-//
-//                //Product Price
-//                ProductPrice productPrice = realm.createObject(ProductPrice.class);
-//                productPrice.setId((long) 3);
-//                productPrice.setProduct(product);
-//                productPrice.setPrice(price);
-//                productPrice.setCurrency("U$");
-//                productPrice.setValue((double)1000);
-//
-//                // Product Stock
-//                ProductStock productStock = realm.createObject(ProductStock.class);
-//                productStock.setId((long) 2);
-//                productStock.setProduct(product);
-//                productStock.setBranch("CDE");
-//                productStock.setQuantity(1000);
-//
-//                Status status = realm.createObject(Status.class);
-//                status.setId((long) 1);
-//                status.setDescription("EN MARCHA");
-//
-//                Status status2 = realm.createObject(Status.class);
-//                status.setId((long) 2);
-//                status.setDescription("");
-//
-//                realm.insert(user);
-//                realm.insert(customer);
-//                realm.insert(customerAddress);
-//                realm.insert(price);
-//                realm.insert(product);
-//                realm.insert(productPrice);
-//                realm.insert(productStock);
-//                realm.insert(status);
-//                realm.insert(status2);
-//
-//                realm.commitTransaction();
-//                realm.close();
-//            }
-//        });
-
         final EditText username = (EditText)  findViewById(R.id.username);
         final EditText password = (EditText)  findViewById(R.id.password);
         final Button login      = (Button)    findViewById(R.id.btn_login);
@@ -134,9 +47,9 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-            checkUser(username.getText().toString(), password.getText().toString());
-//                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
-//                startActivity(act_dash);
+            //checkUser(username.getText().toString(), password.getText().toString());
+                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
+                startActivity(act_dash);
                 //checkUser(username.getText().toString(), password.getText().toString());
             }
         });

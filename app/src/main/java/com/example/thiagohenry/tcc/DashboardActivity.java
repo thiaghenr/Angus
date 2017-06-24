@@ -178,11 +178,11 @@ public class DashboardActivity extends AppCompatActivity
 
     public void syncAll(){
         syncCustomer();
-        //syncCustomerAddress(); //tirar os C dos id
+        syncCustomerAddress(); //tirar os C dos id
         syncPrice();
         syncProduct();
-        //syncProductPrice(); dados repetidos
-        //syncProductStock(); dados repetidos
+        syncProductPrice(); //dados repetidos
+        syncProductStock(); //dados repetidos
         syncStatus();
     }
 
