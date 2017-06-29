@@ -66,7 +66,7 @@ public class RequestCreateTabDelivery extends Fragment{
             realm.beginTransaction();
             Request request = realm.where(Request.class).findAll().last();
 
-            Status status   = realm.where(Status.class).equalTo("description", "NO PAGO").findFirst();
+            Status status   = realm.where(Status.class).equalTo("description", "NO PAGADO").findFirst();
             request.setStatus_id(status);
 
             Customer customer = request.getCustomer_id();
@@ -78,13 +78,13 @@ public class RequestCreateTabDelivery extends Fragment{
 //                realm.close();
             }
 
-            RealmResults<RequestItem> requestItem = realm.where(RequestItem.class).equalTo("request_id.id", request.getId()).findAll();
-            if (requestItem == null){
-                Toast.makeText(getContext(), "Por favor elija un producto", Toast.LENGTH_LONG).show();
-
-                view.inflate(getContext(), R.layout.request_create_tab_product, null);
-                onStop();
-            }
+//            RealmResults<RequestItem> requestItem = realm.where(RequestItem.class).equalTo("request_id.id", request.getId()).findAll();
+//            if (requestItem == null){
+//                Toast.makeText(getContext(), "Por favor elija un producto", Toast.LENGTH_LONG).show();
+//
+//                view.inflate(getContext(), R.layout.request_create_tab_product, null);
+//                onStop();
+//            }
 
             realm.insertOrUpdate(request);
             realm.commitTransaction();

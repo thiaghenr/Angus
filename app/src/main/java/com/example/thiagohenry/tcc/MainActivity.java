@@ -39,17 +39,17 @@ public class MainActivity extends AppCompatActivity{
         final Button login      = (Button)    findViewById(R.id.btn_login);
 
 
-//        if(ConnectionVerify() == true) {
-//            syncUser();
-//        }
+        if(ConnectionVerify() == true) {
+            syncUser();
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-            //checkUser(username.getText().toString(), password.getText().toString());
-                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
-                startActivity(act_dash);
+            checkUser(username.getText().toString(), password.getText().toString());
+//                Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
+//                startActivity(act_dash);
                 //checkUser(username.getText().toString(), password.getText().toString());
             }
         });
@@ -77,10 +77,11 @@ public class MainActivity extends AppCompatActivity{
         call.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                System.out.println("SUCEEEEEEESSOOOOOOOOOOOOOOOOOOO");
                 final JsonArray listaUsers = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(User.class, listaUsers.toString());
+                realm.createOrUpdateAllFromJson(User.class, listaUsers.toString());
                 realm.commitTransaction();
                 realm.close();
             }
