@@ -53,30 +53,20 @@ public class CustomerAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        // In this function we build the line with the details of the customer
         View view = act.getLayoutInflater().inflate(R.layout.customer_list_custom_by_line, parent, false);
 
         Customer customer = customers.get(position);
 
         TextView code           = (TextView) view.findViewById(R.id.code);
-        code.setText(customer.getCode());
-
         TextView name           = (TextView) view.findViewById(R.id.name);
-        name.setText(customer.getName());
-
         TextView fantasy_name   = (TextView) view.findViewById(R.id.fantasy_name);
-        fantasy_name.setText(customer.getFantasy_name());
-
         TextView phone          = (TextView) view.findViewById(R.id.phone1);
-        phone.setText("Phone: " + customer.getPhone_1());
 
-        final Button detail_customer   = (Button) view.findViewById(R.id.customer_detail);
-
-        detail_customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        code.setText        (               customer.getCode());
+        name.setText        (               customer.getName());
+        fantasy_name.setText(               customer.getFantasy_name());
+        phone.setText       ("Phone: " +    customer.getPhone_1());
 
         return view;
     }

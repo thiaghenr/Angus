@@ -43,10 +43,13 @@ public class Request extends RealmObject{
     private Double              value_total;
 
     @SerializedName("last_update")
-    private Date    last_update;
+    private Date                last_update;
 
     @SerializedName("user_id")
     private User                user_id;
+
+    @SerializedName("sync")
+    private Integer             sync;
 
     @SerializedName("app_id")
     private String              app_id;
@@ -114,6 +117,14 @@ public class Request extends RealmObject{
 
     public void setApp_id(String app_id) {
         this.app_id = app_id;
+    }
+
+    public Integer getSync() {
+        return sync;
+    }
+
+    public void setSync(Integer sync) {
+        this.sync = sync;
     }
 
     public Date getLast_update() {

@@ -46,14 +46,4 @@
         android:textSize="20dp"
         android:textStyle="bold|italic" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove"
-        android:layout_alignEnd="@+id/mark"
-        android:layout_alignRight="@+id/mark"
-        android:id="@+id/customer_detail" />
-
-
-
 </RelativeLayout>

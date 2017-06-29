@@ -76,34 +76,6 @@ public class ProductAdapter extends BaseAdapter{
         TextView mark                   = (TextView) view.findViewById(R.id.mark);
         mark.setText(products.getMark());
 
-        Button prod_detail  =   (Button) view.findViewById(R.id.product_detail);
-        prod_detail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // custom dialog
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.request_create_tab_product_detail_dialog);
-                dialog.setTitle("Title...");
-
-                // set the custom dialog components - text, image and button
-                //TextView qty            = (TextView) dialog.findViewById(R.id.quantity_product);
-                final TextView price    = (TextView) dialog.findViewById(R.id.price_product);
-                Button dialogButton     = (Button)   dialog.findViewById(R.id.add_product_dialog);
-
-                //qty.setText("Android custom dialog example!");
-                price.setText("222222");
-
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
-            }
-        });
         //TextView qtd            = (TextView)  view.findViewById(R.id.qtd);
         //TextView price          = (TextView)  view.findViewById(R.id.price);
         return view;

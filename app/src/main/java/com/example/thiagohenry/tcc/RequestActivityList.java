@@ -35,31 +35,23 @@ import io.realm.RealmResults;
 
 public class RequestActivityList extends AppCompatActivity{
     private Activity act;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.request_list);
-        act = this;
+        act  = this;
         loadRequests();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.filter_search_request, menu);
-        act = this;
 
         Button new_request = (Button) findViewById(R.id.new_request);
         new_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent go_to_form = new Intent(RequestActivityList.this, RequestCreateActivity.class);
-                startActivity(go_to_form);
+            Intent go_to_form = new Intent(RequestActivityList.this, RequestCreateActivity.class);
+            startActivity(go_to_form);
             }
         });
-
-        return super.onCreateOptionsMenu(menu);
     }
 
     public void loadRequests() {

@@ -17,10 +17,20 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.Request;
+import com.example.thiagohenry.tcc.Model.RequestItem;
+import com.example.thiagohenry.tcc.Model.Status;
+
+import java.util.zip.Inflater;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
+import io.realm.RealmResults;
+
+import static android.view.View.inflate;
+import static com.example.thiagohenry.tcc.R.id.action_context_bar;
+import static com.example.thiagohenry.tcc.R.id.container;
 
 /**
  * Created by thiagohenry on 16/04/17.
@@ -32,7 +42,7 @@ public class RequestCreateTabDelivery extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
+        final View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
         total_request_value = (TextView) view.findViewById(R.id.request_total_value);
 
         finishSale(view);
@@ -42,7 +52,7 @@ public class RequestCreateTabDelivery extends Fragment{
         return view;
     }
 
-    public void finishSale(View view){
+    public void finishSale(final View view){
         final Button finish_sale    = (Button)      view.findViewById(R.id.finish_sale);
 
         finish_sale.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +65,26 @@ public class RequestCreateTabDelivery extends Fragment{
             Realm realm = Realm.getDefaultInstance();
             realm.beginTransaction();
             Request request = realm.where(Request.class).findAll().last();
+
+            Status status   = realm.where(Status.class).equalTo("description", "NO PAGO").findFirst();
+            request.setStatus_id(status);
+
+            Customer customer = request.getCustomer_id();
+            if (customer == null){
+                Toast.makeText(getContext(), "Por favor elija un cliente", Toast.LENGTH_LONG).show();
+                view.inflate(getContext(), R.layout.request_create_tab_customer, null);
+                onStop();
+//                request.deleteFromRealm();
+//                realm.close();
+            }
+
+            RealmResults<RequestItem> requestItem = realm.where(RequestItem.class).equalTo("request_id.id", request.getId()).findAll();
+            if (requestItem == null){
+                Toast.makeText(getContext(), "Por favor elija un producto", Toast.LENGTH_LONG).show();
+
+                view.inflate(getContext(), R.layout.request_create_tab_product, null);
+                onStop();
+            }
 
             realm.insertOrUpdate(request);
             realm.commitTransaction();

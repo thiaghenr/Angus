@@ -31,6 +31,9 @@ public class User extends RealmObject {
     @SerializedName("confirmPassword")
     private String confirmPassword;
 
+    @SerializedName("sync")
+    private int sync;
+
     // start getters and setters
     public Long getId() {
         return id;
@@ -78,5 +81,13 @@ public class User extends RealmObject {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public int getSync() {
+        return sync;
+    }
+
+    public void setSync(int sync) {
+        this.sync = sync;
     }
 }

@@ -28,6 +28,7 @@ import com.example.thiagohenry.tcc.Model.Price;
 import com.example.thiagohenry.tcc.Model.Product;
 import com.example.thiagohenry.tcc.Model.ProductPrice;
 import com.example.thiagohenry.tcc.Model.ProductStock;
+import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.Status;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -40,6 +41,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -199,7 +202,7 @@ public class DashboardActivity extends AppCompatActivity
                 realm.beginTransaction();
                 //String newCustomer = listaCustomer.get(i).toString();
                 //System.out.println(newCustomer);
-                realm.createAllFromJson(Customer.class, listaCustomer.toString());
+                realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.toString());
                 //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
                 //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());
                 //realm.createOrUpdateObjectFromJson(Customer.class, newCustomer);
@@ -211,7 +214,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Customer", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -225,7 +228,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listaCustomerAddress = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(CustomerAddress.class, listaCustomerAddress.toString());
+                realm.createOrUpdateAllFromJson(CustomerAddress.class, listaCustomerAddress.toString());
                 realm.commitTransaction();
                 realm.close();
                 //}
@@ -234,7 +237,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Customer Address", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -248,7 +251,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listPrice = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(Price.class, listPrice.toString());
+                realm.createOrUpdateAllFromJson(Price.class, listPrice.toString());
                 realm.commitTransaction();
                 realm.close();
             }
@@ -256,7 +259,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Price", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -270,7 +273,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listProduct = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(Product.class, listProduct.toString());
+                realm.createOrUpdateAllFromJson(Product.class, listProduct.toString());
                 realm.commitTransaction();
                 realm.close();
             }
@@ -278,7 +281,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Product", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -292,7 +295,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listProductPrice = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(ProductPrice.class, listProductPrice.toString());
+                realm.createOrUpdateAllFromJson(ProductPrice.class, listProductPrice.toString());
                 realm.commitTransaction();
                 realm.close();
             }
@@ -300,7 +303,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso Product Price", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -314,7 +317,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listProductStock = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(ProductStock.class, listProductStock.toString());
+                realm.createOrUpdateAllFromJson(ProductStock.class, listProductStock.toString());
                 realm.commitTransaction();
                 realm.close();
             }
@@ -322,7 +325,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Product Stock", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -336,7 +339,7 @@ public class DashboardActivity extends AppCompatActivity
                 final JsonArray listStatus = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
-                realm.createAllFromJson(Status.class, listStatus.toString());
+                realm.createOrUpdateAllFromJson(Status.class, listStatus.toString());
                 realm.commitTransaction();
                 realm.close();
             }
@@ -344,7 +347,7 @@ public class DashboardActivity extends AppCompatActivity
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                Toast.makeText(getBaseContext(), "Problema de acesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "Problema de acesso com Status", Toast.LENGTH_LONG).show();
             }
         });
     }

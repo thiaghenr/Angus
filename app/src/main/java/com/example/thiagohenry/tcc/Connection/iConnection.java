@@ -50,7 +50,7 @@ public interface iConnection {
     Call<JsonArray> getUsers();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://aracruz.myvnc.com:8087/angus/")
+            .baseUrl("http://www.aracruz.com.py/angus/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

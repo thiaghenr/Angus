@@ -70,28 +70,28 @@ public class RequestCreateTabCustomer extends Fragment {
 
         filter_by_code.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
-                    filter_by_name.setChecked(false);
-                    filter_by_phone.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_name.setChecked(false);
+                filter_by_phone.setChecked(false);
+            }
             }
         });
 
         filter_by_name.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_code.setChecked(false);
-                    filter_by_phone.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_code.setChecked(false);
+                filter_by_phone.setChecked(false);
+            }
             }
         });
 
         filter_by_phone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_code.setChecked(false);
-                    filter_by_name.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_code.setChecked(false);
+                filter_by_name.setChecked(false);
+            }
             }
         });
 
