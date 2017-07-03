@@ -27,7 +27,7 @@
         <activity
             android:name=".DashboardActivity"
             android:label="Menú Principal"></activity>
-        <!-- Venda -->
+        <!-- Request -->
         <activity
             android:name=".RequestCreateActivity"
             android:label="Nueva Ordem"
@@ -36,13 +36,17 @@
         <activity
             android:name=".RequestActivityList"
             android:label="Venta"></activity>
-        <!-- Produtos -->
+        <!-- Products -->
         <activity
             android:name=".ProductActivityList"
             android:label="Productos"></activity>
-        <!-- Clientes -->
+        <!-- Customer -->
         <activity
             android:name=".CustomerActivityList"
+            android:label="Clientes"></activity>
+        <!-- Customer Details -->
+        <activity
+            android:name=".CustomerActivityDetails"
             android:label="Clientes"></activity>
     </application>
 

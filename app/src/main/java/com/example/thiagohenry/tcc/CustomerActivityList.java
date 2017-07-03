@@ -62,7 +62,14 @@ public class CustomerActivityList extends AppCompatActivity {
                     ListCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                         @Override
                         public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                            Intent act_cust     = new Intent(act, CustomerActivityDetails.class);
+                            Bundle bundle       = new Bundle();
+                            // Set parameters to fill the list of the selected customer
+                            bundle.putLong      ("id", result1.get(position).getId());
+                            bundle.putString    ("fragment", "customer");
 
+                            act_cust.putExtras  (bundle);
+                            startActivity       (act_cust);
                         }
                     });
                 }

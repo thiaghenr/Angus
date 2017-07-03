@@ -49,28 +49,28 @@ public class ProductActivityList extends AppCompatActivity{
 
         filter_by_name_product.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true){
-                    filter_by_brand.setChecked(false);
-                    filter_by_category.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_brand.setChecked(false);
+                filter_by_category.setChecked(false);
+            }
             }
         });
 
         filter_by_brand.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_name_product.setChecked(false);
-                    filter_by_category.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_name_product.setChecked(false);
+                filter_by_category.setChecked(false);
+            }
             }
         });
 
         filter_by_category.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if (isChecked == true){
-                    filter_by_name_product.setChecked(false);
-                    filter_by_brand.setChecked(false);
-                }
+            if (isChecked == true){
+                filter_by_name_product.setChecked(false);
+                filter_by_brand.setChecked(false);
+            }
             }
         });
 
@@ -89,6 +89,20 @@ public class ProductActivityList extends AppCompatActivity{
 
                     ProductAdapter adapter = new ProductAdapter(context, result1, act);
                     ListProducts.setAdapter(adapter);
+
+                    ListProducts.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                            Intent act_cust     = new Intent(act, ProductActivityDetails.class);
+                            Bundle bundle       = new Bundle();
+                            // Set parameters to fill the list of the selected customer
+                            bundle.putLong      ("id", result1.get(position).getId());
+                            bundle.putString    ("fragment", "customer");
+
+                            act_cust.putExtras  (bundle);
+                            startActivity       (act_cust);
+                        }
+                    });
                 }
                 else if (filter_by_brand.isChecked() == true){
                     Realm realm                 = Realm.getDefaultInstance();
@@ -104,7 +118,7 @@ public class ProductActivityList extends AppCompatActivity{
                     ListProducts.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                            Intent act_cust = new Intent(act, RequestCreateActivity.class);
+                            Intent act_cust = new Intent(act, ProductActivityDetails.class);
                             Bundle bundle = new Bundle();
                             bundle.putLong("id", result1.get(position).getId());
                             bundle.putString("fragment", "product");

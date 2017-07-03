@@ -18,9 +18,9 @@ public class ProductListSelectedAdapter extends BaseAdapter {
     private final Activity act;
 
     public ProductListSelectedAdapter(Context context, ArrayList<Product> products, Activity act) {
-        this.context = context;
-        this.product = products;
-        this.act = act;
+        this.context    = context;
+        this.product    = products;
+        this.act        = act;
     }
 
     @Override
