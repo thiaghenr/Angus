@@ -62,10 +62,5 @@ public class ProductActivityDetails extends AppCompatActivity {
 
         ProductAdapterStockDetails adapter_stock = new ProductAdapterStockDetails(productStockRealmResults, act);
         stock_list.setAdapter(adapter_stock);
-
-        String value;
-        if (extras != null) {
-            value = extras.getString("id");
-        }
     }
 }

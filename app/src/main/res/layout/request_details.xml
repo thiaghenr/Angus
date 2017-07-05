@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.thiagohenry.tcc.CustomerActivityDetails">
+
+    <TableRow
+        android:id="@+id/row_customer"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/customer"
+            android:textColor="@android:color/black"
+            android:text="Cliente: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_status"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@+id/row_customer"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/status"
+            android:textColor="@android:color/black"
+            android:text="Status: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_due_date"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@+id/row_status"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/due_date"
+            android:textColor="@android:color/black"
+            android:text="Fecha de Vencimiento: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+
+
+    <TableRow
+        android:id="@+id/row_cart"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@id/row_due_date"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Carrito " />
+
+    </TableRow>
+
+    <ListView
+        android:id="@+id/list_product_cart"
+        android:layout_width="wrap_content"
+        android:divider="#ECECEC"
+        android:dividerHeight="1sp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/row_cart"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/separator_list_cart"
+        android:layout_below="@+id/list_product_cart"
+        android:background="@android:color/transparent"
+        ></View>
+
+
+    <TableRow
+        android:id="@+id/row_value_total"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@id/separator_list_cart"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/value_total"
+            android:textColor="@android:color/black"
+            android:text="Valor Total: " />
+
+        <TextView
+            android:id="@+id/value_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+    </TableRow>
+
+</RelativeLayout>

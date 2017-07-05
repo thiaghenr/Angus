@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:dividerHeight="40.0sp"
+    android:orientation="vertical"
+    android:id="@+id/request_cart_details">
+
+    <TableRow
+        android:id="@+id/row_product"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/product"
+            android:textColor="@android:color/black"
+            android:text="Producto: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_qty"
+        android:layout_width = "match_parent"
+        android:layout_below="@+id/row_product"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/qty"
+            android:textColor="@android:color/black"
+            android:text="Cantidad: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_value_total"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@+id/row_qty"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/value_total"
+            android:textColor="@android:color/black"
+            android:text="Valor Total: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/value_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            />
+
+    </TableRow>
+
+</RelativeLayout>

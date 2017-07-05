@@ -49,6 +49,10 @@ public interface iConnection {
     @GET("route/app_user.php")
     Call<JsonArray> getUsers();
 
+//    @POST("pedido")
+//    Call<Object> postRequest(@Body List<Request> request);
+
+
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://www.aracruz.com.py/angus/")
             .addConverterFactory(GsonConverterFactory.create())

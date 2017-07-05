@@ -20,12 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thiagohenry.tcc.Model.Customer;
+import com.example.thiagohenry.tcc.Model.Product;
 import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 import com.example.thiagohenry.tcc.Model.Status;
 import com.example.thiagohenry.tcc.Model.User;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.zip.Inflater;
 
@@ -36,6 +38,7 @@ import io.realm.RealmResults;
 import static android.view.View.inflate;
 import static com.example.thiagohenry.tcc.R.id.action_context_bar;
 import static com.example.thiagohenry.tcc.R.id.container;
+import static com.example.thiagohenry.tcc.RequestCreateTabCart.listItems;
 
 /**
  * Created by thiagohenry on 16/04/17.
@@ -66,6 +69,8 @@ public class RequestCreateTabDelivery extends Fragment{
         finish_sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+            listItems.clear();
             ProgressDialog dialog = new ProgressDialog(getActivity());
             dialog.setMessage("Carregando...");
             dialog.setCancelable(false);

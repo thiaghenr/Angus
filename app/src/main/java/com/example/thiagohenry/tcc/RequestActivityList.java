@@ -101,6 +101,20 @@ public class RequestActivityList extends AppCompatActivity{
 
                     RequestAdapter adapter = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
+
+                    ListRequest.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                            Intent act_cust     = new Intent(act, RequestActivityDetails.class);
+                            Bundle bundle       = new Bundle();
+                            // Set parameters to fill the list of the selected customer
+                            bundle.putLong      ("id", requestRealmResults.get(position).getId());
+                            bundle.putString    ("fragment", "customer");
+
+                            act_cust.putExtras  (bundle);
+                            startActivity       (act_cust);
+                        }
+                    });
                 }
                 else if (filter_by_customer.isChecked() == true){
                     Realm realm                             = Realm.getDefaultInstance();
@@ -113,6 +127,20 @@ public class RequestActivityList extends AppCompatActivity{
 
                     RequestAdapter adapter  = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
+
+                    ListRequest.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                            Intent act_cust     = new Intent(act, RequestActivityDetails.class);
+                            Bundle bundle       = new Bundle();
+                            // Set parameters to fill the list of the selected customer
+                            bundle.putLong      ("id", requestRealmResults.get(position).getId());
+                            bundle.putString    ("fragment", "customer");
+
+                            act_cust.putExtras  (bundle);
+                            startActivity       (act_cust);
+                        }
+                    });
                 }
                 else if (filter_by_value.isChecked() == true){
                     Realm realm                             = Realm.getDefaultInstance();
@@ -125,6 +153,20 @@ public class RequestActivityList extends AppCompatActivity{
 
                     RequestAdapter adapter  = new RequestAdapter(requestRealmResults, act);
                     ListRequest.setAdapter(adapter);
+
+                    ListRequest.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View viewItem, final int position, long id) {
+                            Intent act_cust     = new Intent(act, RequestActivityDetails.class);
+                            Bundle bundle       = new Bundle();
+                            // Set parameters to fill the list of the selected customer
+                            bundle.putLong      ("id", requestRealmResults.get(position).getId());
+                            bundle.putString    ("fragment", "customer");
+
+                            act_cust.putExtras  (bundle);
+                            startActivity       (act_cust);
+                        }
+                    });
                 }
             }
 

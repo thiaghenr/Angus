@@ -48,9 +48,14 @@
         <activity
             android:name=".CustomerActivityDetails"
             android:label="Clientes"></activity>
+        <!-- Product Details -->
         <activity
             android:name=".ProductActivityDetails"
             android:label="Productos"></activity>
+        <!-- Request Details -->
+        <activity
+            android:name=".RequestActivityDetails"
+            android:label="Requests"></activity>
     </application>
 
 </manifest>
