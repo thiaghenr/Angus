@@ -9,6 +9,7 @@ import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.CustomerAddress;
 import com.example.thiagohenry.tcc.Model.Product;
 import com.example.thiagohenry.tcc.Model.ProductPrice;
+import com.example.thiagohenry.tcc.Model.ProductStock;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -25,7 +26,7 @@ public class ProductActivityDetails extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_details);
+        setContentView(R.layout.product_details);
         act = this;
 
         TextView name           = (TextView) findViewById(R.id.name);
@@ -38,10 +39,10 @@ public class ProductActivityDetails extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        System.out.println(extras.getLong("id") + "    EXTRAAAAAAS");
         Realm realm = Realm.getDefaultInstance();
-        RealmQuery<Product> realmQuery = realm.where(Product.class).equalTo("id", extras.getLong("id"));
-        RealmResults<Product> realmResults = realmQuery.findAll();
+
+        RealmQuery<Product> realmQuery      = realm.where(Product.class).equalTo("id", extras.getLong("id"));
+        RealmResults<Product> realmResults  = realmQuery.findAll();
 
         name.setText            (realmResults.get(0).getName());
         description.setText     (realmResults.get(0).getDescription());
@@ -49,16 +50,22 @@ public class ProductActivityDetails extends AppCompatActivity {
         unity.setText           (realmResults.get(0).getUnity());
         mark.setText            (realmResults.get(0).getMark());
 
+
         RealmQuery<ProductPrice> productPriceRealmQuery     = realm.where(ProductPrice.class).equalTo("product.id", realmResults.get(0).getId());
         RealmResults<ProductPrice> productPriceRealmResults = productPriceRealmQuery.findAll();
 
-        ProductAdapterPriceDetails adapter = new ProductAdapterPriceDetails(productPriceRealmResults, act);
-        price_list.setAdapter(adapter);
+        ProductAdapterPriceDetails adapter_price = new ProductAdapterPriceDetails(productPriceRealmResults, act);
+        price_list.setAdapter(adapter_price);
+
+        RealmQuery<ProductStock> productStockRealmQuery     = realm.where(ProductStock.class).equalTo("product.id", realmResults.get(0).getId());
+        RealmResults<ProductStock> productStockRealmResults = productStockRealmQuery.findAll();
+
+        ProductAdapterStockDetails adapter_stock = new ProductAdapterStockDetails(productStockRealmResults, act);
+        stock_list.setAdapter(adapter_stock);
 
         String value;
         if (extras != null) {
             value = extras.getString("id");
-            System.out.println(value);
         }
     }
 }

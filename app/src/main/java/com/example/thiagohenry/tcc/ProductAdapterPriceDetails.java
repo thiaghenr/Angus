@@ -7,9 +7,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.thiagohenry.tcc.Model.Customer;
+import com.example.thiagohenry.tcc.Model.Price;
 import com.example.thiagohenry.tcc.Model.ProductPrice;
 
 import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by thiagohenry on 26/04/17.
@@ -51,12 +56,18 @@ public class ProductAdapterPriceDetails extends BaseAdapter {
         View view = act.getLayoutInflater().inflate(R.layout.product_details_price_by_line, parent, false);
 
         ProductPrice productPrice = productPrices.get(position);
+        Realm realm = Realm.getDefaultInstance();
 
-        TextView code           = (TextView) view.findViewById(R.id.name);
-        TextView name           = (TextView) view.findViewById(R.id.value);
+        RealmQuery<Price> priceRealmQuery       = realm.where(Price.class).equalTo("id", productPrice.getPrice().getId());
+        RealmResults<Price> priceRealmResults   = priceRealmQuery.findAll();
 
-        code.setText        (               customer.getCode());
-        name.setText        (               customer.getName());
+        Price price = priceRealmResults.first();
+
+        TextView name           = (TextView) view.findViewById(R.id.name);
+        TextView value          = (TextView) view.findViewById(R.id.value);
+
+        name.setText    (price.getName());
+        value.setText   (productPrice.getValue().toString());
 
         return view;
     }

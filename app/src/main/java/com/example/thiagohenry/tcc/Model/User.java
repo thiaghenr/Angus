@@ -34,6 +34,9 @@ public class User extends RealmObject {
     @SerializedName("sync")
     private int sync;
 
+    @SerializedName("logged")
+    private boolean logged;
+
     // start getters and setters
     public Long getId() {
         return id;
@@ -89,5 +92,13 @@ public class User extends RealmObject {
 
     public void setSync(int sync) {
         this.sync = sync;
+    }
+
+    public boolean getLogged() {
+        return logged;
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged = logged;
     }
 }

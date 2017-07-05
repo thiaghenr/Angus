@@ -64,7 +64,6 @@ public class CustomerActivityDetails extends AppCompatActivity {
         String value;
         if (extras != null) {
             value = extras.getString("id");
-            System.out.println(value);
         }
     }
 }

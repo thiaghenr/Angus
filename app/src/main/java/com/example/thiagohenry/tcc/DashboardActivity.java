@@ -201,7 +201,6 @@ public class DashboardActivity extends AppCompatActivity
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();
                 //String newCustomer = listaCustomer.get(i).toString();
-                //System.out.println(newCustomer);
                 realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.toString());
                 //realm.createAllFromJson(Customer.class, listaCustomer.toString()); aqui funcionou
                 //realm.createOrUpdateAllFromJson(Customer.class, listaCustomer.getAsString());

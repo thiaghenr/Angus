@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -21,7 +23,10 @@ import com.example.thiagohenry.tcc.Model.Customer;
 import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 import com.example.thiagohenry.tcc.Model.Status;
+import com.example.thiagohenry.tcc.Model.User;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.zip.Inflater;
 
 import io.realm.Realm;
@@ -39,11 +44,14 @@ import static com.example.thiagohenry.tcc.R.id.container;
 public class RequestCreateTabDelivery extends Fragment{
     private static final String TAG = "RequestCreateTabDelivery";
     public static TextView total_request_value;;
+    public String payment_condition;
+    public Spinner spinner;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
         total_request_value = (TextView) view.findViewById(R.id.request_total_value);
+        spinner = (Spinner) view.findViewById(R.id.spinner_condicao);
 
         finishSale(view);
         populateSpinnerCondicao(view);
@@ -66,25 +74,31 @@ public class RequestCreateTabDelivery extends Fragment{
             realm.beginTransaction();
             Request request = realm.where(Request.class).findAll().last();
 
+            // Set status "NO PAGADO" to request
             Status status   = realm.where(Status.class).equalTo("description", "NO PAGADO").findFirst();
             request.setStatus_id(status);
 
-            Customer customer = request.getCustomer_id();
-            if (customer == null){
-                Toast.makeText(getContext(), "Por favor elija un cliente", Toast.LENGTH_LONG).show();
-                view.inflate(getContext(), R.layout.request_create_tab_customer, null);
-                onStop();
-//                request.deleteFromRealm();
-//                realm.close();
-            }
+            // Set logged user to request
+            User user = realm.where(User.class).equalTo("logged", true).findFirst();
+            request.setUser_id(user);
 
-//            RealmResults<RequestItem> requestItem = realm.where(RequestItem.class).equalTo("request_id.id", request.getId()).findAll();
-//            if (requestItem == null){
-//                Toast.makeText(getContext(), "Por favor elija un producto", Toast.LENGTH_LONG).show();
-//
-//                view.inflate(getContext(), R.layout.request_create_tab_product, null);
-//                onStop();
-//            }
+            request.setSync(0);
+
+            Date date = request.getDue_date();
+
+            payment_condition = spinner.getSelectedItem().toString();
+
+            System.out.println(payment_condition);
+
+            if (payment_condition.equals("30 dias")){
+                request.setDue_date(addOneMonth(date));
+            }
+            else if (payment_condition.equals("60 dias")){
+                request.setDue_date(addTwoMonths(date));
+            }
+            else if (payment_condition.equals("90 dias")){
+                request.setDue_date((addThreeMonths(date)));
+            }
 
             realm.insertOrUpdate(request);
             realm.commitTransaction();
@@ -98,13 +112,22 @@ public class RequestCreateTabDelivery extends Fragment{
     }
 
     public void populateSpinnerCondicao(View view){
-        Spinner spinner                     = (Spinner) view.findViewById(R.id.spinner_condicao);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.condicao_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+//                Object item = parent.getItemAtPosition(pos);
+//            }
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
+
+        System.out.println(payment_condition);
     }
 
     public void populateSpinnerFatura(View view){
@@ -136,6 +159,30 @@ public class RequestCreateTabDelivery extends Fragment{
         total_request_value.setText(request.getValue_total().toString());
         realm.commitTransaction();
         realm.close();
+    }
+
+    public static Date addOneMonth(Date date)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 1);
+        return cal.getTime();
+    }
+
+    public static Date addTwoMonths(Date date)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 2);
+        return cal.getTime();
+    }
+
+    public static Date addThreeMonths(Date date)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 3);
+        return cal.getTime();
     }
 
     @Override

@@ -6,16 +6,27 @@
     android:orientation="vertical"
     android:id="@+id/customer_list_custom_by_line">
 
+    <TextView
+        android:layout_marginRight="10dp"
+        android:text="Cliente: "
+        android:layout_width="wrap_content"
+        android:id="@+id/text_customer"
+        android:layout_height="wrap_content"
+        />
 
-    <!-- <ImageView
-         android:id="@+id/lista_curso_personalizada_imagem"
-         android:layout_width="100dp"
-         android:layout_height="match_parent" />-->
+    <TextView
+        android:id="@+id/customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/text_customer"
+        />
 
     <TextView
         android:layout_marginRight="10dp"
-        android:id="@+id/customer"
+        android:text="Status: "
         android:layout_width="wrap_content"
+        android:id="@+id/text_status"
+        android:layout_below="@+id/text_customer"
         android:layout_height="wrap_content"
         />
 
@@ -23,19 +34,28 @@
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/customer"
         android:textColor="@android:color/black"
-        android:layout_below="@id/customer"
-        android:textSize="24sp"
+        android:layout_toRightOf="@+id/text_status"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/currency"
         android:layout_width="259dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/status"
+        android:layout_below="@+id/text_status"
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/currency"
+        android:layout_below="@+id/status"
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/due_date"
@@ -45,16 +65,5 @@
         android:textColor="?attr/colorPrimary"
         android:textSize="20dp"
         android:textStyle="bold|italic" />
-
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/due_date"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="bold|italic" />
-
-
 
 </RelativeLayout>

@@ -43,13 +43,6 @@ public class RequestCreateTabCart extends Fragment{
         return view;
     }
 
-
-
-//    public static void calcRequestTotalValueInvoice(Double current_total){
-//        System.out.println(current_total + "   CUUUUURRREEEENT");
-//        total_invoice.setText(current_total.toString());
-//    }
-
     public static void removeRequestItem(RequestItem requestItem){
         // First we remove item from list
         final ListView ListProductsSelected = (ListView) mView.findViewById(R.id.products_selected2);

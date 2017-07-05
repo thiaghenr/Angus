@@ -43,6 +43,18 @@ public class MainActivity extends AppCompatActivity{
             syncUser();
         }
 
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        RealmResults<User> user = realm.where(User.class).findAll();
+        for (int i = 0; i < user.size(); i++){
+            user.get(i).setLogged(false);
+        }
+
+        realm.insertOrUpdate(user);
+        realm.commitTransaction();
+        realm.close();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +72,12 @@ public class MainActivity extends AppCompatActivity{
         RealmResults<User> realmObjects = realm.where(User.class).findAll();
         for (User myRealmObject : realmObjects) {
             if (username.equals(myRealmObject.getUsername()) && password.equals(myRealmObject.getPassword())) {
+                realm.beginTransaction();
+                User user = realm.where(User.class).contains("password", myRealmObject.getPassword()).findFirst();
+                user.setLogged(true);
+                realm.insertOrUpdate(user);
+                realm.commitTransaction();
+                realm.close();
                 Toast.makeText(getApplicationContext(), "Olá " + username, Toast.LENGTH_LONG).show();
                 Intent act_dash = new Intent(getBaseContext(), DashboardActivity.class);
                 startActivity(act_dash);
@@ -77,7 +95,6 @@ public class MainActivity extends AppCompatActivity{
         call.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                System.out.println("SUCEEEEEEESSOOOOOOOOOOOOOOOOOOO");
                 final JsonArray listaUsers = response.body();
                 Realm realm = Realm.getDefaultInstance();
                 realm.beginTransaction();

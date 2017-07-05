@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/name"
             android:textColor="@android:color/black"
-            android:text="Code: "/>
+            android:text="Producto: " />
 
 
         <TextView
@@ -37,16 +37,8 @@
         android:id="@+id/row_description"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_below="@id/row_code"
+        android:layout_below="@id/row_name"
         android:orientation = "horizontal">
-
-        <TextView
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/description"
-            android:textColor="@android:color/black"
-            android:text="Nombre: " />
 
         <TextView
             android:id="@+id/description"
@@ -63,7 +55,7 @@
         android:id="@+id/row_category"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_below="@id/row_name"
+        android:layout_below="@id/row_description"
         android:orientation = "horizontal">
 
         <TextView
@@ -72,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/category"
             android:textColor="@android:color/black"
-            android:text="Fone: " />
+            android:text="Categoría: " />
 
         <TextView
             android:id="@+id/category"
@@ -88,7 +80,7 @@
         android:id="@+id/row_unity"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_below="@id/row_phone"
+        android:layout_below="@id/row_category"
         android:orientation = "horizontal">
 
         <TextView
@@ -97,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/unity"
             android:textColor="@android:color/black"
-            android:text="Fantasia: " />
+            android:text="Unidad: " />
 
         <TextView
             android:id="@+id/unity"
@@ -112,7 +104,7 @@
         android:id="@+id/row_mark"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_below="@id/row_fantasy_name"
+        android:layout_below="@id/row_unity"
         android:orientation = "horizontal">
 
         <TextView
@@ -121,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/mark"
             android:textColor="@android:color/black"
-            android:text="La Calle: " />
+            android:text="Marca: " />
 
         <TextView
             android:id="@+id/mark"

@@ -16,7 +16,7 @@ public class ConfigRealm extends Application{
         super.onCreate();
         Realm.init(getApplicationContext());
         // creation of the Realm configuration
-        RealmConfiguration config = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build();
+        RealmConfiguration config = new RealmConfiguration.Builder().build();
         //Realm.deleteRealm(config);
         Realm.setDefaultConfiguration(config);
     }

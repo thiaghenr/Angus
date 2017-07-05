@@ -50,7 +50,7 @@ public class RequestAdapter extends BaseAdapter {
 
         View view = act.getLayoutInflater().inflate(R.layout.request_list_custom_by_line, parent, false);
         Request request = requests.get(position);
-        System.out.println(request + "       Request" + " Position " + position);
+
         Realm realm = Realm.getDefaultInstance();
 
         RealmQuery<Customer> query_customer     = realm.where(Customer.class).equalTo("id", request.getCustomer_id().getId());
@@ -58,8 +58,6 @@ public class RequestAdapter extends BaseAdapter {
 
         RealmResults<Customer> result_customer  = query_customer.findAll();
         RealmResults<Status> result_status      = query_status.findAll();
-
-        System.out.println(result_customer.get(0) + "         REsult Customer");
 
         if(result_customer.isLoaded() && result_status.isLoaded()){
             Customer customer_find = realm.where(Customer.class).equalTo("id", result_customer.get(0).getId()).findFirst();
@@ -72,11 +70,14 @@ public class RequestAdapter extends BaseAdapter {
 
             Date due_date_request = request.getDue_date();
 
+            SimpleDateFormat format_ = new SimpleDateFormat("dd-MM-yyyy");
+            String dataFormatada_ = format_.format(due_date_request);
+
             customer.setText(customer_find.getName());
             status  .setText(status_find.getDescription());
-            currency.setText(               request.getCurrency());
-            due_date.setText(due_date_request.toString());
-            total   .setText("55.000");
+            currency.setText(request.getCurrency());
+            due_date.setText(dataFormatada_);
+            total   .setText(request.getValue_total().toString());
 
             return view;
         }
