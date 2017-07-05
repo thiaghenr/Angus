@@ -13,6 +13,9 @@ import com.example.thiagohenry.tcc.Model.Request;
 import com.example.thiagohenry.tcc.Model.RequestItem;
 import com.example.thiagohenry.tcc.Model.Status;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -23,7 +26,6 @@ import io.realm.RealmResults;
 
 public class RequestActivityDetails extends AppCompatActivity {
     private AppCompatActivity act;
-    //private TextView search = (EditText) findViewById(R.id.inputSearch);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,20 +39,25 @@ public class RequestActivityDetails extends AppCompatActivity {
         TextView value_total    = (TextView) findViewById(R.id.value_total);
 
         ListView price_list     = (ListView) findViewById(R.id.list_product_cart);
-
+        // Receiving parameters from activity
         Bundle extras = getIntent().getExtras();
         Realm realm = Realm.getDefaultInstance();
 
         RealmQuery<Request> realmQuery      = realm.where(Request.class).equalTo("id", extras.getLong("id"));
         RealmResults<Request> realmResults  = realmQuery.findAll();
-
+        // Get customer and status
         Customer customer1  = realmResults.get(0).getCustomer_id();
         Status   status1    = realmResults.get(0).getStatus_id();
 
+        Date due_date_request = realmResults.get(0).getDue_date();
+
+        SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
+        String formatted_date = date_format.format(due_date_request);
+
         customer.setText    (customer1.getName());
         status.setText      (status1.getDescription());
-        due_date.setText    (realmResults.get(0).getDue_date().toString());
-        value_total.setText (realmResults.get(0).getValue_total().toString());
+        due_date.setText    (formatted_date);
+        value_total.setText (realmResults.get(0).getCurrency() + ": " + realmResults.get(0).getValue_total().toString());
 
         RealmQuery<RequestItem>     requestItemRealmQuery       = realm.where(RequestItem.class).equalTo("request_id.id", realmResults.get(0).getId());
         RealmResults<RequestItem>   requestItemRealmResults     = requestItemRealmQuery.findAll();

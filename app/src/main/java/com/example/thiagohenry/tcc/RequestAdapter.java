@@ -66,7 +66,7 @@ public class RequestAdapter extends BaseAdapter {
             TextView status             = (TextView) view.findViewById(R.id.status);
             TextView currency           = (TextView) view.findViewById(R.id.currency);
             TextView due_date           = (TextView) view.findViewById(R.id.due_date);
-            TextView total              = (TextView) view.findViewById(R.id.total);
+            TextView total              = (TextView) view.findViewById(R.id.value_total);
 
             Date due_date_request = request.getDue_date();
 
@@ -75,9 +75,8 @@ public class RequestAdapter extends BaseAdapter {
 
             customer.setText(customer_find.getName());
             status  .setText(status_find.getDescription());
-            currency.setText(request.getCurrency());
             due_date.setText(dataFormatada_);
-            total   .setText(request.getValue_total().toString());
+            total   .setText(request.getCurrency().toString() + ": " + request.getValue_total().toString());
 
             return view;
         }

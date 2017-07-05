@@ -22,7 +22,7 @@ public class ContentActivity extends AppCompatActivity{
         ImageButton sync        = (ImageButton) findViewById(R.id.Sync);
         ImageButton pagamento   = (ImageButton) findViewById(R.id.Payment);
         ImageButton produto     = (ImageButton) findViewById(R.id.Product);
-        ImageButton opcao       = (ImageButton) findViewById(R.id.Options);
+        ImageButton opcao       = (ImageButton) findViewById(R.id.User);
 
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override

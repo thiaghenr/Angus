@@ -64,7 +64,7 @@ public class DashboardActivity extends AppCompatActivity
         ImageButton sync        = (ImageButton) findViewById(R.id.Sync);
         ImageButton pagamento   = (ImageButton) findViewById(R.id.Payment);
         ImageButton produto     = (ImageButton) findViewById(R.id.Product);
-        ImageButton opcao       = (ImageButton) findViewById(R.id.Options);
+        ImageButton user        = (ImageButton) findViewById(R.id.User);
 
         cliente.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -101,7 +101,7 @@ public class DashboardActivity extends AppCompatActivity
             timerDelayRemoveDialog(1000, dialog);
             }
         });
-//
+
         pagamento.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -109,22 +109,14 @@ public class DashboardActivity extends AppCompatActivity
                 startActivity(form_pagamento);
             }
         });
-//
-//        produto.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent form_produto = new Intent (ContentActivity.this, CLASS HERE);
-//                startActivity(form_produto);
-//            }
-//        });
-//
-//        opcao.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent form_opcao = new Intent (ContentActivity.this, CLASS HERE);
-//                startActivity(form_opcao);
-//            }
-//        });
+
+        user.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent form_user = new Intent (DashboardActivity.this, UserActivity.class);
+                startActivity(form_user);
+            }
+        });
 
         Toolbar toolbar     = (Toolbar)     findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

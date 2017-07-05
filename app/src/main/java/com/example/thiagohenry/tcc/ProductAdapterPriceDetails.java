@@ -67,7 +67,8 @@ public class ProductAdapterPriceDetails extends BaseAdapter {
         TextView value          = (TextView) view.findViewById(R.id.value);
 
         name.setText    (price.getName());
-        value.setText   (productPrice.getValue().toString());
+
+        value.setText   (productPrice.getCurrency() + ": " +  productPrice.getValue().toString());
 
         return view;
     }

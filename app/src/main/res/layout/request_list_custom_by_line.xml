@@ -6,64 +6,115 @@
     android:orientation="vertical"
     android:id="@+id/customer_list_custom_by_line">
 
-    <TextView
-        android:layout_marginRight="10dp"
-        android:text="Cliente: "
-        android:layout_width="wrap_content"
-        android:id="@+id/text_customer"
-        android:layout_height="wrap_content"
-        />
+    <TableRow
+        android:id="@+id/row_customer"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:orientation = "horizontal">
 
-    <TextView
-        android:id="@+id/customer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/text_customer"
-        />
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/customer"
+            android:textSize="13dp"
+            android:textColor="@android:color/black"
+            android:text="Cliente: " />
 
-    <TextView
-        android:layout_marginRight="10dp"
-        android:text="Status: "
-        android:layout_width="wrap_content"
-        android:id="@+id/text_status"
-        android:layout_below="@+id/text_customer"
-        android:layout_height="wrap_content"
-        />
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/customer"
-        android:textColor="@android:color/black"
-        android:layout_toRightOf="@+id/text_status"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/customer"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            />
 
-    <TextView
-        android:id="@+id/currency"
-        android:layout_width="259dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_status"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="italic" />
+    </TableRow>
 
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/currency"
-        android:layout_below="@+id/status"
-        android:textColor="?attr/colorPrimary"
-        android:textStyle="bold|italic" />
+    <TableRow
+        android:id="@+id/row_status"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@+id/row_customer"
+        android:orientation = "horizontal">
 
-    <TextView
-        android:id="@+id/due_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/currency"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="bold|italic" />
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/status"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:text="Status: " />
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row_due_date"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@+id/row_status"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/due_date"
+            android:textColor="@android:color/black"
+            android:text="Fecha de Vencimiento: "
+            android:textSize="15dp"/>
+
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:id="@+id/due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
+
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/row_value_total"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_below="@id/row_due_date"
+        android:orientation = "horizontal">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/value_total"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:text="Valor Total: " />
+
+        <TextView
+            android:id="@+id/value_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+    </TableRow>
 
 </RelativeLayout>

@@ -78,7 +78,6 @@ public class RequestCreateActivity extends AppCompatActivity {
 
         // Here we set some default datas to start the request
         r.setStatus_id          (status);
-        r.setCurrency("U$");
         r.setDue_date(today);
         r.setValue_total(0.0);
 

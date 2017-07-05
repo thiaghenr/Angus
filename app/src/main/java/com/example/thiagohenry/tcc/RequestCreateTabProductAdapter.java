@@ -125,9 +125,9 @@ public class RequestCreateTabProductAdapter extends BaseAdapter{
                 ListView ProductsStockList                                          = (ListView) dialog.findViewById(R.id.stock_selected_in_detail_dialog);
 
                 RequestCreateTabProductDetailDialogPriceAdapter adapterPrice        = new RequestCreateTabProductDetailDialogPriceAdapter(p, act);
-                RequestCreateTabProductDetailDialogStockAdapter adapterStock        = new RequestCreateTabProductDetailDialogStockAdapter(p, act);
-
                 ProductsPriceList.setAdapter(adapterPrice);
+
+                RequestCreateTabProductDetailDialogStockAdapter adapterStock        = new RequestCreateTabProductDetailDialogStockAdapter(p, act);
                 ProductsStockList.setAdapter(adapterStock);
 
                 product_selected_in_detail_dialog.setText(products.getName());

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="fatura_array">
-        <item>GS</item>
-        <item>R$</item>
+        <item>G$</item>
         <item>U$</item>
     </string-array>
 </resources>

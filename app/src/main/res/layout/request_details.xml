@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.thiagohenry.tcc.CustomerActivityDetails">
@@ -19,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/customer"
+            android:textSize="15dp"
             android:textColor="@android:color/black"
             android:text="Cliente: " />
 
@@ -28,7 +33,10 @@
             android:id="@+id/customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColorLink="@color/cardview_light_background"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             />
 
     </TableRow>
@@ -45,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/status"
+            android:textSize="15dp"
             android:textColor="@android:color/black"
             android:text="Status: " />
 
@@ -53,8 +62,10 @@
             android:layout_marginRight="10dp"
             android:id="@+id/status"
             android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             />
 
     </TableRow>
@@ -72,7 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/due_date"
             android:textColor="@android:color/black"
-            android:text="Fecha de Vencimiento: " />
+            android:text="Fecha de Vencimiento: "
+            android:textSize="15dp"/>
 
 
         <TextView
@@ -80,7 +92,9 @@
             android:id="@+id/due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="20dp"
             />
 
     </TableRow>
@@ -99,7 +113,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:text="Carrito " />
+            android:textSize="23dp"
+            android:text="Carrito "
+            android:textStyle="bold|italic"/>
 
     </TableRow>
 
@@ -107,8 +123,8 @@
         android:id="@+id/list_product_cart"
         android:layout_width="wrap_content"
         android:divider="#ECECEC"
-        android:dividerHeight="1sp"
-        android:layout_height="200dp"
+        android:dividerHeight="2sp"
+        android:layout_height="332dp"
         android:layout_below="@+id/row_cart"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"></ListView>
@@ -135,13 +151,14 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/value_total"
             android:textColor="@android:color/black"
+            android:textSize="15dp"
             android:text="Valor Total: " />
 
         <TextView
             android:id="@+id/value_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
     </TableRow>

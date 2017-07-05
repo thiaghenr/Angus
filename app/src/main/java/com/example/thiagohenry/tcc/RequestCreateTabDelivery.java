@@ -46,15 +46,21 @@ import static com.example.thiagohenry.tcc.RequestCreateTabCart.listItems;
 
 public class RequestCreateTabDelivery extends Fragment{
     private static final String TAG = "RequestCreateTabDelivery";
-    public static TextView total_request_value;;
+    public static TextView total_request_value;
+
     public String payment_condition;
-    public Spinner spinner;
+    public Spinner spinner_payment_condition;
+
+    public String  currency;
+    public Spinner spinner_currency;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.request_create_tab_delivery, container, false);
-        total_request_value = (TextView) view.findViewById(R.id.request_total_value);
-        spinner = (Spinner) view.findViewById(R.id.spinner_condicao);
+        total_request_value         =   (TextView) view.findViewById(R.id.request_total_value);
+        spinner_payment_condition   =   (Spinner) view.findViewById(R.id.spinner_condicao);
+        spinner_currency            =   (Spinner) view.findViewById(R.id.spinner_fatura);
 
         finishSale(view);
         populateSpinnerCondicao(view);
@@ -91,9 +97,8 @@ public class RequestCreateTabDelivery extends Fragment{
 
             Date date = request.getDue_date();
 
-            payment_condition = spinner.getSelectedItem().toString();
-
-            System.out.println(payment_condition);
+            // Get the payment condition
+            payment_condition = spinner_payment_condition.getSelectedItem().toString();
 
             if (payment_condition.equals("30 dias")){
                 request.setDue_date(addOneMonth(date));
@@ -103,6 +108,16 @@ public class RequestCreateTabDelivery extends Fragment{
             }
             else if (payment_condition.equals("90 dias")){
                 request.setDue_date((addThreeMonths(date)));
+            }
+
+            // Get the currency that will be made invoice
+            currency = spinner_currency.getSelectedItem().toString();
+
+            if (currency.equals("G$")){
+                request.setCurrency("G$");
+            }
+            else if (currency.equals("U$")){
+                request.setCurrency("U$");
             }
 
             realm.insertOrUpdate(request);
@@ -122,26 +137,13 @@ public class RequestCreateTabDelivery extends Fragment{
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//                Object item = parent.getItemAtPosition(pos);
-//            }
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-
-        System.out.println(payment_condition);
+        spinner_payment_condition.setAdapter(adapter);
     }
 
     public void populateSpinnerFatura(View view){
-
-        Spinner spinner                     = (Spinner) view.findViewById(R.id.spinner_fatura);
         ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this.getContext(), R.array.fatura_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
+        spinner_currency.setAdapter(adapter);
     }
 
     public void timerDelayRemoveDialog(long time, final ProgressDialog d){
